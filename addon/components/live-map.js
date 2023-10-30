@@ -8,7 +8,7 @@ import { singularize } from 'ember-inflector';
 import { alias } from '@ember/object/computed';
 import { later } from '@ember/runloop';
 import { allSettled } from 'rsvp';
-import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
+import getWithDefault from '@atomizedev/ember-core/utils/get-with-default';
 
 const DEFAULT_LATITUDE = 1.369;
 const DEFAULT_LONGITUDE = 103.8864;

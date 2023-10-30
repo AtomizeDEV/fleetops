@@ -1,16 +1,16 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@fleetbase/ember-core':
+  '@atomizedev/ember-core':
     specifier: ^0.1.5
     version: 0.1.5(@babel/core@7.23.0)(ember-fetch@8.1.2)(postcss@8.4.31)(webpack@5.74.0)
-  '@fleetbase/ember-ui':
+  '@atomizedev/ember-ui':
     specifier: ^0.2.0
     version: 0.2.0(@babel/core@7.23.0)(@ember/test-helpers@2.8.1)(ember-source@4.6.0)(postcss@8.4.31)(rollup@4.0.0)(webpack@5.74.0)
-  '@fleetbase/fleetops-data':
+  '@atomizedev/fleetops-data':
     specifier: ^0.1.1
     version: 0.1.1
-  '@fleetbase/leaflet-routing-machine':
+  '@atomizedev/leaflet-routing-machine':
     specifier: ^3.2.16
     version: 3.2.16
   '@fortawesome/ember-fontawesome':
@@ -2241,7 +2241,7 @@ packages:
       - supports-color
     dev: true
 
-  /@fleetbase/ember-core@0.1.5(@babel/core@7.23.0)(ember-fetch@8.1.2)(postcss@8.4.31)(webpack@5.74.0):
+  /@atomizedev/ember-core@0.1.5(@babel/core@7.23.0)(ember-fetch@8.1.2)(postcss@8.4.31)(webpack@5.74.0):
     resolution: {integrity: sha512-GFYTZ3emH/QwvwR6RoFbgA6vTgdtjH0zJA5ALHFzBMipL1PqVGlWWJHRxHUkP9i8nP3ZXWQuJbhmryU4hn7Vdw==}
     engines: {node: 14.* || >= 16}
     dependencies:
@@ -2273,7 +2273,7 @@ packages:
       - webpack
     dev: false
 
-  /@fleetbase/ember-ui@0.2.0(@babel/core@7.23.0)(@ember/test-helpers@2.8.1)(ember-source@4.6.0)(postcss@8.4.31)(rollup@4.0.0)(webpack@5.74.0):
+  /@atomizedev/ember-ui@0.2.0(@babel/core@7.23.0)(@ember/test-helpers@2.8.1)(ember-source@4.6.0)(postcss@8.4.31)(rollup@4.0.0)(webpack@5.74.0):
     resolution: {integrity: sha512-c9PETFoMO3e5DS3vg7S0ZWlkLxDic09EY78WGyzTmg3l2EHB1uHn2HBo7GPWlLAPN2M6GZnVAXo5irTX76XZ4Q==}
     engines: {node: 14.* || >= 16}
     dependencies:
@@ -2351,7 +2351,7 @@ packages:
       - webpack-command
     dev: false
 
-  /@fleetbase/fleetops-data@0.1.1:
+  /@atomizedev/fleetops-data@0.1.1:
     resolution: {integrity: sha512-x3BsFR4hZ3P/2LSMqOx4XVgaahVs1Nr4fWFOPoS1FyF/XI8LU1EO6CNA/oimlLLC+0tbddQlT9wttXUrDOm5uw==}
     engines: {node: 14.* || >= 16}
     dependencies:
@@ -2362,7 +2362,7 @@ packages:
       - supports-color
     dev: false
 
-  /@fleetbase/leaflet-routing-machine@3.2.16:
+  /@atomizedev/leaflet-routing-machine@3.2.16:
     resolution: {integrity: sha512-af0mKH3VKIGEfYEGXS9cedhgniwgkNwjC/Gp9ZEzXGTX2/13PyMdd1XOQTamaItPbh5x2uK2/n1BP0vIJ7ObEQ==}
     dependencies:
       '@mapbox/corslite': 0.0.7

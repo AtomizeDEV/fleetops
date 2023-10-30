@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import getModelName from '@fleetbase/ember-core/utils/get-model-name';
+import getModelName from '@atomizedev/ember-core/utils/get-model-name';
 
 /**
  * Service to manage the context panel in the application.
