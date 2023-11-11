@@ -6,7 +6,7 @@ import { not, equal, alias } from '@ember/object/computed';
 import { isArray } from '@ember/array';
 import { dasherize } from '@ember/string';
 import { later, next } from '@ember/runloop';
-import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import { OSRMv1, Control as RoutingControl } from '@atomizedev/leaflet-routing-machine';
 import polyline from '@atomizedev/ember-core/utils/polyline';
 import findClosestWaypoint from '@atomizedev/ember-core/utils/find-closest-waypoint';
 import isNotEmpty from '@atomizedev/ember-core/utils/is-not-empty';
@@ -253,7 +253,7 @@ export default class OperationsOrdersIndexNewController extends Controller {
         }
 
         this.previewRoute(false);
-        this.loader.showLoader('body', 'Creating Order...');
+        this.loader.showLoader('body', { loadingMessage: 'Creating Order...' });
 
         const { order, groupedMetaFields, payload, entities, waypoints, isMultipleDropoffOrder } = this;
         const route = this.leafletOptimizedRoute ? this.getOptimizedRoute() : this.getRoute();

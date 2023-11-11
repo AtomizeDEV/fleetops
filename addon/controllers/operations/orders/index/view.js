@@ -5,7 +5,7 @@ import { action, computed } from '@ember/object';
 import { isArray } from '@ember/array';
 import { later } from '@ember/runloop';
 import { not, notEmpty, alias } from '@ember/object/computed';
-import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import { OSRMv1, Control as RoutingControl } from '@atomizedev/leaflet-routing-machine';
 import groupBy from '@atomizedev/ember-core/utils/macros/group-by';
 import findClosestWaypoint from '@atomizedev/ember-core/utils/find-closest-waypoint';
 import getRoutingHost from '@atomizedev/ember-core/utils/get-routing-host';
@@ -94,6 +94,13 @@ export default class OperationsOrdersIndexViewController extends Controller {
      * @var {Service}
      */
     @service universe;
+
+    /**
+     * Inject the `contextPanel` service
+     *
+     * @var {Service}
+     */
+    @service contextPanel;
 
     @tracked isLoadingAdditionalData = false;
     @tracked isWaypointsCollapsed;
@@ -782,15 +789,18 @@ export default class OperationsOrdersIndexViewController extends Controller {
         this.vendorsController.viewVendor(customer);
     }
 
-    @action async viewDriver(order) {
-        if (order.canLoadDriver) {
-            this.modalsManager.displayLoader();
-
-            order.driver = await this.store.findRecord('driver', order.driver_uuid);
-            await this.modalsManager.done();
+    @action focusOrderAssignedDriver({ driver_assigned, driver_assigned_uuid, canLoadDriver }) {
+        // if can load the driver then load and display via context
+        if (canLoadDriver) {
+            return this.store.findRecord('driver', driver_assigned_uuid).then((driver) => {
+                this.contextPanel.focus(driver);
+            });
         }
 
-        this.driversController.viewDriver(order.driver_assigned);
+        // if driver already loaded use this
+        if (driver_assigned) {
+            this.contextPanel.focus(driver_assigned);
+        }
     }
 
     @action async viewFacilitator({ facilitator, facilitator_is_contact }) {

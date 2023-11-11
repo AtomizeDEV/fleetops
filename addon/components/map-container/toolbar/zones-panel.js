@@ -2,30 +2,82 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { alias } from '@ember/object/computed';
+import { classify } from '@ember/string';
 import { calculateInPlacePosition } from 'ember-basic-dropdown/utils/calculate-position';
 
+/**
+ * @class MapContainerToolbarZonesPanelComponent
+ * @extends {Component}
+ * @memberof @atomizedev/fleetops-engine
+ */
 export default class MapContainerToolbarZonesPanelComponent extends Component {
+    /**
+     * Ember Data store service.
+     * @type {Service}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
     @service store;
-    @service modalsManager;
-    @service notifications;
-    @service crud;
+
+    /**
+     * Service areas service.
+     * @type {Service}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
     @service serviceAreas;
+
+    /**
+     * Application cache service.
+     * @type {Service}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
     @service appCache;
 
+    /**
+     * Indicates if the component is in a loading state.
+     * @type {boolean}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
     @tracked isLoading = false;
-    @tracked serviceAreaRecords = [];
-    @tracked editableLayers = [];
-    @tracked serviceAreaTypes = ['neighborhood', 'city', 'region', 'state', 'province', 'country', 'continent'];
-    @alias('args.map') leafletMap;
-    @alias('args.map.liveMap.activeServiceArea') activeServiceArea;
-    @alias('args.map.liveMap.activeFeatureGroup') activeFeatureGroup;
 
-    @action setupZonesPanel() {
+    /**
+     * Holds the records for service areas.
+     * @type {Array}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
+    @tracked serviceAreaRecords = [];
+
+    /**
+     * Reference to the map instance.
+     * @type {L.Map}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
+    @tracked map;
+
+    /**
+     * Reference to the live map component instance.
+     * @type {LiveMapComponent}
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
+    @tracked liveMap;
+
+    /**
+     * Class constructor.
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
+    constructor() {
+        super(...arguments);
+        this.map = this.args.map;
+        this.liveMap = this.args.liveMap;
         this.fetchServiceAreas();
-        this.serviceAreas.setMapInstance(this.leafletMap);
+        this.serviceAreas.setMapInstance(this.args.map);
     }
 
+    /**
+     * Calculate position for dropdown.
+     * @param {Element} trigger The triggering element
+     * @returns {Object} Position style object
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
     @action calculatePosition(trigger) {
         const position = calculateInPlacePosition(...arguments);
         const rect = trigger.getBoundingClientRect();
@@ -36,64 +88,41 @@ export default class MapContainerToolbarZonesPanelComponent extends Component {
         return position;
     }
 
-    @action onAction(actionName, dd, ...params) {
-        if (typeof dd?.actions?.close === 'function') {
-            dd.actions.close();
-        }
+    /**
+     * Generic callback trigger function.
+     * @param {string} callbackFn Callback function name
+     * @param {...any} params Parameters for the callback function
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
+    @action triggerCallback(callbackFn, ...params) {
+        const tryInvoke = (context, fnName) => {
+            if (context && typeof context[fnName] === 'function') {
+                context[fnName](...params);
+            }
+        };
 
-        if (typeof this[actionName] === 'function') {
-            this[actionName](...params);
-        }
+        tryInvoke(this, callbackFn);
+        tryInvoke(this.args, callbackFn);
+        tryInvoke(this.liveMap, callbackFn);
+        tryInvoke(this.serviceAreas, callbackFn);
 
-        if (typeof this.args[actionName] === 'function') {
-            this.args[actionName](...params);
-        }
-
-        if (typeof this.args[`on${actionName?.toUpperCase()}`] === 'function') {
-            this.args[`on${actionName?.toUpperCase()}`](...params);
-        }
+        // Additional check for event callback function in args
+        const eventCallbackFn = `on${classify(callbackFn)}`;
+        tryInvoke(this.args, eventCallbackFn);
     }
 
-    @action serviceAreaAction(actionName, dropdown, ...params) {
-        const { dd } = this.args;
-
-        if (typeof dd?.actions?.close === 'function') {
-            dd.actions.close();
-        }
-
-        if (typeof dropdown?.actions?.close === 'function') {
-            dropdown.actions.close();
-        }
-
-        if (typeof this.serviceAreas[actionName] === 'function') {
-            this.serviceAreas[actionName](...params);
-        }
-    }
-
-    @action liveMapAction(actionName, dropdown, ...params) {
-        const { dd } = this.args;
-
-        if (typeof dd?.actions?.close === 'function') {
-            dd.actions.close();
-        }
-
-        if (typeof dropdown?.actions?.close === 'function') {
-            dropdown.actions.close();
-        }
-
-        if (typeof this.leafletMap?.liveMap[actionName] === 'function') {
-            this.leafletMap?.liveMap[actionName](...params);
-        }
-    }
-
-    @action fetchServiceAreas() {
+    /**
+     * Fetch service areas and update state.
+     * @memberof MapContainerToolbarZonesPanelComponent
+     */
+    fetchServiceAreas() {
         this.isLoading = true;
 
         if (this.appCache.has('serviceAreas')) {
             this.serviceAreaRecords = this.appCache.getEmberData('serviceAreas', 'service-area');
         }
 
-        this.store
+        return this.store
             .query('service-area', { with: ['zones'] })
             .then((serviceAreaRecords) => {
                 this.serviceAreaRecords = serviceAreaRecords;

@@ -1,0 +1,1 @@
+export { default } from '@atomizedev/fleetops-engine/components/vendor-form-panel/edit-form';
