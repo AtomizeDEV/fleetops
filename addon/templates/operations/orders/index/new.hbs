@@ -50,7 +50,7 @@
         <ContentPanel @title="Details" @open={{true}} @pad={{true}} @panelBodyClass="bg-white dark:bg-gray-800">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-2">
                 <div class="input-group">
-                    <InputLabel @labelText="Order Type" @helpText="Selecting the order type will tell fleetbase what order configurations to use." />
+                    <InputLabel @labelText="Order Type" @helpText="Selecting the order type will tell Fastlane what order configurations to use." />
                     <Select class="w-full" @options={{this.types}} @value={{this.order.type}} @optionLabel="name" @optionValue="key" @onSelect={{this.setConfig}} @placeholder="Select Order Type" />
                 </div>
 
@@ -206,8 +206,8 @@
                 </div>
                 <div class="flex flex-1 justify-end space-x-2">
                     {{#if this.isMultipleDropoffOrder}}
-                        <Button @type="magic" @icon="magic" @text="Optimize Route" @size="sm" @onClick={{this.optimizeRoute}} @helpText="Fleetbase will automatically optimize the route." @disabled={{lt this.waypoints.length 3}} @isLoading={{this.isOptimizingRoute}} />
-                        <Button @icon="map-marked-alt" @text="Add Waypoint" @size="sm" @onClick={{this.addWaypoint}} @helpText="Use the `Add Waypoint` button to add more stops for this order. The Fleetbase routing engine will automatically optimize the route as each stop is added or removed." />
+                        <Button @type="magic" @icon="magic" @text="Optimize Route" @size="sm" @onClick={{this.optimizeRoute}} @helpText="Fastlane will automatically optimize the route." @disabled={{lt this.waypoints.length 3}} @isLoading={{this.isOptimizingRoute}} />
+                        <Button @icon="map-marked-alt" @text="Add Waypoint" @size="sm" @onClick={{this.addWaypoint}} @helpText="Use the `Add Waypoint` button to add more stops for this order. The Fastlane routing engine will automatically optimize the route as each stop is added or removed." />
                     {{/if}}
                 </div>
             </div>
@@ -447,7 +447,7 @@
                             <Spinner class="text-sm dark:text-gray-100 flex flex-row items-center" @iconClass="mr-2" @loadingMessage="Loading service quotes..." />
                         </div>
                     {{else}}
-                        <InfoBlock class="my-3" @text="Select a real time service quote to apply to this order. Once a quote is applied to the order, it will become a purchased rate. Transactions will be tracked within the Fleetbase ledger." />
+                        <InfoBlock class="my-3" @text="Select a real time service quote to apply to this order. Once a quote is applied to the order, it will become a purchased rate. Transactions will be tracked within the Fastlane ledger." />
 
                         <div class="radio-group-condensed -space-y-px">
                             {{#each this.serviceQuotes as |serviceQuote index|}}
