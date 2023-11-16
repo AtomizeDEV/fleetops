@@ -43,7 +43,7 @@ class DriverController extends Controller
     public function create(CreateDriverRequest $request)
     {
         // get request input
-        $input = $request->except(['name', 'password', 'email', 'phone', 'location', 'meta']);
+        $input = $request->except(['name', 'password', 'email', 'phone', 'location', 'altitude', 'heading', 'speed', 'meta']);
 
         // get user details for driver
         $userDetails                 = $request->only(['name', 'password', 'email', 'phone']);
@@ -118,13 +118,13 @@ class DriverController extends Controller
         }
 
         // get request input
-        $input = $request->except(['name', 'password', 'email', 'phone', 'location', 'meta']);
+        $input = $request->except(['name', 'password', 'email', 'phone', 'location', 'altitude', 'heading', 'speed', 'meta']);
 
         // get user details for driver
         $userDetails = $request->only(['name', 'password', 'email', 'phone']);
 
         // update driver user details
-        $driver->user()->update($userDetails);
+        $driver->user->update($userDetails);
 
         // vehicle assignment public_id -> uuid
         if ($request->has('vehicle')) {
