@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Http;
  */
 class OSRM
 {
-    protected static $baseUrl = 'https://bundle.routing.fleetbase.io';
+    protected static $baseUrl = 'https://osrm.fastlane.ee';
 
     /**
      * Get the route between two points.
