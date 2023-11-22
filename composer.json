@@ -67,7 +67,7 @@
                 "Fleetbase\\FleetOps\\Providers\\EventServiceProvider"
             ]
         },
-        "fleetbase/fleetops-api": {
+        "atomizedev/fleetops-api": {
             "excludes": [
                 "addon",
                 "app",
