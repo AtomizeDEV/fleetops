@@ -1,6 +1,6 @@
 <div class="relative shadow-inner h-full" {{did-resize (fn this.handleMapResize (hash verticalTopPadding=65))}}>
     <LeafletMap {{set-container-dimensions (hash verticalTopPadding=65)}} class="z-0 zones-leaflet" @lat={{this.userLatitude}} @lng={{this.userLongitude}} @zoom={{14}} @onLoad={{this.setMapReference}} as |layers|>
-        <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
+        <layers.tile @url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w" />
 
         {{#each @model as |serviceArea|}}
             {{#each serviceArea.zones as |zone|}}

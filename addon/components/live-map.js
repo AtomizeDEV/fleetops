@@ -10,8 +10,8 @@ import { later } from '@ember/runloop';
 import { allSettled } from 'rsvp';
 import getWithDefault from '@atomizedev/ember-core/utils/get-with-default';
 
-const DEFAULT_LATITUDE = 1.369;
-const DEFAULT_LONGITUDE = 103.8864;
+const DEFAULT_LATITUDE = 29.3375;
+const DEFAULT_LONGITUDE = 47.65;
 
 /**
  * Component which displays live activity.
@@ -228,7 +228,7 @@ export default class LiveMapComponent extends Component {
      * @type {string}
      * @memberof LiveMapComponent
      */
-    @tracked tileSourceUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
+    @tracked tileSourceUrl = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w';
 
     /**
      * The latitude for the map view.
@@ -280,7 +280,7 @@ export default class LiveMapComponent extends Component {
         super(...arguments);
         this.skipSetCoordinates = getWithDefault(this.args, 'skipSetCoordinates', false);
         this.zoom = getWithDefault(this.args, 'zoom', 12);
-        this.tileSourceUrl = getWithDefault(this.args, 'tileSourceUrl', 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png');
+        this.tileSourceUrl = getWithDefault(this.args, 'tileSourceUrl', 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w');
 
         if (this.args.darkMode === true) {
             this.tileSourceUrl = 'https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=';
@@ -1822,7 +1822,7 @@ export default class LiveMapComponent extends Component {
                     // Update the object's heading degree
                     objectMarker.setRotationAngle(data.heading);
                     // Move the object's marker to new coordinates
-                    objectMarker.slideTo(data.location.coordinates, { duration: 2000 });
+                    objectMarker.slideTo(data.location.coordinates.reverse(), { duration: 2000 });
                 }
             }
 
