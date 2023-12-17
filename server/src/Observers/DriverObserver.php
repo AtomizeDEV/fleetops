@@ -44,5 +44,6 @@ class DriverObserver
         User::where(['uuid' => $driver->user_uuid, 'type' => 'driver'])->delete();
 
         // also unassign them from any order they are assigned to
-        Order::where(['driver_assigned_uuid' => $driver->uuid])->update(['driver_assigned_uuid' => null]);    }
+        Order::where(['driver_assigned_uuid' => $driver->uuid])->update(['driver_assigned_uuid' => null]);
+    }
 }
