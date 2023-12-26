@@ -1,10 +1,10 @@
 {
     "name": "Fleet-Ops",
-    "version": "0.3.3",
+    "version": "0.3.7",
     "description": "Fleet & Transport Management Extension for Fleetbase",
     "repository": "https://github.com/atomizedev/fleetops",
     "license": "MIT",
-    "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
+    "author": "Fleetbase Pte Ltd <hello@atomizedev.io>",
     "engine": "package.json",
     "api": "composer.json"
 }

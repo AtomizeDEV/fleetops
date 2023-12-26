@@ -10,8 +10,8 @@ import { later } from '@ember/runloop';
 import { allSettled } from 'rsvp';
 import getWithDefault from '@atomizedev/ember-core/utils/get-with-default';
 
-const DEFAULT_LATITUDE = 29.3375;
-const DEFAULT_LONGITUDE = 47.65;
+const DEFAULT_LATITUDE = 1.369;
+const DEFAULT_LONGITUDE = 103.8864;
 
 /**
  * Component which displays live activity.
@@ -228,7 +228,7 @@ export default class LiveMapComponent extends Component {
      * @type {string}
      * @memberof LiveMapComponent
      */
-    @tracked tileSourceUrl = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w';
+    @tracked tileSourceUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
 
     /**
      * The latitude for the map view.
@@ -280,7 +280,7 @@ export default class LiveMapComponent extends Component {
         super(...arguments);
         this.skipSetCoordinates = getWithDefault(this.args, 'skipSetCoordinates', false);
         this.zoom = getWithDefault(this.args, 'zoom', 12);
-        this.tileSourceUrl = getWithDefault(this.args, 'tileSourceUrl', 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w');
+        this.tileSourceUrl = getWithDefault(this.args, 'tileSourceUrl', 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png');
 
         if (this.args.darkMode === true) {
             this.tileSourceUrl = 'https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=';
@@ -1822,7 +1822,7 @@ export default class LiveMapComponent extends Component {
                     // Update the object's heading degree
                     objectMarker.setRotationAngle(data.heading);
                     // Move the object's marker to new coordinates
-                    objectMarker.slideTo(data.location.coordinates.reverse(), { duration: 2000 });
+                    objectMarker.slideTo(data.location.coordinates, { duration: 2000 });
                 }
             }
 
@@ -1911,7 +1911,8 @@ export default class LiveMapComponent extends Component {
 
                     // from the `get-active-order-coordinates` the responded coordinates will always be [longitude, latitude]
                     // const [latitude, longitude] = extractCoordinates(coordinates.firstObject.coordinates);
-                    const [longitude, latitude] = coordinates.filter((point) => point.cordinates[0] !== 0).firstObject?.coordinates;
+                    const validCoordinates = coordinates.filter((point) => point.cordinates[0] !== 0);
+                    const [longitude, latitude] = getWithDefault(validCoordinates, '0.coordiantes', [0, 0]);
 
                     initialCoordinates.latitude = latitude;
                     initialCoordinates.longitude = longitude;
@@ -1934,10 +1935,12 @@ export default class LiveMapComponent extends Component {
         this.isLoading = true;
 
         return new Promise((resolve) => {
-            const cachedRecords = this.serviceAreas?.getFromCache('serviceAreas', 'service-area');
+            if (this.serviceAreas && typeof this.serviceAreas.getFromCache === 'function') {
+                const cachedRecords = this.serviceAreas.getFromCache('serviceAreas', 'service-area');
 
-            if (cachedRecords) {
-                resolve(cachedRecords);
+                if (cachedRecords) {
+                    resolve(cachedRecords);
+                }
             }
 
             return this.store

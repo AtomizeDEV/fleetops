@@ -1,6 +1,6 @@
 {
     "name": "atomizedev/fleetops-api",
-    "version": "0.2.9",
+    "version": "0.3.7",
     "description": "Fleet & Transport Management Extension for Fleetbase",
     "keywords": [
         "fleetbase-extension",
@@ -13,11 +13,11 @@
     "authors": [
         {
             "name": "Fleetbase Pte Ltd.",
-            "email": "hello@fleetbase.io"
+            "email": "hello@atomizedev.io"
         },
         {
             "name": "Ronald A. Richardson",
-            "email": "ron@fleetbase.io"
+            "email": "ron@atomizedev.io"
         }
     ],
     "repositories": [
