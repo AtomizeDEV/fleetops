@@ -214,7 +214,10 @@ class DriverController extends FleetOpsController
                     }
                     $input     = $input->except(['name', 'password', 'email', 'phone', 'meta', 'avatar_uuid', 'photo_uuid'])->toArray();
 
-                    $driver->user->update($userInput);
+                    if ($driver->user) { 
+                        $driver->user->update($userInput);
+                    }
+                    
                     $driver->flushAttributesCache();
 
                     $input['slug'] = $driver->user->slug;
