@@ -228,7 +228,7 @@ export default class LiveMapComponent extends Component {
      * @type {string}
      * @memberof LiveMapComponent
      */
-    @tracked tileSourceUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
+    @tracked tileSourceUrl = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w';
 
     /**
      * The latitude for the map view.
@@ -280,7 +280,7 @@ export default class LiveMapComponent extends Component {
         super(...arguments);
         this.skipSetCoordinates = getWithDefault(this.args, 'skipSetCoordinates', false);
         this.zoom = getWithDefault(this.args, 'zoom', 12);
-        this.tileSourceUrl = getWithDefault(this.args, 'tileSourceUrl', 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png');
+        this.tileSourceUrl = getWithDefault(this.args, 'tileSourceUrl', 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w');
 
         if (this.args.darkMode === true) {
             this.tileSourceUrl = 'https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=';

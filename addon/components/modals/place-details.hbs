@@ -3,7 +3,7 @@
         <div class="flex">
             <div class="w-48 mb-6 mr-6">
                 <LeafletMap class="w-full h-48 mb-2 rounded-md shadow-md" @lat={{@options.place.latitude}} @lng={{@options.place.longitude}} @zoom={{12}} as |layers|>
-                    <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" />
+                    <layers.tile @url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w" />
 
                     <layers.marker @location={{@options.place.coordinates}} />
                 </LeafletMap>
