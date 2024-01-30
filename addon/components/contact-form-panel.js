@@ -10,6 +10,10 @@ export default class ContactFormPanelComponent extends Component {
      * @service store
      */
     @service store;
+    /**
+     * @service intl
+     */
+    @service intl;
 
     /**
      * @service fetch
@@ -105,7 +109,7 @@ export default class ContactFormPanelComponent extends Component {
             return contact
                 .save()
                 .then((contact) => {
-                    this.notifications.success(`contact (${contact.name}) saved successfully.`);
+                    this.notifications.success(this.intl.t('fleet-ops.component.contact-form-panel.success-message', { contactName: contact.name }));
                     contextComponentCallback(this, 'onAfterSave', contact);
                 })
                 .catch((error) => {
@@ -133,8 +137,8 @@ export default class ContactFormPanelComponent extends Component {
             {
                 path: `uploads/${this.currentUser.companyId}/drivers/${this.contact.id}`,
                 subject_uuid: this.contact.id,
-                subject_type: `contact`,
-                type: `contact_photo`,
+                subject_type: 'fleet-ops:contact',
+                type: 'contact_photo',
             },
             (uploadedFile) => {
                 this.contact.setProperties({
@@ -180,7 +184,7 @@ export default class ContactFormPanelComponent extends Component {
             {
                 path: `uploads/${this.contact.company_uuid}/contacts/${this.contact.slug}`,
                 subject_uuid: this.contact.id,
-                subject_type: 'contact',
+                subject_type: 'fleet-ops:contact',
                 type: 'contact_photo',
             },
             (uploadedFile) => {

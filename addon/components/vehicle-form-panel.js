@@ -13,9 +13,14 @@ export default class VehicleFormPanelComponent extends Component {
     @service store;
 
     /**
-     * @service store
+     * @service fetch
      */
     @service fetch;
+
+    /**
+     * @service intl
+     */
+    @service intl;
 
     /**
      * @service currentUser
@@ -98,7 +103,7 @@ export default class VehicleFormPanelComponent extends Component {
             return vehicle
                 .save()
                 .then((vehicle) => {
-                    this.notifications.success(`Vehicle (${vehicle.displayName}) saved successfully.`);
+                    this.notifications.success(this.intl.t('fleet-ops.component.vehicle-form-panel.success-message', { vehicleName: vehicle.displayName }));
                     contextComponentCallback(this, 'onAfterSave', vehicle);
                 })
                 .catch((error) => {
@@ -126,7 +131,7 @@ export default class VehicleFormPanelComponent extends Component {
             {
                 path: `uploads/${this.currentUser.companyId}/vehicles/${this.vehicle.id}`,
                 subject_uuid: this.vehicle.id,
-                subject_type: 'vehicle',
+                subject_type: 'fleet-ops:vehicle',
                 type: 'vehicle_photo',
             },
             (uploadedFile) => {

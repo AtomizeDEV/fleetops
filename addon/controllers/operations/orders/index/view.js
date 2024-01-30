@@ -6,7 +6,8 @@ import { action, computed } from '@ember/object';
 import { isArray } from '@ember/array';
 import { later } from '@ember/runloop';
 import { not, notEmpty, alias } from '@ember/object/computed';
-import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import { task } from 'ember-concurrency-decorators';
+import { OSRMv1, Control as RoutingControl } from '@atomizedev/leaflet-routing-machine';
 import groupBy from '@atomizedev/ember-core/utils/macros/group-by';
 import findClosestWaypoint from '@atomizedev/ember-core/utils/find-closest-waypoint';
 import getRoutingHost from '@atomizedev/ember-core/utils/get-routing-host';
@@ -18,13 +19,6 @@ export default class OperationsOrdersIndexViewController extends BaseController 
      * @var {Controller}
      */
     @controller('operations.orders.index') ordersController;
-
-    /**
-     * Inject the `operations.orders.index` controller
-     *
-     * @var {Controller}
-     */
-    @controller('management.places.index') placesController;
 
     /**
      * Inject the `management.contacts.index` controller
@@ -48,7 +42,14 @@ export default class OperationsOrdersIndexViewController extends BaseController 
     @controller('management.drivers.index') driversController;
 
     /**
-     * Inject the `modals-manager` service
+     * Inject the `store` service
+     *
+     * @var {Service}
+     */
+    @service store;
+
+    /**
+     * Inject the `modalsManager` service
      *
      * @var {Service}
      */
@@ -60,6 +61,13 @@ export default class OperationsOrdersIndexViewController extends BaseController 
      * @var {Service}
      */
     @service notifications;
+
+    /**
+     * Inject the `intl` service
+     *
+     * @var {Service}
+     */
+    @service intl;
 
     /**
      * Inject the `currentUser` service
@@ -149,7 +157,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
 
         // create groups
         this.model.payload.waypoints.forEach((waypoint) => {
-            const destinationId = waypoint.id || null;
+            const destinationId = waypoint.id;
 
             if (destinationId) {
                 const entities = this.model.payload.entities.filter((entity) => entity.destination_uuid === destinationId);
@@ -169,6 +177,15 @@ export default class OperationsOrdersIndexViewController extends BaseController 
         });
 
         return groups;
+    }
+
+    @task *loadOrderRelations(order) {
+        yield order.loadPayload();
+        yield order.loadDriver();
+        yield order.loadTrackingNumber();
+        yield order.loadCustomer();
+        yield order.loadTrackingActivity();
+        yield order.loadOrderConfig();
     }
 
     @action resetView() {
@@ -248,14 +265,14 @@ export default class OperationsOrdersIndexViewController extends BaseController 
         };
 
         // re-display order routes when livemap has coordinates
-        this.universe.on('fleetops.livemap.has_coordinates', this, displayOrderRoute);
+        this.universe.on('fleet-ops.live-map.has_coordinates', this, displayOrderRoute);
 
         // when transitioning away kill event listener
         this.hostRouter.on('routeWillChange', () => {
-            const isListening = this.universe.has('fleetops.livemap.has_coordinates');
+            const isListening = this.universe.has('fleet-ops.live-map.has_coordinates');
 
             if (isListening) {
-                this.universe.off('fleetops.livemap.has_coordinates', this, displayOrderRoute);
+                this.universe.off('fleet-ops.live-map.has_coordinates', this, displayOrderRoute);
             }
         });
 
@@ -363,7 +380,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
         options = options === null ? {} : options;
 
         this.modalsManager.show('modals/order-form', {
-            title: 'Edit Order Details',
+            title: this.intl.t('fleet-ops.operations.orders.index.view.edit-order-title'),
             acceptButtonText: 'Save Changes',
             acceptButtonIcon: 'save',
             setOrderFacilitator: (model) => {
@@ -396,7 +413,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
             confirm: (modal) => {
                 modal.startLoading();
                 return order.save().then(() => {
-                    this.notifications.success(options.successNotification || `'${order.public_id}' details has been updated.`);
+                    this.notifications.success(options.successNotification || this.intl.t('fleet-ops.operations.orders.index.view.update-success', { orderId: order.public_id }));
                 });
             },
             decline: () => {
@@ -415,7 +432,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
      */
     @action viewOrderMeta(order) {
         this.modalsManager.show('modals/order-meta', {
-            title: 'Order Metadata',
+            title: this.intl.t('fleet-ops.operations.orders.index.view.order-metadata'),
             acceptButtonText: 'Done',
             acceptButtonIcon: 'check',
             acceptButtonIconPrefix: 'fas',
@@ -426,8 +443,8 @@ export default class OperationsOrdersIndexViewController extends BaseController 
 
     @action unassignDriver(order, options = {}) {
         this.modalsManager.confirm({
-            title: `Are you sure you wish to unassing the driver (${order.driver_assigned.name}) from this order?`,
-            body: `Once the driver is unassigned, the driver will no longer have access to this orders details.`,
+            title: this.intl.t('fleet-ops.operations.orders.index.view.edit-order-title', { driverName: order.driver_assigned.name }),
+            body: this.intl.t('fleet-ops.operations.orders.index.view.unassign-body'),
             order,
             confirm: (modal) => {
                 modal.startLoading();
@@ -440,7 +457,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                 return order
                     .save()
                     .then(() => {
-                        this.notifications.success(`Driver has been unassigned from this order.`);
+                        this.notifications.success(this.intl.t('fleet-ops.operations.orders.index.view.unassign-success'));
                     })
                     .catch((error) => {
                         this.notifications.serverError(error);
@@ -463,7 +480,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
         await this.modalsManager.done();
 
         this.modalsManager.show('modals/order-route-form', {
-            title: 'Edit Order Route',
+            title: this.intl.t('fleet-ops.operations.orders.index.view.edit-route-title'),
             acceptButtonText: 'Save Changes',
             acceptButtonIcon: 'save',
             order,
@@ -472,9 +489,12 @@ export default class OperationsOrdersIndexViewController extends BaseController 
             isOptimizingRoute: false,
             editPlace: async (place) => {
                 await this.modalsManager.done();
-                this.placesController.editPlace(place, {
-                    onFinish: () => {
-                        this.editOrderRoute(order);
+
+                this.contextPanel.focus(place, 'editing', {
+                    args: {
+                        onClose: () => {
+                            this.editOrderRoute(order);
+                        },
                     },
                 });
             },
@@ -525,7 +545,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                 const routingHost = getRoutingHost(order.payload, order.payload.waypoints);
 
                 const response = await this.fetch.routing(coordinates, { source: 'any', destination: 'any', annotations: true }, { host: routingHost }).catch(() => {
-                    this.notifications.error('Route optimization failed, check route entry and try again.');
+                    this.notifications.error(this.intl.t('fleet-ops.operations.orders.index.view.route-error'));
                     this.modalsManager.setOption('isOptimizingRoute', false);
                 });
 
@@ -546,7 +566,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                         order.payload.waypoints = sortedWaypoints;
                     }
                 } else {
-                    this.notifications.error('Route optimization failed, check route entry and try again.');
+                    this.notifications.error(this.intl.t('fleet-ops.operations.orders.index.view.route-error'));
                 }
 
                 this.modalsManager.setOption('isOptimizingRoute', false);
@@ -555,7 +575,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                 modal.startLoading();
 
                 return order.payload.save().then(() => {
-                    this.notifications.success(options.successNotification ?? `'${order.public_id}' route details updated.`);
+                    this.notifications.success(options.successNotification ?? this.intl.t('fleet-ops.operations.orders.index.view.route-update-success', { orderId: order.public_id }));
                 });
             },
             decline: () => {
@@ -631,7 +651,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
         await this.modalsManager.done();
 
         this.modalsManager.show(`modals/order-new-activity`, {
-            title: 'Add new activity to order',
+            title: this.intl.t('fleet-ops.operations.orders.index.view.add-activity-title'),
             acceptButton: false,
             selected: null,
             custom: {
@@ -651,7 +671,7 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                     if (!custom.status || !custom.details || !custom.code) {
                         modal.stopLoading();
 
-                        return this.notifications.warning('Invalid custom status entry.');
+                        return this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.view.invalid-warning'));
                     }
 
                     activity = custom;
@@ -694,13 +714,13 @@ export default class OperationsOrdersIndexViewController extends BaseController 
         }
 
         this.modalsManager.show(`modals/order-assign-driver`, {
-            title: order.driver_uuid ? 'Change order driver' : 'Assign driver to order',
+            title: order.driver_uuid ? this.intl.t('fleet-ops.operations.orders.index.view.change-order') : this.intl.t('fleet-ops.operations.orders.index.view.assign-order'),
             acceptButtonText: 'Save Changes',
             order,
             confirm: (modal) => {
                 modal.startLoading();
                 return order.save().then(() => {
-                    this.notifications.success(`${order.public_id} assigned driver updated.`);
+                    this.notifications.success(this.intl.t('fleet-ops.operations.orders.index.view.assign-success', { orderId: order.public_id }));
                 });
             },
         });
@@ -838,23 +858,30 @@ export default class OperationsOrdersIndexViewController extends BaseController 
             acceptButtonText: 'Save Changes',
             entity,
             uploadNewPhoto: (file) => {
+                const fileUrl = URL.createObjectURL(file.blob);
+
                 if (entity.get('isNew')) {
                     const { queue } = file;
-                    const fileUrl = URL.createObjectURL(file.blob);
 
                     this.modalsManager.setOption('pendingFileUpload', file);
                     entity.set('photo_url', fileUrl);
                     queue.remove(file);
                     return;
+                } else {
+                    entity.set('photo_url', fileUrl);
                 }
 
+                // Indicate loading
+                this.modalsManager.startLoading();
+
+                // Perform upload
                 return this.fetch.uploadFile.perform(
                     file,
                     {
                         path: `uploads/${this.currentUser.companyId}/entities/${entity.id}`,
                         subject_uuid: entity.id,
-                        subject_type: `entity`,
-                        type: `entity_photo`,
+                        subject_type: 'fleet-ops:entity',
+                        type: 'entity_photo',
                     },
                     (uploadedFile) => {
                         entity.setProperties({
@@ -862,6 +889,13 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                             photo_url: uploadedFile.url,
                             photo: uploadedFile,
                         });
+
+                        // Stop loading
+                        this.modalsManager.stopLoading();
+                    },
+                    () => {
+                        // Stop loading
+                        this.modalsManager.stopLoading();
                     }
                 );
             },
@@ -869,7 +903,6 @@ export default class OperationsOrdersIndexViewController extends BaseController 
                 modal.startLoading();
 
                 const pendingFileUpload = modal.getOption('pendingFileUpload');
-
                 return entity.save().then(() => {
                     if (pendingFileUpload) {
                         return modal.invoke('uploadNewPhoto', pendingFileUpload);

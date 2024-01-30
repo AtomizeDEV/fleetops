@@ -7,14 +7,14 @@ import { not, equal, alias } from '@ember/object/computed';
 import { isArray } from '@ember/array';
 import { dasherize } from '@ember/string';
 import { later, next } from '@ember/runloop';
-import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import { OSRMv1, Control as RoutingControl } from '@atomizedev/leaflet-routing-machine';
 import polyline from '@atomizedev/ember-core/utils/polyline';
 import findClosestWaypoint from '@atomizedev/ember-core/utils/find-closest-waypoint';
 import isNotEmpty from '@atomizedev/ember-core/utils/is-not-empty';
 import getRoutingHost from '@atomizedev/ember-core/utils/get-routing-host';
 import groupBy from '@atomizedev/ember-core/utils/macros/group-by';
-import extractCoordinates from '@atomizedev/ember-core/utils/extract-coordinates';
 import getWithDefault from '@atomizedev/ember-core/utils/get-with-default';
+import isModel from '@atomizedev/ember-core/utils/is-model';
 
 L.Bounds.prototype.intersects = function (bounds) {
     var min = this.min,
@@ -73,6 +73,13 @@ export default class OperationsOrdersIndexNewController extends BaseController {
     @service fileQueue;
 
     /**
+     * Inject the `intl` service
+     *
+     * @var {Service}
+     */
+    @service intl;
+
+    /**
      * Inject the `fetch` service
      *
      * @var {Service}
@@ -117,6 +124,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
     @tracked meta = [];
     @tracked entities = [];
     @tracked waypoints = [];
+    @tracked payloadCoordinates = [];
     @tracked types = [];
     @tracked serviceRates = [];
     @tracked selectedServiceRate;
@@ -185,8 +193,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         return isOrderTypeSet && isPickupSet && isDropoffSet;
     }
 
-    @computed('payload.{dropoff,pickup,waypoints}', 'waypoints.[]')
-    get payloadCoordinates() {
+    updatePayloadCoordinates() {
         let waypoints = [];
         let coordinates = [];
 
@@ -201,8 +208,29 @@ export default class OperationsOrdersIndexNewController extends BaseController {
             }
         });
 
-        return coordinates;
+        this.payloadCoordinates = coordinates;
     }
+
+    // @computed('payload.{dropoff,pickup,waypoints}', 'waypoints.[]')
+    // get payloadCoordinates() {
+    //     let waypoints = [];
+    //     let coordinates = [];
+
+    //     console.log('[this.waypoints]', this.waypoints);
+
+    //     waypoints.pushObjects([this.payload.pickup, ...this.waypoints.map((waypoint) => waypoint.place), this.payload.dropoff]);
+    //     waypoints.forEach((place) => {
+    //         if (place && place.get('longitude') && place.get('latitude')) {
+    //             if (place.hasInvalidCoordinates) {
+    //                 return;
+    //             }
+
+    //             coordinates.pushObject([place.get('longitude'), place.get('latitude')]);
+    //         }
+    //     });
+
+    //     return coordinates;
+    // }
 
     @computed('payloadCoordinates.length', 'waypoints.[]') get isServicable() {
         return this.payloadCoordinates.length >= 2;
@@ -213,7 +241,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         return (
             this.routePreviewArray
                 // .filter((place) => place.get('hasValidCoordinates'))
-                .map((place) => place.get('extractedLatLng'))
+                .map((place) => place.get('latlng'))
         );
     }
 
@@ -298,7 +326,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
 
                     // transition to order view
                     return this.hostRouter.transitionTo(`${engineMountPoint}operations.orders.index.view`, order).then(() => {
-                        this.notifications.success(`New Order ${order.public_id} Created`);
+                        this.notifications.success(this.intl.t('fleet-ops.operations.orders.index.new.success-message', { orderId: order.public_id }));
                         this.loader.removeLoader();
                         this.resetForm();
                         later(
@@ -383,7 +411,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 };
 
                 if (!uploadQueue.length) {
-                    return this.notifications.warning('No files in queue to upload!');
+                    return this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.warning-message'));
                 }
 
                 modal.startLoading();
@@ -424,7 +452,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                     });
                 }
 
-                this.notifications.success('Import completed.');
+                this.notifications.success(this.intl.t('fleet-ops.operations.orders.index.new.import-success'));
                 this.isCsvImportedOrder = true;
                 this.previewDraftOrderRoute(this.payload, this.waypoints, this.isMultipleDropoffOrder);
                 modal.done();
@@ -500,8 +528,8 @@ export default class OperationsOrdersIndexNewController extends BaseController {
 
         let payload = this.payload.serialize();
         let route = this.getRoute();
-        let distance = get(route, 'payload.summary.totalDistance');
-        let time = get(route, 'payload.summary.totalTime');
+        let distance = get(route, 'details.summary.totalDistance');
+        let time = get(route, 'details.summary.totalTime');
         let service_type = this.order.type;
         let scheduled_at = this.order.scheduled_at;
         let facilitator = this.order.facilitator?.get('public_id');
@@ -533,7 +561,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
 
         this.fetch
             .post('service-quotes/preliminary', {
-                payload,
+                payload: this._getSerializedPayload(payload),
                 distance,
                 time,
                 service,
@@ -550,11 +578,30 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 }
             })
             .catch(() => {
-                this.notifications.warning('Failed to fetch service quotes for this order.');
+                this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.service-warning'));
             })
             .finally(() => {
                 this.isFetchingQuotes = false;
             });
+    }
+
+    _getSerializedPayload(payload) {
+        const serialized = {
+            pickup: this._seriailizeModel(payload.pickup),
+            dropoff: this._seriailizeModel(payload.dropoff),
+            entitities: this._serializeArray(payload.entities),
+            waypoints: this._serializeArray(payload.waypoint),
+        };
+
+        return serialized;
+    }
+
+    _seriailizeModel(model) {
+        return isModel(model) ? model.toJSON() : model;
+    }
+
+    _serializeArray(array) {
+        return isArray(array) ? array.map((item) => this._seriailizeModel(item)) : array;
     }
 
     @action scheduleOrder(dateInstance) {
@@ -580,7 +627,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
             });
         } else {
             // setup interface when livemap is ready
-            this.universe.on('fleetops.livemap.ready', () => {
+            this.universe.on('fleet-ops.live-map.ready', () => {
                 this.setupInterface();
             });
         }
@@ -749,7 +796,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
     }
 
     @action createCoordinatesFromRoutePlaceArray(array) {
-        return array.filter((place) => place.get('hasValidCoordinates')).map((place) => place.get('extractedLatLng'));
+        return array.filter((place) => place.get('hasValidCoordinates')).map((place) => place.get('latlng'));
     }
 
     @action previewDraftOrderRoute(payload, waypoints, isMultipleDropoffOrder = false) {
@@ -819,7 +866,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 });
             }
         } else {
-            this.notifications.warning('No route to preview.');
+            this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.no-route-warning'));
         }
     }
 
@@ -847,7 +894,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         const routingHost = getRoutingHost(this.payload, this.waypoints);
 
         const response = await this.fetch.routing(coordinates, { source: 'any', destination: 'any', annotations: true }, { host: routingHost }).catch(() => {
-            this.notifications.error('Route optimization failed, check route entry and try again.');
+            this.notifications.error(this.intl.t('fleet-ops.operations.orders.index.new.route-error'));
             this.isOptimizingRoute = false;
         });
 
@@ -875,7 +922,8 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                     const waypointModel = findClosestWaypoint(optimizedWaypointLatitude, optimizedWaypointLongitude, this.waypoints);
                     // eslint-disable-next-line no-undef
                     // const optimizedWaypointMarker = new L.Marker(optimizedWaypoint.location.reverse()).addTo(leafletMap);
-                    const optimizedWaypointMarker = new L.Marker(extractCoordinates(optimizedWaypoint.location)).addTo(leafletMap);
+                    const [longitude, latitude] = getWithDefault(optimizedWaypoint.location, 'coordiantes', [0, 0]);
+                    const optimizedWaypointMarker = new L.Marker([latitude, longitude]).addTo(leafletMap);
 
                     sortedWaypoints.pushObject(waypointModel);
                     optimizedRouteMarkers.pushObject(optimizedWaypointMarker);
@@ -902,7 +950,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 maxZoom: 13,
             });
         } else {
-            this.notifications.error('Route optimization failed, check route entry and try again.');
+            this.notifications.error(this.intl.t('fleet-ops.operations.orders.index.new.route-error'));
             this.isOptimizingRoute = false;
         }
     }
@@ -936,9 +984,33 @@ export default class OperationsOrdersIndexNewController extends BaseController {
     @action toggleMultiDropOrder(isMultipleDropoffOrder) {
         this.isMultipleDropoffOrder = isMultipleDropoffOrder;
 
+        const { pickup, dropoff } = this.payload;
+
         if (isMultipleDropoffOrder) {
-            this.addWaypoint();
+            if (pickup) {
+                this.addWaypoint({ place: pickup });
+
+                if (dropoff) {
+                    this.addWaypoint({ place: dropoff });
+                }
+
+                // clear pickup and dropoff
+                this.payload.setProperties({ pickup: null, dropoff: null });
+            } else {
+                this.addWaypoint();
+            }
         } else {
+            const pickup = get(this.waypoints, '0.place');
+            const dropoff = get(this.waypoints, '1.place');
+
+            if (pickup) {
+                this.setPayloadPlace('pickup', pickup);
+            }
+
+            if (dropoff) {
+                this.setPayloadPlace('dropoff', dropoff);
+            }
+
             this.clearWaypoints();
         }
     }
@@ -1028,7 +1100,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         let label, value;
 
         this.modalsManager.show('modals/meta-field-form', {
-            title: 'Add custom field to order',
+            title: this.intl.t('fleet-ops.operations.orders.index.new.custom-field-title'),
             acceptButtonIcon: 'check',
             acceptButtonIconPrefix: 'fas',
             acceptButtonText: 'Done',
@@ -1041,11 +1113,11 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 const value = modal.getOption('value');
 
                 if (!label) {
-                    return this.notifications.warning('Custom field must have a label');
+                    return this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.label-warning'));
                 }
 
                 if (!value) {
-                    return this.notifications.warning('Custom field must have a value');
+                    return this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.value-warning'));
                 }
 
                 modal.startLoading();
@@ -1066,7 +1138,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         const { label, value } = metaField;
 
         this.modalsManager.show('modals/meta-field-form', {
-            title: 'Edit custom field',
+            title: this.intl.t('fleet-ops.operations.orders.index.new.edit-field-title'),
             acceptButtonIcon: 'save',
             acceptButtonText: 'Save Changes',
             label,
@@ -1076,11 +1148,11 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 const value = modal.getOption('value');
 
                 if (!label) {
-                    return this.notifications.warning('Custom field must have a label');
+                    return this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.label-warning'));
                 }
 
                 if (!value) {
-                    return this.notifications.warning('Custom field must have a value');
+                    return this.notifications.warning(this.intl.t('fleet-ops.operations.orders.index.new.value-warning'));
                 }
 
                 modal.startLoading();
@@ -1106,7 +1178,7 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         }
 
         this.modalsManager.show('modals/edit-meta-form', {
-            title: 'Edit Metadata',
+            title: this.intl.t('fleet-ops.operations.orders.index.new.edit-metadata'),
             hideDeclineButton: true,
             acceptButtonIcon: 'check',
             acceptButtonIconPrefix: 'fas',
@@ -1146,6 +1218,8 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         if (this.isUsingIntegratedVendor) {
             this.getQuotes();
         }
+
+        this.updatePayloadCoordinates();
     }
 
     @action sortWaypoints({ sourceList, sourceIndex, targetList, targetIndex }) {
@@ -1163,10 +1237,10 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         }
     }
 
-    @action addWaypoint() {
-        const waypoint = this.store.createRecord('waypoint');
-
+    @action addWaypoint(properties = {}) {
+        const waypoint = this.store.createRecord('waypoint', properties);
         this.waypoints.pushObject(waypoint);
+        this.updatePayloadCoordinates();
     }
 
     @action setWaypointPlace(index, place) {
@@ -1183,6 +1257,8 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         if (this.isUsingIntegratedVendor) {
             this.getQuotes();
         }
+
+        this.updatePayloadCoordinates();
     }
 
     @action removeWaypoint(waypoint) {
@@ -1197,6 +1273,8 @@ export default class OperationsOrdersIndexNewController extends BaseController {
         } else {
             this.previewDraftOrderRoute(this.payload, this.waypoints, this.isMultipleDropoffOrder);
         }
+
+        this.updatePayloadCoordinates();
     }
 
     @action clearWaypoints() {
@@ -1235,28 +1313,34 @@ export default class OperationsOrdersIndexNewController extends BaseController {
 
     @action editEntity(entity) {
         this.modalsManager.show('modals/entity-form', {
-            title: 'Edit Item',
+            title: this.intl.t('fleet-ops.operations.orders.index.new.edit-item'),
             acceptButtonText: 'Save Changes',
             entity,
             uploadNewPhoto: (file) => {
+                const fileUrl = URL.createObjectURL(file.file);
+
                 if (entity.get('isNew')) {
                     const { queue } = file;
-                    const fileUrl = URL.createObjectURL(file.blob);
 
                     this.modalsManager.setOption('pendingFileUpload', file);
                     entity.set('photo_url', fileUrl);
-                    // entity.set('photo_upload', fileUrl);
                     queue.remove(file);
                     return;
+                } else {
+                    entity.set('photo_url', fileUrl);
                 }
 
+                // Indicate loading
+                this.modalsManager.startLoading();
+
+                // Perform upload
                 return this.fetch.uploadFile.perform(
                     file,
                     {
                         path: `uploads/${this.currentUser.companyId}/entities/${entity.id}`,
                         subject_uuid: entity.id,
-                        subject_type: `entity`,
-                        type: `entity_photo`,
+                        subject_type: 'fleet-ops:entity',
+                        type: 'entity_photo',
                     },
                     (uploadedFile) => {
                         entity.setProperties({
@@ -1264,6 +1348,13 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                             photo_url: uploadedFile.url,
                             photo: uploadedFile,
                         });
+
+                        // Stop loading
+                        this.modalsManager.stopLoading();
+                    },
+                    () => {
+                        // Stop loading
+                        this.modalsManager.stopLoading();
                     }
                 );
             },
@@ -1271,7 +1362,6 @@ export default class OperationsOrdersIndexNewController extends BaseController {
                 modal.startLoading();
 
                 const pendingFileUpload = modal.getOption('pendingFileUpload');
-
                 return entity.save().then(() => {
                     if (pendingFileUpload) {
                         return modal.invoke('uploadNewPhoto', pendingFileUpload);

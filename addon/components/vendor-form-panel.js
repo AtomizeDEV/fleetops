@@ -19,6 +19,11 @@ export default class VendorFormPanelComponent extends Component {
     @service fetch;
 
     /**
+     * @service intl
+     */
+    @service intl;
+
+    /**
      * @service currentUser
      */
     @service currentUser;
@@ -114,7 +119,7 @@ export default class VendorFormPanelComponent extends Component {
             return vendor
                 .save()
                 .then((vendor) => {
-                    this.notifications.success(`Vendor (${vendor.displayName}) saved successfully.`);
+                    this.notifications.success(this.intl.t('fleet-ops.component.vendor-form-panel.success-message', { vendorName: vendor.displayName }));
                     contextComponentCallback(this, 'onAfterSave', vendor);
                 })
                 .catch((error) => {
@@ -142,7 +147,7 @@ export default class VendorFormPanelComponent extends Component {
             {
                 path: `uploads/${this.currentUser.companyId}/vendors/${this.vendor.id}`,
                 subject_uuid: this.vendor.id,
-                subject_type: 'vendor',
+                subject_type: 'fleet-ops:vendor',
                 type: 'vendor_logo',
             },
             (uploadedFile) => {

@@ -22,11 +22,18 @@ export default class ManagementVehiclesIndexController extends BaseController {
     @service notifications;
 
     /**
-     * Inject the `modals-manager` service
+     * Inject the `vehicleActions` service
      *
      * @var {Service}
      */
-    @service modalsManager;
+    @service vehicleActions;
+
+    /**
+     * Inject the `intl` service
+     *
+     * @var {Service}
+     */
+    @service intl;
 
     /**
      * Inject the `store` service
@@ -227,7 +234,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
      */
     @tracked columns = [
         {
-            label: 'Name',
+            label: this.intl.t('fleet-ops.common.name'),
             valuePath: 'display_name',
             photoPath: 'avatar_url',
             width: '200px',
@@ -241,7 +248,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             showOnlineIndicator: true,
         },
         {
-            label: 'Plate Number',
+            label: this.intl.t('fleet-ops.common.plate-number'),
             valuePath: 'plate_number',
             cellComponent: 'table/cell/base',
             width: '100px',
@@ -269,7 +276,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             model: 'driver',
         },
         {
-            label: 'ID',
+            label: this.intl.t('fleet-ops.common.id'),
             valuePath: 'public_id',
             cellComponent: 'click-to-copy',
             width: '120px',
@@ -279,7 +286,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Make',
+            label: this.intl.t('fleet-ops.common.make'),
             valuePath: 'make',
             cellComponent: 'table/cell/base',
             width: '80px',
@@ -291,7 +298,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Model',
+            label: this.intl.t('fleet-ops.common.model'),
             valuePath: 'model',
             cellComponent: 'table/cell/base',
             width: '80px',
@@ -303,7 +310,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Year',
+            label: this.intl.t('fleet-ops.common.year'),
             valuePath: 'year',
             cellComponent: 'table/cell/base',
             width: '80px',
@@ -314,7 +321,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Vendor',
+            label: this.intl.t('fleet-ops.common.vendor'),
             cellComponent: 'table/cell/anchor',
             action: async ({ vendor_uuid }) => {
                 const vendor = await this.store.findRecord('vendor', vendor_uuid);
@@ -332,7 +339,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             model: 'vendor',
         },
         {
-            label: 'Status',
+            label: this.intl.t('fleet-ops.common.status'),
             valuePath: 'status',
             cellComponent: 'table/cell/status',
             width: '10%',
@@ -343,7 +350,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             filterFetchOptions: 'vehicles/statuses',
         },
         {
-            label: 'Created At',
+            label: this.intl.t('fleet-ops.common.created-at'),
             valuePath: 'createdAt',
             sortParam: 'created_at',
             width: '120px',
@@ -355,7 +362,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
             filterComponent: 'filter/date',
         },
         {
-            label: 'Updated At',
+            label: this.intl.t('fleet-ops.common.updated-at'),
             valuePath: 'updatedAt',
             sortParam: 'updated_at',
             width: '12%',
@@ -379,22 +386,22 @@ export default class ManagementVehiclesIndexController extends BaseController {
             width: '90px',
             actions: [
                 {
-                    label: 'View vehicle details...',
+                    label: this.intl.t('fleet-ops.management.vehicles.index.view-vehicle'),
                     fn: this.viewVehicle,
                 },
                 {
-                    label: 'Edit vehicle...',
+                    label: this.intl.t('fleet-ops.management.vehicles.index.edit-vehicle'),
                     fn: this.editVehicle,
+                },
+                {
+                    label: this.intl.t('fleet-ops.management.vehicles.index.locate-action-title'),
+                    fn: this.locateVehicle,
                 },
                 {
                     separator: true,
                 },
-                // {
-                //     label: 'Assign driver to vehicle...',
-                //     fn: this.assignDriver,
-                // },
                 {
-                    label: 'Delete vehicle...',
+                    label: this.intl.t('fleet-ops.management.vehicles.index.delete-vehicle'),
                     fn: this.deleteVehicle,
                 },
             ],
@@ -423,7 +430,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
 
         this.crud.bulkDelete(selectedRows, {
             modelNamePath: `display_name`,
-            acceptButtonText: 'Delete Vehicles',
+            acceptButtonText: this.intl.t('fleet-ops.management.vehicles.index.delete-button'),
             onSuccess: () => {
                 return this.hostRouter.refresh();
             },
@@ -503,7 +510,7 @@ export default class ManagementVehiclesIndexController extends BaseController {
      * @void
      */
     @action deleteVehicle(vehicle, options = {}) {
-        this.crud.delete(vehicle, {
+        this.vehicleActions.delete(vehicle, {
             onSuccess: () => {
                 return this.hostRouter.refresh();
             },
@@ -522,23 +529,13 @@ export default class ManagementVehiclesIndexController extends BaseController {
     @action assignDriver() {}
 
     /**
-     * View a place location on map
+     * View a vehicle location on map
      *
-     * @param {PlaceModel} place
+     * @param {VehicleModel} vehicle
      * @param {Object} options
      * @void
      */
-    @action viewOnMap(place, options = {}) {
-        const { latitude, longitude } = place;
-
-        this.modalsManager.show('modals/point-map', {
-            title: `Location of ${place.name}`,
-            acceptButtonText: 'Done',
-            hideDeclineButton: true,
-            latitude,
-            longitude,
-            location: [latitude, longitude],
-            ...options,
-        });
+    @action locateVehicle(vehicle, options = {}) {
+        this.vehicleActions.locate(vehicle, options);
     }
 }

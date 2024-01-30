@@ -6,10 +6,13 @@ import getResourceNameFromTransition from '@atomizedev/ember-core/utils/get-reso
 export default class ApplicationRoute extends Route {
     @service loader;
     @service fetch;
+    @service intl;
 
     @action loading(transition) {
-        const resourceName = getResourceNameFromTransition(transition);
-        this.loader.showOnInitialTransition(transition, 'section.next-view-section', { loadingMessage: resourceName ? `Loading ${resourceName}...` : `Loading...` });
+        const resourceName = getResourceNameFromTransition(transition, { humanize: true });
+        this.loader.showOnInitialTransition(transition, 'section.next-view-section', {
+            loadingMessage: resourceName ? this.intl.t('fleet-ops.common.loading-resource', { resourceName }) : this.intl.t('fleet-ops.common.loading'),
+        });
     }
 
     model() {

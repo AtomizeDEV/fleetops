@@ -1,18 +1,7 @@
 import OperationsServiceRatesIndexNewController from './new';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class OperationsServiceRatesIndexEditController extends OperationsServiceRatesIndexNewController {
-    /**
-     * True if updating service rate.
-     *
-     * @var {Boolean}
-     */
-    @tracked isUpdatingServiceRate = false;
-
-    // @alias('@model.rate_fees') rateFees;
-    // @alias('@model.parcel_fees') parcelFees;
-
     /**
      * Updates the service rate to server
      *
@@ -40,7 +29,7 @@ export default class OperationsServiceRatesIndexEditController extends Operation
             .save()
             .then((serviceRate) => {
                 return this.transitionToRoute('operations.service-rates.index').then(() => {
-                    this.notifications.success(`Service rate '${serviceRate.service_name}' updated`);
+                    this.notifications.success(this.intl.t('fleet-ops.operations.service-rates.index.edit.success-message', { serviceName: serviceRate.service_name }));
                     this.resetForm();
                 });
             })

@@ -27,6 +27,11 @@ export default class LiveMapComponent extends Component {
     @service store;
 
     /**
+     * @service intl
+     */
+    @service intl;
+
+    /**
      * Inject the `fetch` service.
      *
      * @memberof LiveMapComponent
@@ -228,6 +233,7 @@ export default class LiveMapComponent extends Component {
      * @type {string}
      * @memberof LiveMapComponent
      */
+
     @tracked tileSourceUrl = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZmFzdGxhbmUtZWUiLCJhIjoiY2xuMDhvaHY5MDl3cTJrbGphejN3cXkxcyJ9.LoTzTlejUWARpMg9mR7R1w';
 
     /**
@@ -297,7 +303,7 @@ export default class LiveMapComponent extends Component {
      */
     @action setupComponent() {
         // trigger that initial coordinates have been set
-        this.universe.trigger('fleetops.livemap.loaded', this);
+        this.universe.trigger('fleet-ops.live-map.loaded', this);
 
         // set initial coordinates
         this.setInitialCoordinates();
@@ -363,7 +369,7 @@ export default class LiveMapComponent extends Component {
 
     /**
      * Marks the LiveMapComponent as ready by setting the "isReady" property and triggering
-     * the "onReady" action and a "fleetops.livemap.ready" event.
+     * the "onReady" action and a "fleetops.live-map.ready" event.
      *
      * @memberof LiveMapComponent
      * @function
@@ -371,7 +377,7 @@ export default class LiveMapComponent extends Component {
     ready() {
         this.isReady = true;
         this.triggerAction('onReady');
-        this.universe.trigger('fleetops.livemap.ready', this);
+        this.universe.trigger('fleet-ops.live-map.ready', this);
     }
 
     /**
@@ -396,7 +402,7 @@ export default class LiveMapComponent extends Component {
                 this.isReady = true;
 
                 // trigger that initial coordinates is set to livemap component
-                this.universe.trigger('fleetops.livemap.has_coordinates', { latitude: this.latitude, longitude: this.longitude });
+                this.universe.trigger('fleet-ops.live-map.has_coordinates', { latitude: this.latitude, longitude: this.longitude });
 
                 return [this.latitude, this.longitude];
             }
@@ -413,7 +419,7 @@ export default class LiveMapComponent extends Component {
             this.isReady = true;
 
             // trigger that initial coordinates is set to livemap component
-            this.universe.trigger('fleetops.livemap.has_coordinates', { latitude: this.latitude, longitude: this.longitude });
+            this.universe.trigger('fleet-ops.live-map.has_coordinates', { latitude: this.latitude, longitude: this.longitude });
 
             return [this.latitude, this.longitude];
         }
@@ -425,7 +431,7 @@ export default class LiveMapComponent extends Component {
      * Sets up the LiveMap component and the Leaflet map instance.
      *
      * This function initializes the LiveMap component, associates it with the Leaflet map instance,
-     * triggers the "fleetops.livemap.leaflet_ready" event, and performs additional setup tasks like
+     * triggers the "fleetops.live-map.leaflet_ready" event, and performs additional setup tasks like
      * configuring context menus, hiding draw controls, and associating the map with the "serviceAreas"
      * service. It also triggers the "onLoad" action with the provided event and target.
      *
@@ -443,13 +449,13 @@ export default class LiveMapComponent extends Component {
         this.leafletMap = target;
 
         // trigger liveMap ready through universe
-        this.universe.trigger('fleetops.livemap.leaflet_ready', event, target);
+        this.universe.trigger('fleet-ops.live-map.leaflet_ready', event, target);
 
         // make fleetops map globally available on the window
         window.FleetOpsLeafletMap = target;
 
         // store this component to universe
-        this.universe.set('FleetOpsLiveMap', this);
+        this.universe.set('component:fleet-ops:live-map', this);
 
         // setup context menu
         this.createMapContextMenu(target);
@@ -776,8 +782,8 @@ export default class LiveMapComponent extends Component {
         const toggle = !this.isVisible('drawControls');
 
         this.leafletContextmenuManager.toggleContextMenuItem('map', 'draw controls', {
-            onText: 'Hide draw controls...',
-            offText: 'Enable draw controls...',
+            onText: this.intl.t('fleet-ops.component.live-map.onText'),
+            offText: this.intl.t('fleet-ops.component.live-map.offText'),
             toggle,
             callback: (isToggled) => {
                 if (isToggled) {
@@ -1065,7 +1071,16 @@ export default class LiveMapComponent extends Component {
      */
     @action onDriverClicked(driver) {
         this.contextPanel.clear();
-        this.contextPanel.focus(driver);
+        this.contextPanel.focus(driver, 'viewing', {
+            args: {
+                width: '450px',
+                onOpen: () => {
+                    this.leafletMap.once('moveend', () => {
+                        this.leafletMap.panBy([200, 0]);
+                    });
+                },
+            },
+        });
     }
 
     /**
@@ -1113,7 +1128,16 @@ export default class LiveMapComponent extends Component {
      */
     @action onVehicleClicked(vehicle) {
         this.contextPanel.clear();
-        this.contextPanel.focus(vehicle);
+        this.contextPanel.focus(vehicle, 'viewing', {
+            args: {
+                width: '450px',
+                onOpen: () => {
+                    this.leafletMap.once('moveend', () => {
+                        this.leafletMap.panBy([200, 0]);
+                    });
+                },
+            },
+        });
     }
 
     /**
@@ -1439,27 +1463,27 @@ export default class LiveMapComponent extends Component {
     @action createMapContextMenu(map) {
         const contextmenuItems = [
             {
-                text: 'Show coordinates...',
+                text: this.intl.t('fleet-ops.component.live-map.show-coordinates'),
                 callback: this.showCoordinates,
                 index: 0,
             },
             {
-                text: 'Center map here...',
+                text: this.intl.t('fleet-ops.component.live-map.center-map'),
                 callback: this.centerMap,
                 index: 1,
             },
             {
-                text: 'Zoom in...',
+                text: this.intl.t('fleet-ops.component.live-map.zoom-in'),
                 callback: this.zoomIn,
                 index: 2,
             },
             {
-                text: 'Zoom out...',
+                text: this.intl.t('fleet-ops.component.live-map.zoom-out'),
                 callback: this.zoomOut,
                 index: 3,
             },
             {
-                text: this.isVisible('drawControls') ? `Hide draw controls...` : `Enable draw controls...`,
+                text: this.isVisible('drawControls') ? this.intl.t('fleet-ops.component.live-map.hide-draw') : this.intl.t('fleet-ops.component.live-map.enable-draw'),
                 callback: this.toggleDrawControlContextMenuItem.bind(this),
                 index: 4,
             },
@@ -1467,7 +1491,7 @@ export default class LiveMapComponent extends Component {
                 separator: true,
             },
             {
-                text: 'Create new Service Area...',
+                text: this.intl.t('fleet-ops.component.live-map.create-new-service'),
                 callback: this.serviceAreas.createServiceArea,
                 index: 5,
             },
@@ -1487,7 +1511,7 @@ export default class LiveMapComponent extends Component {
                 const nextIndex = contextmenuItems.length + 2;
 
                 contextmenuItems.pushObject({
-                    text: `Focus Service Area: ${serviceArea.name}`,
+                    text: this.intl.t('fleet-ops.component.live-map.focus-service', { serviceName: serviceArea.name }),
                     callback: () => this.focusServiceArea(serviceArea),
                     index: nextIndex,
                 });
@@ -1525,19 +1549,19 @@ export default class LiveMapComponent extends Component {
                 separator: true,
             },
             {
-                text: `View Driver: ${driver.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.view-driver', { driverName: driver.name }),
                 callback: () => this.contextPanel.focus(driver),
             },
             {
-                text: `Edit Driver: ${driver.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.edit-driver', { driverName: driver.name }),
                 callback: () => this.contextPanel.focus(driver, 'editing'),
             },
             {
-                text: `Delete Driver: ${driver.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.delete-driver', { driverName: driver.name }),
                 callback: () => this.crud.delete(driver),
             },
             {
-                text: `View Vehicle for: ${driver.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.view-vehicle-for', { driverName: driver.name }),
                 callback: () => this.contextPanel.focus(driver.vehicle),
             },
         ];
@@ -1586,15 +1610,15 @@ export default class LiveMapComponent extends Component {
                 separator: true,
             },
             {
-                text: `View Vehicle: ${vehicle.displayName}`,
+                text: this.intl.t('fleet-ops.component.live-map.view-vehicle', { vehicleName: vehicle.displayName }),
                 callback: () => this.contextPanel.focus(vehicle),
             },
             {
-                text: `Edit Vehicle: ${vehicle.displayName}`,
+                text: this.intl.t('fleet-ops.component.live-map.edit-vehicle', { vehicleName: vehicle.displayName }),
                 callback: () => this.contextPanel.focus(vehicle, 'editing'),
             },
             {
-                text: `Delete Vehicle: ${vehicle.displayName}`,
+                text: this.intl.t('fleet-ops.component.live-map.delete-vehicle', { vehicleName: vehicle.displayName }),
                 callback: () => this.crud.delete(vehicle),
             },
         ];
@@ -1643,11 +1667,11 @@ export default class LiveMapComponent extends Component {
                 separator: true,
             },
             {
-                text: `Edit Zone: ${zone.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.edit-zone', { zoneName: zone.name }),
                 callback: () => this.serviceAreas.editZone(zone),
             },
             {
-                text: `Delete Zone: ${zone.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.delete-zone', { zoneName: zone.name }),
                 callback: () =>
                     this.serviceAreas.deleteZone(zone, {
                         onFinish: () => {
@@ -1656,7 +1680,7 @@ export default class LiveMapComponent extends Component {
                     }),
             },
             {
-                text: `Assign Fleet to Zone: (${zone.name})`,
+                text: this.intl.t('fleet-ops.component.live-map.assign-zone', { zoneName: zone.name }),
                 callback: () => {},
             },
         ];
@@ -1683,23 +1707,23 @@ export default class LiveMapComponent extends Component {
                 separator: true,
             },
             {
-                text: `Blur Service Area: ${serviceArea.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.blur-service', { serviceName: serviceArea.name }),
                 callback: () => this.blurServiceArea(serviceArea),
             },
             {
-                text: `Create Zone within: ${serviceArea.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.create-zone', { serviceName: serviceArea.name }),
                 callback: () => this.serviceAreas.createZone(serviceArea),
             },
             {
-                text: `Assign Fleet to Service Area: ${serviceArea.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.assign-fleet', { serviceName: serviceArea.name }),
                 callback: () => {},
             },
             {
-                text: `Edit Service Area: ${serviceArea.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.edit-service', { serviceName: serviceArea.name }),
                 callback: () => this.serviceAreas.editServiceAreaDetails(serviceArea),
             },
             {
-                text: `Delete Service Area: ${serviceArea.name}`,
+                text: this.intl.t('fleet-ops.component.live-map.delete-service', { serviceName: serviceArea.name }),
                 callback: () =>
                     this.serviceAreas.deleteServiceArea(serviceArea, {
                         onFinish: () => {
@@ -1910,7 +1934,6 @@ export default class LiveMapComponent extends Component {
                     }
 
                     // from the `get-active-order-coordinates` the responded coordinates will always be [longitude, latitude]
-                    // const [latitude, longitude] = extractCoordinates(coordinates.firstObject.coordinates);
                     const validCoordinates = coordinates.filter((point) => point.cordinates[0] !== 0);
                     const [longitude, latitude] = getWithDefault(validCoordinates, '0.coordiantes', [0, 0]);
 

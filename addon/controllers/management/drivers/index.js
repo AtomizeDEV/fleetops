@@ -6,8 +6,6 @@ import { isBlank } from '@ember/utils';
 import { equal } from '@ember/object/computed';
 import { timeout } from 'ember-concurrency';
 import { task } from 'ember-concurrency-decorators';
-import extractCoordinates from '@atomizedev/ember-core/utils/extract-coordinates';
-import leafletIcon from '@atomizedev/ember-core/utils/leaflet-icon';
 
 export default class ManagementDriversIndexController extends BaseController {
     /**
@@ -25,11 +23,25 @@ export default class ManagementDriversIndexController extends BaseController {
     @service modalsManager;
 
     /**
+     * Inject the `intl` service
+     *
+     * @var {Service}
+     */
+    @service intl;
+
+    /**
      * Inject the `crud` service
      *
      * @var {Service}
      */
     @service crud;
+
+    /**
+     * Inject the `driverActions` service
+     *
+     * @var {Service}
+     */
+    @service driverActions;
 
     /**
      * Inject the `store` service
@@ -216,7 +228,7 @@ export default class ManagementDriversIndexController extends BaseController {
      */
     @tracked columns = [
         {
-            label: 'Name',
+            label: this.intl.t('fleet-ops.common.name'),
             valuePath: 'name',
             width: '200px',
             cellComponent: 'table/cell/driver-name',
@@ -227,7 +239,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'ID',
+            label: this.intl.t('fleet-ops.common.id'),
             valuePath: 'public_id',
             width: '130px',
             cellComponent: 'click-to-copy',
@@ -238,7 +250,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Internal ID',
+            label: this.intl.t('fleet-ops.common.internal-id'),
             valuePath: 'internal_id',
             cellComponent: 'click-to-copy',
             width: '130px',
@@ -248,7 +260,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Vendor',
+            label: this.intl.t('fleet-ops.common.vendor'),
             cellComponent: 'table/cell/anchor',
             onClick: async (driver) => {
                 const vendor = await driver.loadVendor();
@@ -268,7 +280,7 @@ export default class ManagementDriversIndexController extends BaseController {
             model: 'vendor',
         },
         {
-            label: 'Vehicle',
+            label: this.intl.t('fleet-ops.common.vehicle'),
             cellComponent: 'table/cell/anchor',
             onClick: (driver) => {
                 return driver
@@ -291,7 +303,7 @@ export default class ManagementDriversIndexController extends BaseController {
             model: 'vehicle',
         },
         {
-            label: 'Fleets',
+            label: this.intl.t('fleet-ops.common.fleet'),
             cellComponent: 'table/cell/link-list',
             cellComponentLabelPath: 'name',
             action: (fleet) => {
@@ -308,7 +320,7 @@ export default class ManagementDriversIndexController extends BaseController {
             model: 'fleet',
         },
         {
-            label: 'License',
+            label: this.intl.t('fleet-ops.common.license'),
             valuePath: 'drivers_license_number',
             cellComponent: 'table/cell/base',
             width: '150px',
@@ -318,7 +330,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Phone',
+            label: this.intl.t('fleet-ops.common.phone'),
             valuePath: 'phone',
             cellComponent: 'table/cell/base',
             width: '150px',
@@ -329,7 +341,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterComponent: 'filter/string',
         },
         {
-            label: 'Country',
+            label: this.intl.t('fleet-ops.common.country'),
             valuePath: 'country',
             cellComponent: 'table/cell/country',
             cellClassNames: 'uppercase',
@@ -347,7 +359,7 @@ export default class ManagementDriversIndexController extends BaseController {
             multiOptionSearchPlaceholder: 'Search countries...',
         },
         {
-            label: 'Status',
+            label: this.intl.t('fleet-ops.common.status'),
             valuePath: 'status',
             cellComponent: 'table/cell/status',
             width: '10%',
@@ -358,7 +370,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterFetchOptions: 'drivers/statuses',
         },
         {
-            label: 'Created At',
+            label: this.intl.t('fleet-ops.common.created-at'),
             valuePath: 'createdAt',
             sortParam: 'created_at',
             filterParam: 'created_at',
@@ -369,7 +381,7 @@ export default class ManagementDriversIndexController extends BaseController {
             filterComponent: 'filter/date',
         },
         {
-            label: 'Updated At',
+            label: this.intl.t('fleet-ops.common.updated-at'),
             valuePath: 'updatedAt',
             sortParam: 'updated_at',
             filterParam: 'updated_at',
@@ -392,33 +404,33 @@ export default class ManagementDriversIndexController extends BaseController {
             width: '10%',
             actions: [
                 {
-                    label: 'View driver details...',
+                    label: this.intl.t('fleet-ops.management.drivers.index.view-details'),
                     fn: this.viewDriver,
                 },
                 {
-                    label: 'Edit driver details...',
+                    label: this.intl.t('fleet-ops.management.drivers.index.edit-details'),
                     fn: this.editDriver,
                 },
                 {
                     separator: true,
                 },
                 {
-                    label: 'Assign order to driver...',
+                    label: this.intl.t('fleet-ops.management.drivers.index.assign-order-driver'),
                     fn: this.assignOrder,
                 },
                 {
-                    label: 'Assign vehicle to driver...',
+                    label: this.intl.t('fleet-ops.management.drivers.index.assign-vehicle-driver'),
                     fn: this.assignVehicle,
                 },
                 {
-                    label: 'Locate driver on map...',
-                    fn: this.viewOnMap,
+                    label: this.intl.t('fleet-ops.management.drivers.index.locate-driver-map'),
+                    fn: this.locateDriver,
                 },
                 {
                     separator: true,
                 },
                 {
-                    label: 'Delete driver...',
+                    label: this.intl.t('fleet-ops.management.drivers.index.delete-driver'),
                     fn: this.deleteDriver,
                 },
             ],
@@ -481,7 +493,7 @@ export default class ManagementDriversIndexController extends BaseController {
 
         this.crud.bulkDelete(selected, {
             modelNamePath: `name`,
-            acceptButtonText: 'Delete Drivers',
+            acceptButtonText: this.intl.t('fleet-ops.management.drivers.index.delete-button'),
             onSuccess: () => {
                 return this.hostRouter.refresh();
             },
@@ -539,7 +551,7 @@ export default class ManagementDriversIndexController extends BaseController {
      * @void
      */
     @action deleteDriver(driver, options = {}) {
-        this.crud.delete(driver, {
+        this.driverActions.delete(driver, {
             onSuccess: () => {
                 return this.hostRouter.refresh();
             },
@@ -555,44 +567,7 @@ export default class ManagementDriversIndexController extends BaseController {
      * @void
      */
     @action assignOrder(driver, options = {}) {
-        this.modalsManager.show('modals/driver-assign-order', {
-            title: `Assign Order to this Driver`,
-            acceptButtonText: 'Assign Order',
-            acceptButtonIcon: 'check',
-            acceptButtonIconPrefix: 'fas',
-            acceptButtonDisabled: true,
-            hideDeclineButton: true,
-            selectedOrder: null,
-            selectOrder: (order) => {
-                this.modalsManager.setOption('selectedOrder', order);
-                this.modalsManager.setOption('acceptButtonDisabled', false);
-            },
-            driver,
-            confirm: (modal) => {
-                const selectedOrder = modal.getOption('selectedOrder');
-
-                if (!selectedOrder) {
-                    this.notifications.warning('No order selected!');
-                    return;
-                }
-
-                modal.startLoading();
-
-                driver.set('current_job_uuid', selectedOrder.id);
-
-                return driver
-                    .save()
-                    .then(() => {
-                        this.notifications.success(`${driver.name} assigned to order.`);
-                    })
-                    .catch((error) => {
-                        driver.rollbackAttributes();
-                        modal.stopLoading();
-                        this.notifications.serverError(error);
-                    });
-            },
-            ...options,
-        });
+        this.driverActions.assignOrder(driver, options);
     }
 
     /**
@@ -603,29 +578,7 @@ export default class ManagementDriversIndexController extends BaseController {
      * @void
      */
     @action assignVehicle(driver, options = {}) {
-        this.modalsManager.show('modals/driver-assign-vehicle', {
-            title: `Assign Vehicle to this Driver`,
-            acceptButtonText: 'Confirm & Create',
-            acceptButtonIcon: 'check',
-            acceptButtonIconPrefix: 'fas',
-            hideDeclineButton: true,
-            driver,
-            confirm: (modal) => {
-                modal.startLoading();
-
-                return driver
-                    .save()
-                    .then((driver) => {
-                        this.notifications.success(`${driver.name} assigned to vehicle.`);
-                    })
-                    .catch((error) => {
-                        driver.rollbackAttributes();
-                        modal.stopLoading();
-                        this.notifications.serverError(error);
-                    });
-            },
-            ...options,
-        });
+        this.driverActions.assignVehicle(driver, options);
     }
 
     /**
@@ -634,26 +587,7 @@ export default class ManagementDriversIndexController extends BaseController {
      * @param {DriverModel} driver
      * @void
      */
-    @action viewOnMap(driver, options = {}) {
-        const { location } = driver;
-        const [latitude, longitude] = extractCoordinates(location.coordinates);
-
-        this.modalsManager.show('modals/point-map', {
-            title: `Location of ${driver.name}`,
-            acceptButtonText: 'Done',
-            acceptButtonIcon: 'check',
-            acceptButtonIconPrefix: 'fas',
-            modalClass: 'modal-lg',
-            hideDeclineButton: true,
-            latitude,
-            longitude,
-            location,
-            popupText: `${driver.name} (${driver.public_id})`,
-            icon: leafletIcon({
-                iconUrl: driver?.vehicle_avatar,
-                iconSize: [40, 40],
-            }),
-            ...options,
-        });
+    @action locateDriver(driver, options = {}) {
+        this.driverActions.locate(driver, options);
     }
 }
