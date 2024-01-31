@@ -1,0 +1,1347 @@
+fleet-ops:
+  extension-name: Vloot-Ops
+  common:
+    active-manpower: Actieve Manpower
+    address: Adres
+    amount: Hoeveelheid
+    assignee: Toegewezen persoon
+    avatar: Avatar
+    building: Gebouw
+    bulk-action: Massa-actie
+    category: Categorie
+    city: Stad
+    coordinates: Coördinaten
+    cost: Kosten
+    code: Code
+    country: Land
+    config: Configuratie
+    created-at: Gecreëerd Op
+    date-created: Datum Gecreëerd
+    delete: Verwijderen
+    destination: Bestemming
+    details: Details
+    description: Beschrijving
+    distance: Afstand
+    driver-license: Rijbewijs
+    driver: Bestuurder
+    edit: Bewerken
+    email: E-mail
+    export: Exporteren
+    fleet: Vloot
+    height: Hoogte
+    host: Host
+    id: ID
+    internal-id: Intern ID
+    item: Item
+    key: Sleutel
+    label: Label
+    length: Lengte
+    license: Licentie
+    loading: Laden...
+    loading-resource: Laden van {resourceName}...
+    make: Merk
+    manage-message: Beheer uw leveranciers
+    manpower: Manpower
+    model: Model
+    name: Naam
+    namespace: Namespace
+    neighborhood: Buurt
+    new: Nieuw
+    odometer: Kilometerteller
+    options: Opties
+    orders: Bestellingen
+    parent-fleet: Moeder Vloot
+    phone: Telefoon
+    photos: foto's
+    plate-number: Nummerplaat
+    postal-code: Postcode
+    priority: Prioriteit
+    reload: Herladen
+    reload-data: Gegevens herladen
+    remove: Verwijderen
+    reporter: Melder
+    sandbox: Zandbak
+    save-changes: Wijzigingen opslaan
+    schedule: Schema
+    search: Zoeken
+    security-access-code: Beveiligings toegangscode
+    service-area: Servicegebied
+    service: Service
+    state: Staat
+    status: Status
+    street-1: Straat 1
+    street-2: Straat 2
+    street: Straat
+    task: Taak
+    title: Titel
+    type: Type
+    unit: Eenheid
+    updated-at: Bijgewerkt Op
+    upload-new: Nieuw uploaden
+    uploading: Aan het uploaden...
+    value: Waarde
+    vehicle: Voertuig
+    vendor: Leverancier
+    vin-number: VIN Nummer
+    volume: Volume
+    weight: Gewicht
+    website-url: Website URL
+    website: Website
+    width: Breedte
+    year: Jaar
+    zone: Zone
+    total: Totaal
+    back: Terug
+  component:
+    admin:
+      navigator-app:
+        title: Navigator App
+        name: URL voor koppeling van instantie
+        message: Gebruik deze URL om de officiële Navigator-app te koppelen aan deze {companyName} instantie. Het openen van deze URL op een mobiel apparaat zal de Navigator-app openen en de configuratie en branding bijwerken.
+      visibility-controls:
+        title: Zichtbaarheidscontroles
+        message: Zichtbaarheidscontroles stellen u in staat om secties van Vloot-Ops uit te schakelen. Schakel het selectievakje in om secties te activeren of te deactiveren om te verbergen in Vloot-Ops.
+        checkbox-text: Activeer of deactiveer zichtbaarheid voor deze sectie in Vloot-Ops.
+    cell:
+      driver-name:
+        not-assigned: Geen chauffeur toegewezen
+    fleet-panel:
+      details:
+        active-manpower: Actieve Manpower
+      driver-listing:
+        search-driver: Zoek chauffeurs in vloot
+        add-driver: Voeg chauffeur toe aan vloot
+        loading-driver: Laden van vloot chauffeurs...
+      vehicle-listing:
+        search-vehicle: Zoek voertuig in vloot
+        add-vehicle: Voeg voertuig toe aan vloot
+        loading-vehicle: Laden van vloot voertuigen...
+    layout:
+      fleet-ops-sidebar:
+        resources: Bronnen
+        operations: Operaties
+        dashboard: Dashboard
+        service-rates: Servicetarieven
+        scheduler: Planner
+        drivers: Chauffeurs
+        vehicles: Voertuigen
+        fleets: Vloten
+        vendors: Leveranciers
+        contacts: Contacten
+        places: Plaatsen
+        fuel-reports: Brandstofrapporten
+        issues: Problemen
+        title: Maak nieuwe bestelling
+        settings: Instellingen
+    live-map-drawer:
+      driver-listing:
+        location: Locatie
+        current-job: Huidige Taak
+        last-seen: Laatst gezien
+        view-driver: Bekijk chauffeur details...
+        edit-driver: Bewerk chauffeur...
+        locate-driver: Lokaliseer chauffeur...
+        delete-driver: Verwijder chauffeur...
+        warning-message: Kan chauffeur niet lokaliseren.
+        message: Filter chauffeurs op trefwoord...
+      place-listing:
+        location: Locatie
+        place: Plaats
+        view-place: Bekijk plaats details...
+        edit-place: Bewerk plaats...
+        locate-place: Lokaliseer plaats...
+        delete-place: Verwijder plaats...
+        warning-message: Kan plaats niet lokaliseren.
+        message: Filter plaatsen op trefwoord...
+      vehicle-listing:
+        location: Locatie
+        last-seen: Laatst gezien
+        view-vehicle: Bekijk voertuig details...
+        edit-vehicle: Bewerk voertuig...
+        locate-vehicle: Lokaliseer voertuig...
+        delete-vehicle: Verwijder voertuig...
+        warning-message: Kan voertuig niet lokaliseren.
+        message: Filter voertuigen op trefwoord...
+    map-container:
+      visibility-control-panel:
+        title: Zichtbaarheidscontroles
+        hide-places: Verberg alle plaatsen...
+        show-places: Toon alle plaatsen...
+        vehicles: Voertuigen
+        vehicle-controls: Voertuig Zichtbaarheidscontroles...
+        hide-vehicles: Verberg alle voertuigen...
+        show-vehicles: Toon alle voertuigen...
+        online-vehicles: Toon alleen online voertuigen...
+        offline-vehicles: Toon alleen offline voertuigen...
+      zones-panel:
+        title: Servicegebieden
+        create-service: Maak nieuw servicegebied...
+        show: Toon alle servicegebieden
+        hide: Verberg alle servicegebieden
+        action: Acties...
+        focus: Focus
+        blur: Vervaag servicegebied...
+        create-zone: Maak zone binnen...
+      toolbar:
+        create: Maak Bestelling
+        view: Bekijk Bestellingen
+        service: Servicegebieden
+        visibility: Zichtbaarheidscontroles
+        scope: Bereik
+    modals:
+      assign-driver:
+        select-driver: Selecteer Chauffeur
+        select-assign: Selecteer Chauffeur om toe te wijzen
+      clone-config-form:
+        name: Configuratie Naam
+        description: Configuratie Beschrijving
+      driver-assign-order:
+        order: Selecteer Bestelling
+        assign-order: Selecteer Bestelling om toe te wijzen
+      driver-assign-vehicle:
+        vehicle: Selecteer Voertuig
+        assign-vehicle: Selecteer Voertuig om toe te wijzen
+      driver-assign-vendor:
+        vendor: Selecteer Leverancier
+      driver-details:
+        job: Huidige Taak
+        view: Bekijk op kaart
+      driver-form:
+        select-vendor: Selecteer Leverancier
+        select-vehicle: Selecteer Voertuig
+      edit-meta-form:
+        add: Voeg metafield toe
+      entity-form:
+        name-text: Naam van item of entiteit.
+        id-text: Gebruik dit veld om indien nodig een aangepaste identificatie of interne identificatie voor de entiteit in te stellen.
+        sku: SKU
+        sku-text: Artikelnummer indien van toepassing.
+        description: Beschrijving
+        description-text: Extra beschrijvingstekst van entiteit.
+        price-title: Prijsstelling & Waarde
+        price: Prijs
+        price-text: Prijs van entiteit.
+        sale-price: Verkoopprijs
+        sale-price-text: Verkoopprijs of kortingprijs van entiteit.
+        declare: Gedeclareerde Waarde
+        declare-text: Gedeclareerde waarde van entiteit, nuttig indien verzekerbaar.
+        measurement-title: Metingen & Gewicht
+        length: Lengte
+        length-text: De lengte van de entiteit.
+        width: Breedte
+        width-text: De breedte van de entiteit.
+        height: Hoogte
+        height-text: De hoogte van de entiteit.
+        weight: Gewicht
+        weight-text: Het gewicht van de entiteit.
+      entity-meta-field-prompt:
+        name: Meta Field Sleutel
+      fleet-form:
+        title: Vloot Naam
+        assign: Wijs toe aan Servicegebied
+        assign-text: Selecteer servicegebied om vloot aan toe te wijzen
+        zone: Wijs toe aan Zone
+        zone-text: Selecteer zone om vloot aan toe te wijzen
+        task: Taak/ Missie
+        task-text: Geef een beschrijving van de primaire taak of missie van deze vloot indien van toepassing.
+        select-task: Selecteer taak
+        status-text: Selecteer de status van de vloot.
+        select-status: Selecteer status
+      fuel-report-details:
+        fuel: Brandstof/ Volume
+      fuel-report-form:
+        select-driver: Selecteer Chauffeur
+        select-vehicle: Selecteer Voertuig
+        volume: Volume
+        volume-text: Selecteer de meeteenheid en volume van brandstof om te rapporteren.
+      group-details:
+        name: Groepsnaam
+        member: Leden
+        address: Adres
+      group-form:
+        title: Groepsnaam
+        users-add: Selecteer gebruikers om aan groep toe te voegen
+        search: Zoek en selecteer gebruikers om aan deze groep toe te voegen.
+        select-user: Selecteer gebruiker om aan groep toe te voegen
+        no-users: Geen gebruikers toegevoegd aan groep
+      install-prompt:
+        message: U staat op het punt de extensie {extensionName} te installeren. Weet u zeker dat u wilt doorgaan met deze installatie?
+        sub-message: Sommige extensies vereisen toegang tot uw bronnen.
+      issue-details:
+        assigned: Toegewezen Aan
+        type: Probleemtype
+        category: Probleemcategorie
+      issue-form:
+        reported: Gerapporteerd Door
+        select-reporter: Selecteer Melder
+        assigned: Toegewezen Aan
+        select-assignee: Selecteer Toegewezen persoon
+        select-driver: Selecteer Chauffeur
+        select-vehicle: Selecteer Voertuig
+        select-type: Selecteer Type
+        select-category: Selecteer Categorie
+        type: Probleemtype
+        type-text: Selecteer probleemtype
+        category: Probleemcategorie
+        category-text: Selecteer probleemcategorie
+        report: Probleemrapport
+        tags: Probleemtags
+        add-tags: Voeg tags toe
+        select-status: Selecteer probleemstatus
+      map-layer-form:
+        layer-type: Laagtype
+        layer-type-text: Selecteer het type laag dat u wilt creëren.
+        select-layer-type: Selecteer laagtype...
+        service-area: Servicegebied
+        service-area-text: Selecteer het Servicegebied om deze Zone aan toe te wijzen.
+        select-service-area: Selecteer servicegebied om vloot aan toe te wijzen
+        set-name: Stel een weergavenaam in voor de {options}.
+        service-type: Type Servicegebied
+        service-type-text: Selecteer de typering voor dit servicegebied.
+        select-service-type: Selecteer servicegebiedtype...
+        customize-border: Pas de randkleur aan voor deze {options}.
+        customize-fill-color: Pas de vulkleur aan voor deze {options}.
+        service-area-country: Land van Servicegebied
+        service-area-country-text: Stel optioneel het land in waar dit Servicegebied zich bevindt of is gevestigd.
+      new-order-config:
+        name: Configuratie Naam
+        description: Configuratie Beschrijving
+        tags: Configuratietags
+        add-tags: Voeg tags toe
+      order-assign-driver:
+        select-driver: Selecteer Chauffeur
+        select-assign: Selecteer Chauffeur om toe te wijzen
+      order-config-new-status:
+        new-status: Nieuwe Status
+        status-text: Voer een nieuwe activiteitsstatus in om aan de flow toe te voegen
+      order-event:
+        schedule: Schema
+        unschedule: Schema verwijderen
+      order-form:
+        id-text: Gebruik dit veld om indien nodig een aangepaste identificatie of interne identificatie voor de bestelling in te stellen.
+        schedule-text: De datum en tijd waarop de bestelling wordt verzonden. Als er geen chauffeur is toegewezen op het moment van verzending, zal de verzending mislukken. Als de bestelling Ad-Hoc is, wordt de bestelling gepinged naar chauffeurs in de omgeving van het afhaalpunt.
+        customer: Klant
+        customer-text: Wijs optioneel de klant van deze bestelling toe. Als het een nieuwe klant is, gebruik dan de knop 'Nieuwe Klant' hierboven.
+        select-customer: Selecteer Klant
+        facilitator: Facilitator
+        facilitator-text: Wijs optioneel een facilitator toe voor deze bestelling, een facilitator kan een derde partij onderaannemer of dienst zijn die het transport van deze bestelling zal faciliteren.
+        select-facilitator: Selecteer Facilitator
+        assign-driver: Wijs Chauffeur toe
+        assign-driver-text: Wijs de chauffeur toe waar deze bestelling naar verzonden zal worden.
+        select-driver: Selecteer Chauffeur
+      order-import:
+        loading-message: Import verwerken...
+        drop-upload: Sleep hierheen om te uploaden
+        invalid: Ongeldig
+        ready-upload: klaar voor uploaden.
+        upload-spreadsheets: Upload Spreadsheets
+        drag-drop: Sleep spreadsheetbestanden naar deze dropzone
+        button-text: of selecteer spreadsheets om te uploaden
+        spreadsheets: spreadsheets
+        upload-queue: Uploadwachtrij
+      order-label:
+        loading: Label Laden...
+      order-new-activity:
+        select-message: Selecteer een activiteitsstatus om de trackingactiviteit van de bestelling bij te werken, of voer een aangepaste activiteit in.
+        order-currently-message: Deze bestelling is momenteel {options}, extra activiteit zal deze status overschrijven.
+        not-recommend-message: Fastlane raadt dit niet aan tenzij u absoluut weet wat u doet.
+        activity-options: Activiteitsopties
+        activity: activiteit
+        dispatch: Dit zal de bestelling verzenden.
+        status: Aangepaste activiteitsstatus
+        details: Aangepaste activiteitsdetails
+        code: Aangepaste activiteitscode
+        fleetbase-message: Fastlane raadt dit niet aan tenzij u absoluut weet wat u doet.
+      order-route-form:
+        toggle: Wissel meerdere afleverpunten
+        optimize: Optimaliseer Route
+        optimize-text: Fastlane zal automatisch de route optimaliseren.
+        add: Voeg Wegpunt toe
+        add-text: Gebruik de knop 'Voeg Wegpunt toe' om meer stops voor deze bestelling toe te voegen. De Fastlane route-engine zal automatisch de route optimaliseren naarmate elke stop wordt toegevoegd of verwijderd.
+        select-waypoint: Selecteer Wegpunt
+        pickup: Ophalen
+        edit-address: Bewerk Adres
+        select-pickup: Selecteer Ophalen
+        invalid: Ongeldige coördinaten!
+        dropoff: Afleveren
+        select-dropoff: Selecteer Afleveren
+        return: Terugkeer
+        select-return: Selecteer Terugkeer
+      place-assign-vendor:
+        select-vendor: Selecteer Leverancier
+      place-details:
+        view: Bekijk op kaart
+      policy-form:
+        name: Beleidsnaam
+        name-text: Voer een naam in voor uw beleid
+        description: Beleidsbeschrijving
+        description-text: Voer een beschrijving in voor uw beleid
+        permissions: Selecteer Machtigingen
+      role-form:
+        name: Rolnaam
+        name-text: Voer een naam in voor deze rol
+        permissions: Selecteer Machtigingen
+      select-payment-method:
+        card-ending: Kaart eindigend op {method}
+      service-area-form:
+        name: Servicegebied Naam
+        name-text: Stel een weergavenaam in voor het servicegebied.
+        type: Type Servicegebied
+        type-text: Selecteer de typering voor dit servicegebied.
+        select-type: Selecteer servicegebiedtype...
+        border-color: Randkleur van Servicegebied
+        customize-border-color: Pas de randkleur aan voor dit servicegebied.
+        area-color: Kleur van Servicegebied
+        customize-area-color: Pas de vulkleur aan voor dit servicegebied.
+        country: Land van Servicegebied
+        country-text: Stel optioneel het land in waar dit Servicegebied zich bevindt of is gevestigd.
+      set-password:
+        message: Welkom bij Fastlane! Voordat u begint, stel een nieuw wachtwoord in om hieronder verder te gaan.
+        new-password: Nieuw Wachtwoord
+        confirm-password: Bevestig Wachtwoord
+        help-text: Voer een wachtwoord in van minimaal 8 tekens om verder te gaan.
+      uninstall-prompt:
+        message: U staat op het punt de extensie "{options}" te verwijderen. Weet u zeker dat u wilt doorgaan met deze deïnstallatie?
+        sub-message: Alle configuratie en aangepaste instellingen gaan verloren.
+      vehicle-details:
+        make: Merk
+        model: Model
+        year: Jaar
+        driver-assigned: Chauffeur Toegewezen
+        no-driver-assigned: Geen chauffeur toegewezen
+        avatar: Avatar
+        model-information: Modelinformatie
+        acceleration: 0 tot 100 Kph
+        body: Carrosserie
+        doors: Deuren
+        length: Lengte (mm)
+        seats: Zitplaatsen
+        top-speed: Topsnelheid (kph)
+        transmission: Transmissietype
+        weight: Gewicht (kg)
+        wheelbase: Wielbasis (mm)
+        width: Breedte (mm)
+        engine-information: Motorinformatie
+        engine-bore: Motorboring (mm)
+        cc: CC
+        compression: Compressie
+        cylinder: Cilinders
+        position: Positie
+        power-ps: Vermogen (ps)
+        power-rpm: Vermogen (rpm)
+        stroke: Slag (mm)
+        torque-nm: Koppel (nm)
+        torque-rpm: Koppel (rpm)
+        valves: Kleppen per cilinder
+        fuel-information: Brandstofinformatie
+        fuel: Brandstof
+        fuel-cap: Brandstofdop (l)
+        liters-city: Liters per km Stad
+        liters-highway: Liters per km Snelweg
+        liters-mixed: Liters per km Gemengd
+      vehicle-form:
+        map-avatar: Selecteer kaart avatar
+        map-avatar-text: Selecteer een avatar om te gebruiken voor weergave op kaarten bij gebruik van geolocatie tracking functies.
+        select-avatar: Selecteer avatar
+        make: Voertuig Merk
+        model: Voertuig Model
+        year: Voertuig Jaar
+        select-driver: Selecteer Chauffeur
+        body: Voertuig Carrosserie Type
+        doors: Aantal Deuren
+        type: Voertuig Aandrijftype
+        length: Voertuig Lengte (mm)
+        seats: Aantal Zitplaatsen
+        top-speed: Voertuig Topsnelheid (kph)
+        transmission: Voertuig Transmissietype
+        weight: Voertuig Gewicht (kg)
+        wheelbase: Voertuig Wielbasis (mm)
+        width: Voertuig Breedte (mm)
+        engine-bore: Motorboring (mm)
+        cc: CC
+        compression: Motorcompressie
+        cylinder: Motorcilinders
+        position: Motorpositie
+        power-ps: Motorvermogen (ps)
+        power-rpm: Motorvermogen (rpm)
+        stroke: Slaglengte (mm)
+        torque-nm: Motorkoppel (nm)
+        torque-rpm: Motorkoppel (rpm)
+        fuel-type: Brandstoftype
+        fuel-cap: Brandstofdop Volume (L)
+      vendor-details:
+        sandbox: Zandbak
+        host: Host
+        namespace: Namespace
+      vendor-form:
+        choose-vendor: Kies Geïntegreerde Leverancier
+        create-vendor: Maak Aangepaste Leverancier
+        credentials: Referenties
+        options: Opties
+        hide-advanced: Verberg Geavanceerd
+        show-advanced: Toon Geavanceerd
+        custom-host: Aangepaste Host
+        host-text: Voer optioneel een aangepaste host in die moet worden gebruikt voor deze integratie.
+        custom-namespace: Aangepaste Namespace
+        namespace-text: Voer optioneel een aangepaste namespace of API-versie in die moet worden gebruikt voor de integratie.
+        webhook: Webhook URL
+        webhook-text: Geïntegreerde leveranciers vereisen dit meestal zodat Fastlane activiteitsupdates over de bestelling kan ontvangen. Verander dit niet tenzij u weet wat u doet! Het wijzigen hiervan kan uw orderupdates verstoren!
+        cancel-credentials: Annuleer referenties reset
+        reset-message: Gevoelige referenties kunnen alleen worden gereset, om referenties bij te werken moet u de referenties opnieuw invoeren.
+        optionally: Voer optioneel uw eigen 
+        configure-vendor: in om deze leverancier te configureren.
+        select: Selecteer
+        sandbox: Zandbak
+        name-text: De naam van de leverancier, meestal de naam van een bedrijf.
+        email-text: De e-mail van de leverancier, dit kan worden gebruikt om e-mails naar de leverancier te activeren.
+        phone-text: Het telefoonnummer van de leverancier, dit kan worden gebruikt om SMS-berichten of berichten naar de leverancier te sturen.
+        website-text: De website van de leverancier, voeg optioneel de website van de leverancier toe voor referentie.
+        select-address: Selecteer Adres
+      zone-form:
+        name: Zone Naam
+        name-text: Stel een weergavenaam in voor de zone.
+        border-color: Zone Randkleur
+        customize-border: Pas de randkleur aan voor deze zone.
+        zone-color: Zone kleur
+        customize-fill-color: Pas de vulkleur aan voor deze zone.
+        optionally: Geef optioneel de zone een beschrijving.
+        description-zone: Beschrijving van Zone
+    order:
+      header:
+        dispatched-order: Verzonden op {order}
+        dispatched: Verzonden
+        dispatched-at: Verzonden op
+        edit: Bewerk Details
+        update: Update Activiteit
+        assign: Wijs Chauffeur toe
+        get-order: Haal Order Label op
+        split-order: Splits Bestelling
+        reschedule: Herschik Bestelling
+        cancel-order: Annuleer Bestelling
+      place-card:
+        show-less: Toon minder details
+        show-more: Toon meer details
+      schedule-card:
+        unassign-driver: Chauffeur ontkoppelen?
+        unassign-text: U staat op het punt de chauffeur voor Bestelling {orderId} te ontkoppelen. Klik op doorgaan om de verwijdering van de chauffeur te bevestigen.
+        unassign-button: Doorgaan en chauffeur ontkoppelen
+        assign-driver: Nieuwe Chauffeur Toewijzen?
+        assign-text: U staat op het punt een nieuwe chauffeur ({driverName}) toe te wijzen aan Bestelling {orderId}. Klik op doorgaan om de chauffeur te bevestigen.
+        assign-button: Doorgaan en chauffeur toewijzen
+        date: Datum gepland
+        driver-assigned: Chauffeur Toegewezen
+        no-driver: Geen Chauffeur Toegewezen
+        select-driver: Selecteer Chauffeur
+        vehicle-assigned: Voertuig Toegewezen
+        no-vehicle: Geen Voertuig Toegewezen
+    widget:
+      fleet-ops-quickstart:
+        message: Laten we kijken wat u kunt doen om de operaties snel op gang te brengen...
+        start-task: Start Taak
+      key-metrics:
+        earnings: Inkomsten
+        fuel-expenses: Brandstofuitgaven
+        traveled: Afstand Gereisd
+        total-time: Totale Tijd
+        order-scheduled: Bestellingen Gepland
+        order-completed: Bestellingen Voltooid
+        order-progress: Bestellingen in Voortgang
+        order-canceled: Bestellingen Geannuleerd
+        driver-online: Chauffeurs Online
+        customers: Klanten
+        open-issue: Open Probleem
+        closed-issues: Gesloten Problemen
+      live-order-map:
+        loading: Laden van orders in voortgang...
+        assigned: Chauffeur Toegewezen
+        no-order: Geen orders in voortgang
+        message: Wanneer orders in voortgang zijn, worden ze weergegeven in deze widget en tonen ze real-time activiteit.
+      recent-orders:
+        title: Recente Bestellingen
+        loading: Laden van recente bestellingen...
+        no-orders: Geen bestellingen deze week
+        message-part-1: Er zijn deze week geen bestellingen geweest, breng beweging op gang door
+        message-part-2: een nieuwe bestelling te creëren
+        message-part-3: of laat uw klanten bestellingen indienen via API.
+      transactions:
+        title: Recente Transacties
+        loading: Laden van recente transacties...
+        no-transactions: Geen transacties deze week
+        message: Wanneer bestellingen doorgaan met servicetarieven, houdt Fastlane transacties automatisch bij.
+    contact-form-panel:
+      success-message: contact {contactName} succesvol opgeslagen.
+      view-contact-button: Bekijk contactgegevens
+      save-contact: Sla Contact op
+      create-contact: Maak Contact
+      cancel-edit-button: Annuleer contactbewerking
+      cancel-new-button: Annuleer nieuw contact
+      new-contact: Nieuw Contact
+    contact-panel:
+      details:
+        web-url: Website URL
+      edit-button: Bewerk contact
+      cancel-edit-button: Annuleer contactbewerking
+      cancel-new-button: Annuleer nieuw contact
+    display-panel:
+      no-address: Geen {type} adres!
+      no-address-message: Geen adres!
+    driver-card:
+      no-fleets: Geen vloten
+    driver-form-panel:
+        success-message: Chauffeur ({driverName}) succesvol opgeslagen.
+        driver-detail: Bekijk chauffeur details
+        save-driver: Sla Chauffeur op
+        create-driver: Maak Chauffeur
+        cancel-edit-driver: Annuleer chauffeur bewerking
+        cancel-new-driver: Annuleer nieuwe chauffeur
+        upload-new-photo: Upload nieuwe foto
+        new-driver: Nieuwe Chauffeur
+        vendor: Leverancier
+        select-vehicle: Selecteer Voertuig
+        driver-status: Selecteer chauffeurstatus
+    driver-panel:
+      locate-button-text: Lokaliseer chauffeur
+      edit-button-text: Bewerk chauffeur
+      close-button-text: Sluit chauffeur details
+      no-vehicle-message: Geen voertuig toegewezen
+      assign-vehicle-button: Wijs een voertuig toe aan chauffeur
+    fleet-driver-listing:
+      search-driver: Zoek chauffeurs in vloot
+      add-driver: Voeg chauffeur toe aan vloot
+      loading-message: Laden van vloot chauffeurs...
+    fleet-form-panel:
+      success-message: Vloot ({fleetName}) succesvol opgeslagen.
+      title: Nieuwe Vloot
+      save-fleet: Sla Vloot op
+      create-fleet: Maak Vloot
+      view-details: Bekijk vloot details
+      cancel-edit-fleet: Annuleer vlootbewerking
+      cancel-new-fleet: Annuleer nieuwe vloot
+      fleet-name: Vloot Naam
+      parent-fleet: Moedervloot
+      select-parent-fleet: Selecteer moedervloot om vloot aan toe te wijzen
+      select-vendor: Selecteer leverancier om vloot aan toe te wijzen
+      service-title: Wijs toe aan Servicegebied
+      select-service: Selecteer servicegebied om vloot aan toe te wijzen
+      zone-title: Wijs toe aan Zone
+      select-zone: Selecteer zone om vloot aan toe te wijzen
+      select-status-fleet: Selecteer de status van de vloot.
+      select-status: Selecteer status
+      task-mission-title: Taak/ Missie
+      task-text: Geef een beschrijving van de primaire taak of missie van deze vloot indien van toepassing.
+    fleet-vehicle-listing:
+      search-vehicle: Zoek voertuig in vloot
+      add-vehicle: Voeg voertuig toe aan vloot
+      loading-message: Laden van vloot voertuig...
+    fuel-report-form-panel:
+      success-message: Brandstofrapport succesvol opgeslagen.
+      fuel-report: Nieuw Brandstofrapport
+      save-fuel-report: Sla Brandstofrapport op
+      create-fuel-report: Maak Brandstofrapport
+      view-details: Bekijk brandstofrapport details
+      cancel-edit-fuel-report: Annuleer bewerking brandstofrapport
+      cancel-new-fuel-report: Annuleer nieuw brandstofrapport
+      select-reporter: Selecteer Melder
+      select-driver: Selecteer Chauffeur
+      select-vehicle: Selecteer Voertuig
+      select-fuel-report: Selecteer brandstofrapportstatus
+      odometer: Kilometerteller
+      cost: Kosten
+      volume: Volume
+      select-volume-text: Selecteer de meeteenheid en volume van brandstof om te rapporteren.
+    fuel-report-panel:
+      title: Brandstofrapport Details
+      edit-button: Bewerk brandstofrapport
+      cancel-edit-fuel-report: Annuleer bewerking brandstofrapport
+      cancel-new-fuel-report: Annuleer nieuw brandstofrapport
+      details: 
+        fuel: Brandstof/ Volume
+    global-search:
+      search: Zoek op trefwoord...
+    integrated-order-details:
+      order-id: Bestel ID
+      quotation-id: Offerte ID
+      driver-id: Chauffeur ID
+      link: Deelbare Link
+      price-breakdown: Prijsuitsplitsing
+      metadata: Metadata
+    issue-form-panel:
+      success-message: Probleem ({publicId}) succesvol opgeslagen.
+      issue: Nieuw Probleem
+      save-issue: Sla Probleem op
+      create-issue: Maak Probleem
+      view-details: Bekijk probleem details
+      cancel-edit-issue: Annuleer probleembewerking
+      cancel-new-issue: Annuleer nieuw probleem
+      reported-by: Gerapporteerd Door
+      assigned: Toegewezen Aan
+      select-assign: Selecteer Toegewezen persoon
+      select-reporter: Selecteer Melder
+      select-driver: Selecteer Chauffeur
+      select-vehicle: Selecteer Voertuig
+      type: Probleemtype
+      select-type: Selecteer probleemtype
+      category: Probleemcategorie
+      select-category: Selecteer probleemcategorie
+      report: Probleemrapport
+      tags: Probleemtags
+      add-tags: Voeg tags toe
+      priority: Probleemprioriteit
+      select-priority: Selecteer probleemprioriteit
+      select-status: Selecteer probleemstatus
+    issue-panel:
+      details:
+        assigned: Toegewezen Aan
+        type: Probleemtype
+        category: Probleemcategorie
+        priority: Probleemprioriteit
+        report: Rapport
+      title: Probleemdetails
+      edit-issue: Bewerk Probleem
+      cancel-edit-issue: Annuleer probleembewerking
+      cancel-new-issue: Annuleer nieuw probleem
+    live-map:
+      onText: Verberg tekengereedschappen...
+      offText: Schakel tekengereedschappen in...
+      show-coordinates: Toon coördinaten...
+      center-map: Centreer kaart hier...
+      zoom-in: Inzoomen...
+      zoom-out: Uitzoomen...
+      hide-draw: Verberg tekengereedschappen...
+      enable-draw: Schakel tekengereedschappen in...
+      create-new-service: Maak nieuw Servicegebied...
+      focus-service: 'Focus Servicegebied: {serviceName}'
+      view-driver: 'Bekijk Chauffeur: {driverName}'
+      edit-driver: 'Bewerk Chauffeur: {driverName}'
+      delete-driver: 'Verwijder Chauffeur: {driverName}'
+      view-vehicle-for: 'Bekijk Voertuig voor: {driverName}'
+      view-vehicle: 'Bekijk voertuig: {vehicleName}'
+      edit-vehicle: 'Bewerk voertuig: {vehicleName}'
+      delete-vehicle: 'Verwijder voertuig: {vehicleName}'
+      edit-zone: 'Bewerk zone: {zoneName}'
+      delete-zone: 'Verwijder zone: {zoneName}'
+      assign-zone: 'Wijs Vloot toe aan Zone: {zoneName}'
+      blur-service: 'Vervaag Servicegebied: {serviceName}'
+      create-zone: 'Maak Zone binnen: {serviceName}'
+      assign-fleet: 'Wijs Vloot toe aan Servicegebied: {serviceName}'
+      edit-service: 'Bewerk Servicegebied: {serviceName}'
+      delete-service: 'Verwijder Servicegebied: {serviceName}'
+      service-area: Servicegebied
+      zone: Zone
+    order-config:
+      create-new-title: Maak een nieuwe bestelconfiguratie
+      warning-message: Bestelconfiguratie vereist een naam
+      success-message: Nieuwe bestelconfig gecreëerd.
+      no-order-warning: Geen bestelconfiguratie geselecteerd.
+      saved-success: '{orderName} bestelconfiguratie opgeslagen.'
+      enter-name-title: Voer naam van gekloonde configuratie in
+      no-config-warning: Geen config naam ingevoerd.
+      cloned-success: Bestelconfig succesvol gekloond.
+      body: Zodra deze bestelconfiguratie is verwijderd, kunt u geen bestellingen meer maken met behulp van deze configuratie. Weet u zeker dat u wilt doorgaan?
+      uninstall-title: Deïnstallatie Configuratie
+      uninstall-success: Extensie {extensionName} gedeïnstalleerd.
+      activity-flow-editor:
+        add-status: Voeg nieuwe status toe aan flow
+        no-status: Geen status ingevoerd.
+        overwrite: Dit zal een bestaande status overschrijven!
+        overwrite-text: Er bestaat al een andere {statusName} status in deze flow, als u doorgaat zal deze status worden overschreven. Wilt u de vorige {statusName} status overschrijven?
+        overwrite-button: Ja, overschrijven!
+        remove: Verwijder status
+        remove-text: Weet u zeker dat u deze status wilt verwijderen? Alle gerelateerde activiteiten en logica zullen samen met de status worden verwijderd.
+        delete-button: Ja, verwijderen
+        unable-warning: De {status} moet in deze volgorde van volgorde staan, niet mogelijk om te verschuiven.
+        order-warning: De gecreëerde status moet altijd de eerste volgorde van een bestelflow zijn.
+        title: Activiteitenflow
+        message: Activiteitenflowconfiguratie stelt u in staat om de verschillende soorten trackingstatusactiviteiten te definiëren die van toepassing zijn voor dit besteltype. Logica van de activiteitenflow kan ook worden geconfigureerd.
+        order-flow: Bestelflow
+        waypoint-flow: Waypoint Flow
+        new-activity: Nieuwe Activiteit
+        activity-details: Activiteitsdetails
+        logic-stack: Logicastapel
+        add-logic: Voeg logicaconditie toe
+        select-field: Selecteer veld
+        select-operator: Selecteer operator
+        enter-value: Voer waarde in om te vergelijken
+        no-logic: Geen logicacondities toegepast
+      details-editor:
+        success: Geïnstalleerd
+        key-text: Geef deze sleutel door aan uw besteltype om de bestelling te configureren met deze configuratie.
+        namespace-text: Unieke namespace voor deze extensie.
+        id: Extensie ID
+        id-text: Unieke ID voor deze extensie.
+        version: Extensie Versie
+        version-text: Versie van deze extensie.
+        clone: Kloon Configuratie
+        uninstall: Deïnstalleer Configuratie
+        delete: Verwijder Configuratie
+      entities-editor:
+        warning-message: Geen metafield sleutelnaam ingevoerd.
+        title: Entiteiten
+        message: Entiteitenconfiguratie stelt u in staat om de verschillende soorten entiteiten te definiëren die selecteerbaar moeten zijn voor dit besteltype. Deze moeten worden gebruikt als sjablonen om handmatige bestelcreatie sneller te maken.
+        type: Entiteitstype
+        add-meta: Voeg metafield toe
+      fields-editor:
+        text-field: Tekstveld
+        boolean: Boolean
+        boolean-text: Stelt gebruiker in staat om een waar/niet-waar eigenschap aan te vinken
+        dropdown: Dropdown Selectie
+        dropdown-text: Stelt gebruiker in staat om een optie te selecteren uit een dropdown van opties
+        datetime: Datetime Selector
+        datetime-text: Stelt gebruiker in staat om een datum & tijd te selecteren
+        port: Haven Selector
+        port-text: Stelt gebruiker in staat om een haven te selecteren
+        vessel: Schip Selector
+        vessel-text: Stelt gebruiker in staat om een schip te selecteren
+        warning-message: Geen groepsnaam ingevoerd.
+        field-title: Meta Velden
+        new-field: Nieuw Aangepast Veld
+        new-custom-field: Nieuwe Aangepaste Veldengroep
+        field-text: Meta veldenconfiguratie stelt u in staat om aangepaste invoervelden te definiëren die zullen worden toegepast op bestellingen.
+        custom-field-group: Aangepaste Veldengroep
+        default-field: Standaard Velden
+        custom-field: Aangepast Veld
+        type: Veldtype
+        select-type: Selecteer veldtype
+        add-option: Voeg Optie toe
+      select-message: Selecteer een bestelconfiguratie om te wijzigen, of klik op "Nieuwe Config" om een nieuwe bestelconfiguratie te maken.
+      new-config: Nieuwe Config
+      loading-configuration: Uw bestelconfiguraties worden geladen...
+      select-order: Selecteer bestelconfiguratie
+      save-changes: Sla Wijzigingen op
+      details: Details
+      fields: Aangepaste Velden
+      flow: Activiteitenflow
+      entities: Entiteiten
+    order-list-overlay:
+      search: Zoek bestellingen...
+      selected: Geselecteerd
+      assign: Wijs toe aan chauffeur...
+      cancel: Annuleer bestellingen...
+      delete: Verwijder bestellingen...
+      actions: Acties
+      create-order: Maak nieuwe bestelling...
+      create-fleet: Maak nieuwe vloot...
+      active-order: Actieve bestellingen
+      unassigned-order: Niet-toegewezen bestellingen  
+    place-form-panel:
+      success-message: plaats ({placeAddress}) succesvol opgeslagen.
+      place: Nieuwe Plaats
+      save-place: Sla Plaats op
+      create-place: Maak Plaats
+      view-details: Bekijk plaats details
+      cancel-edit-place: Annuleer bewerking plaats
+      cancel-new-place: Annuleer nieuwe plaats
+      street-1: Straat 1
+      street-2: Straat 2
+      neighborhood: Buurt
+      building: Gebouw
+      security-code: Beveiligings Toegangscode
+      postal-code: Postcode
+      state: Staat
+    place-panel:
+      edit-place: Bewerk plaats
+      cancel-edit-place: Annuleer bewerking plaats
+      cancel-new-place: Annuleer nieuwe plaats
+    route-list:
+      expand: Tik om uit te vouwen
+      collapse: Tik om in te vouwen
+      more-waypoints: meer waypoints
+    settings-window:
+      success-message: Instellingen succesvol opgeslagen.
+      title: VlootOps Instellingen
+      save: Sla Wijzigingen op
+      name: Standaard Adhoc Ping Afstand
+      name-text: Deze instelling bepaalt de standaardafstand in meters waarbinnen adhoc bestellingen chauffeurs in de omgeving van het afhaalpunt moeten pingen.
+      message: Afstand moet in meters zijn
+    vehicle-form-panel:
+      success-message: Voertuig ({vehicleName}) succesvol opgeslagen.
+      view-details: Bekijk voertuig details
+      save-vehicle: Sla Voertuig op
+      create-vehicle: Maak Voertuig      
+      cancel-edit-vehicle: Annuleer bewerking voertuig
+      cancel-new-vehicle: Annuleer nieuw voertuig
+      upload-photo: Upload nieuwe foto
+      new-vehicle: Nieuw Voertuig
+      not-assigned: Geen chauffeur toegewezen
+      plate-number: Nummerplaat
+      vin-number: VIN Nummer
+      make: Merk
+      vehicle-make: Voertuigmerk
+      model: Model
+      vehicle-model: Voertuigmodel
+      year: Jaar
+      vehicle-year: Voertuigjaar
+      driver-assigned: Chauffeur Toegewezen
+      select-driver: Selecteer Chauffeur
+      select-vehicle: Selecteer voertuigstatus
+      avatar: Avatar
+      select-map-avatar: Selecteer kaart avatar
+      select-avatar-rendering: Selecteer een avatar om te gebruiken voor weergave op kaarten bij gebruik van geolocatie tracking functies.
+      select-avatar: Selecteer avatar
+    vehicle-panel:
+      edit: Bewerk voertuig
+      close: Sluit voertuig details
+      not-assigned: Geen chauffeur toegewezen
+      assign-driver: Wijs een chauffeur toe aan voertuig
+    vendor-form-panel:
+      success-message: Leverancier ({vendorName}) succesvol opgeslagen.
+      create-form:
+        integrated-vendor: Kies een geïntegreerde leverancier
+        custom-vendor: Maak een aangepaste leverancier
+        title: Instellen
+        select-vendor-type: Selecteer leverancierstype
+        choose-vendor: Kies geïntegreerde leverancierprovider
+        provider: Provider
+        credentials: Referenties
+        advanced-options: Geavanceerde Opties
+        hide-advanced-options: Verberg Geavanceerde Opties
+        show-advanced-options: Toon Geavanceerde Opties
+        host: Aangepaste Host
+        host-text: Voer optioneel een aangepaste host in die moet worden gebruikt voor deze integratie.
+        namespace: Aangepaste Namespace
+        namespace-text: Voer optioneel een aangepaste namespace of API-versie in die moet worden gebruikt voor de integratie.
+        webhook: Webhook URL
+        webhook-text: Geïntegreerde leveranciers vereisen dit meestal zodat Fastlane activiteitsupdates over de bestelling kan ontvangen. Verander dit niet tenzij u weet wat u doet! Het wijzigen hiervan kan uw orderupdates verstoren!
+        select-integrated: Selecteer een geïntegreerde leverancierprovider.
+        vendor-details: Leverancierdetails
+        select-vendor-status: Selecteer leverancierstatus
+        select-address: Selecteer Adres
+        edit: Bewerk
+        new-address: Nieuw Adres
+        optionally: Voer optioneel uw eigen
+        configure-vendor: in om deze leverancier te configureren.
+        select: Selecteer
+        name-text: De naam van de leverancier, meestal de naam van een bedrijf.
+        email-text: De e-mail van de leverancier, dit kan worden gebruikt om e-mails naar de leverancier te activeren.
+        phone-text: >-
+          Het telefoonnummer van de leverancier, dit kan worden gebruikt om SMS-berichten of berichten naar de leverancier te sturen.
+        website-text: De website van de leverancier, voeg optioneel de website van de leverancier toe voor referentie.
+      edit-form:
+        cancel-credentials: Annuleer referenties reset
+        sensitive-credentials: Gevoelige referenties kunnen alleen worden gereset, om referenties bij te werken moet u de referenties opnieuw invoeren.
+        reset-credentials: Klik hier om referenties te resetten
+        select-address: Selecteer Adres
+      view-details: Bekijk leverancier details
+      save-vendor: Sla Leverancier op
+      create-vendor: Maak Leverancier      
+      cancel-edit-vendor: Annuleer leverancierbewerking
+      cancel-new-vendor: Annuleer nieuwe leverancier
+      upload-photo: Upload nieuwe foto
+      new-vendor: Nieuwe Leverancier
+    vendor-panel:
+      edit: Bewerk leverancier
+      close: Sluit leverancierdetails
+      new-vendor: Nieuwe Leverancier
+  management:
+    contacts:
+      index:
+        delete-button: Verwijder Contacten
+        updated: Bijgewerkt Op
+        created: Gecreëerd Op
+        view-contact: Bekijk Contactgegevens
+        edit-contact: Bewerk Contact
+        delete-contact: Verwijder Contact
+        edit:
+          title: Doorgaan Zonder Opslaan?
+          body: Niet-opgeslagen wijzigingen aan dit contact gaan verloren. Klik op doorgaan om door te gaan.
+          button: Doorgaan zonder op te slaan
+        title: Contacten
+        delete-contacts: Verwijder Contacten
+    drivers:
+      index:
+        assign-driver: Wijs Chauffeur toe
+        view-details: Bekijk chauffeur details...
+        edit-details: Bewerk chauffeur details...
+        assign-order-driver: Wijs bestelling toe aan chauffeur...
+        assign-vehicle-driver: Wijs voertuig toe aan chauffeur...
+        locate-driver-map: Lokaliseer chauffeur op kaart...
+        delete-driver: Verwijder chauffeur...
+        delete-button: Verwijder Chauffeurs
+        order-driver: Wijs Bestelling toe aan deze Chauffeur
+        assign-order: Wijs Bestelling toe
+        no-order-warning: Geen bestelling geselecteerd!
+        assign-success: '{driverName} toegewezen aan bestelling.'
+        title-vehicle: Wijs Voertuig toe aan deze Chauffeur
+        confirm-button: Bevestig & Maak
+        assign-vehicle: '{driverName} toegewezen aan voertuig.'
+        locate-driver: Huidige Locatie van {driverName}
+        edit:
+          title: Doorgaan Zonder Opslaan?
+          body: Niet-opgeslagen wijzigingen aan deze chauffeur gaan verloren. Klik op doorgaan om door te gaan.
+          button: Doorgaan zonder op te slaan
+        title: Chauffeurs
+        delete-drivers: Verwijder Chauffeurs  
+        search-placeholder: Zoek Chauffeurs 
+    fleets:
+      index:
+        view-fleet: Bekijk vloot details...
+        edit-fleet: Bewerk vloot details...
+        assign-driver: Wijs chauffeur toe aan vloot...
+        delete-fleet: Verwijder vloot...
+        delete-button: Verwijder Vloten
+        edit:
+          body: Niet-opgeslagen wijzigingen aan deze vloot gaan verloren. Klik op doorgaan om door te gaan.
+        title: Vloten
+        delete-fleets: Verwijder Vloten
+    fuel-reports:
+      index:
+        view: Bekijk Details
+        edit-fuel: Bewerk Brandstofrapport
+        delete: Verwijder Brandstofrapport
+        delete-button: Verwijder Brandstofrapporten
+        edit:
+          body: Niet-opgeslagen wijzigingen aan dit brandstofrapport gaan verloren. Klik op doorgaan om door te gaan.
+        title: Brandstofrapporten
+        delete-fuel-reports: Verwijder Brandstofrapporten
+    issues:
+      index:
+        view: Bekijk Details
+        edit-issues: Bewerk Problemen
+        delete: Verwijder Problemen
+        delete-button: Verwijder Problemen
+        edit:
+          body: Niet-opgeslagen wijzigingen aan dit probleem gaan verloren. Klik op doorgaan om door te gaan.
+        title: Problemen
+        delete-issues: Verwijder Problemen
+    places:
+      index:
+        view-details: Bekijk Plaats Details
+        edit-place: Bewerk Plaats
+        view-place: Bekijk Plaats op Kaart
+        delete: Verwijder Plaats
+        title: Wijs deze Plaats toe aan een Leverancier
+        confirm-button: Bevestig & Maak
+        delete-button: Verwijder Plaatsen
+        success-message: '{placeName} details zijn bijgewerkt.'
+        locate-title: Locatie van {placeName}
+        edit:
+          body: Niet-opgeslagen wijzigingen aan deze plaats gaan verloren. Klik op doorgaan om door te gaan.
+        places-title: Plaatsen
+        delete-places: Verwijder Plaatsen
+    vehicles:
+      index:
+        view-vehicle: Bekijk voertuig details...
+        edit-vehicle: Bewerk voertuig details...        
+        delete-vehicle: Verwijder voertuig...
+        delete-button: Verwijder Voertuigen
+        locate-action-title: Lokaliseer Voertuigen
+        locate-title: Huidige Locatie van {vehicleName}
+        edit:
+          body: Niet-opgeslagen wijzigingen aan dit voertuig gaan verloren. Klik op doorgaan om door te gaan.
+        title: Voertuigen
+        delete-vehicles: Verwijder Voertuigen
+    vendors:
+      index:
+        delete-button: Verwijder Leveranciers
+        view-vendor: Bekijk leverancier Details
+        edit-vendor: Bewerk leverancier
+        delete-vendor: Verwijder leverancier
+        edit:
+          body: Niet-opgeslagen wijzigingen aan deze leverancier gaan verloren. Klik op doorgaan om door te gaan.
+        title: Leveranciers
+        delete-vendors: Verwijder Leveranciers
+  operations:
+    orders:
+      index:
+        payload: Lading
+        customer: Klant
+        facilitator: Facilitator
+        pickup: Ophalen
+        dropoff: Afleveren
+        scheduled-at: Gepland Op
+        items: Items
+        transaction: Transactie Totaal
+        tracking: Volgnummer
+        driver-assigned: Chauffeur Toegewezen
+        created-by: Gecreëerd Door
+        updated-by: Bijgewerkt Door
+        view-order: Bekijk Bestelling
+        cancel-order: Annuleer Bestelling
+        delete-order: Verwijder Bestelling
+        cancel-title: Weet u zeker dat u deze bestelling wilt annuleren?
+        cancel-body: Zodra deze bestelling is geannuleerd, blijft het bestelrecord zichtbaar maar kan er geen activiteit aan deze bestelling worden toegevoegd.
+        cancel-success: Bestelling {orderId} is geannuleerd.
+        dispatch-title: Weet u zeker dat u deze bestelling wilt verzenden?
+        dispatch-body: Zodra deze bestelling is verzonden, wordt de toegewezen chauffeur op de hoogte gesteld.
+        dispatch-success: Bestelling {orderId} is verzonden.          
+        map: Kaart
+        table: Tafel
+        cancel-orders: Annuleer Bestellingen
+        delete-orders: Verwijder Bestellingen
+        new:
+          create-new-customer: Maak nieuwe klant
+          create-new-facilitator: Maak nieuwe facilitator
+          create-new-place: Maak nieuwe plaats
+          add-order: Voeg entiteit toe aan bestelling
+          edit-order: Bewerk bestelmetadata
+          add-field: Voeg aangepast veld toe
+          order-type: Besteltype
+          order-type-help-text: Het selecteren van het besteltype zal Fastlane vertellen welke bestelconfiguraties te gebruiken.
+          order-type-placeholder: Selecteer Besteltype
+          internal-id: Intern ID
+          internal-id-help-text: Gebruik dit veld om indien nodig een aangepaste identificatie of interne identificatie voor de bestelling in te stellen.
+          schedule: Schema
+          schedule-help-text: De datum en tijd waarop de bestelling wordt verzonden. Als er geen chauffeur is toegewezen op het moment van verzending, zal de verzending mislukken. Als de bestelling Ad-Hoc is, wordt de bestelling gepinged naar chauffeurs in de omgeving van het afhaalpunt.
+          customer: Klant
+          customer-help-text: Wijs optioneel de klant van deze bestelling toe. Als het een nieuwe klant is, gebruik dan de knop 'Nieuwe Klant' hierboven.
+          customer-placeholder: Selecteer Klant
+          facilitator: Facilitator
+          facilitator-help-text: Wijs optioneel een facilitator toe voor deze bestelling, een facilitator kan een derde partij onderaannemer of dienst zijn die het transport van deze bestelling zal faciliteren.
+          facilitator-placeholder: Selecteer Facilitator
+          service-type: Servicetype
+          service-type-placeholder: Selecteer servicetype
+          service-type-help-text: Selecteer het servicetype dat u wilt gebruiken voor 
+          assign-driver: Wijs Chauffeur toe
+          assign-driver-help-text: Wijs de chauffeur toe waar deze bestelling naar verzonden zal worden.
+          assign-driver-placeholder: Selecteer Chauffeur
+          proof-delivery: Bewijs van Levering
+          proof-delivery-help-text: Selecteer het type bewijs van levering dat vereist is. Dit kan ofwel QR-codescan of handtekeningmethode zijn.
+          proof-delivery-placeholder: Selecteer Methode voor Bewijs van Levering
+          adhoc-ping: Adhoc Ping Afstand
+          adhoc-ping-help-text: Deze instelling bepaalt de adhoc afstand om te pingen voor deze bestelling, indien niet ingesteld zal het terugvallen op de standaardinstelling.
+          adhoc-ping-message: Afstand moet in meters zijn
+          ad-hoc: Ad-Hoc
+          ad-hoc-help-text: Door Ad-Hoc in te schakelen, wordt de bestelling in staat gesteld om intelligente pings naar chauffeurs in de omgeving van het afhaalpunt van de bestelling te sturen, zodat de eerste beschikbare chauffeur de bestelling kan accepteren. Dit is een alternatief voor het handmatig toewijzen van de chauffeur voor realtime bestellingen.
+          dispatch: Onmiddellijk Verzenden
+          dispatch-help-text: Door verzenden in te schakelen, wordt deze bestelling onmiddellijk na creatie verzonden.
+          require-proof: Vereis Bewijs van Levering
+          require-proof-help-text: Door dit in te schakelen, wordt vereist dat de chauffeur een bewijs van levering voltooit.
+          additional-details: Extra Details
+          metadata: Metadata
+          route: Route
+          route-label: Meerdere Afleverpunten
+          optimize-route: Optimaliseer Route
+          optimize-route-help-text: Fastlane zal automatisch de route optimaliseren.
+          add-waypoint: Voeg Wegpunt toe
+          add-waypoint-help-text: Gebruik de knop 'Voeg Wegpunt toe' om meer stops voor deze bestelling toe te voegen. De Fastlane route-engine zal automatisch de route optimaliseren naarmate elke stop wordt toegevoegd of verwijderd.
+          select-waypoint-placeholder: Selecteer Wegpunt
+          infoblock-text: kan deze locatie niet ondersteunen.
+          invalid-coordinates: Ongeldige coördinaten!
+          pickup: Ophalen
+          select-pickup: Selecteer Ophalen
+          dropoff: Afleveren
+          select-dropoff: Selecteer Afleveren
+          return: Terugkeer
+          edit-address: Bewerk Adres
+          select-return: Selecteer Terugkeer
+          payload-entities: Lading / Entiteiten
+          add-item-order: Voeg Item toe aan Bestelling
+          items-drop: Items afleveren bij
+          add-item-button: Voeg Item toe
+          sku: SKU
+          select-destination: Selecteer Bestemming
+          edit-item: Bewerk Item
+          apply-service-rate: Pas servicetarief toe
+          service-help-text: Selecteer een gedefinieerd servicetarief om realtime serviceoffertes te genereren om toe te passen op deze bestelling.
+          service-quotes: Serviceoffertes
+          service-quotes-help-text: Selecteer welk servicetarief u offertes voor wilt ophalen.
+          select-service-rate: Selecteer Servicetarief
+          refresh-button: Vernieuwen
+          loading-message: Laden van serviceoffertes...
+          info-text: Selecteer een realtime serviceofferte om toe te passen op deze bestelling. Zodra een offerte op de bestelling is toegepast, wordt het een gekochte tarief. Transacties worden bijgehouden in het Fastlane grootboek.
+          breakdown: Uitsplitsing
+          no-service-info-text: Geen serviceoffertes.
+          input-order-info-text: Voer bestelroute in om serviceoffertes te bekijken.
+          notes-title: Notities
+          notes-placeholder: Voer bestelnotities hier in....
+          success-message: Nieuwe Bestelling {orderId} Gecreëerd
+          warning-message: Geen bestanden in wachtrij om te uploaden!
+          import-success: Import voltooid.
+          service-warning: Mislukt om serviceoffertes voor deze bestelling op te halen.
+          no-route-warning: Geen route om te bekijken.
+          route-error: Route-optimalisatie mislukt, controleer route-invoer en probeer opnieuw.
+          custom-field-title: Voeg aangepast veld toe aan bestelling
+          label-warning: Aangepast veld moet een label hebben
+          value-warning: Aangepast veld moet een waarde hebben
+          edit-field-title: Bewerk aangepast veld
+          edit-metadata: Bewerk Metadata
+        view:
+          dispatch: Verzenden
+          order-actions: Bestel Acties
+          edit-details: Bewerk Details
+          update-activity: Update Activiteit
+          unassign-driver: Ontkoppel Chauffeur
+          assign-driver: Wijs Chauffeur toe
+          get-order-label: Haal Order Label op
+          listen-socket-channel: Luister naar socketkanaal
+          view-metadata: Bekijk metadata
+          cancel-order: Annuleer Bestelling
+          delete-order: Verwijder Bestelling
+          activity: Activiteit
+          unable-load-order-activity: Kan bestelactiviteit niet laden
+          ad-hoc: Ad-Hoc
+          customer: Klant
+          facilitator: Facilitator
+          driver-assigned: Chauffeur Toegewezen
+          change-driver: Verander Chauffeur
+          tracking-number: Volgnummer
+          date-scheduled: Datum Gepland
+          date-dispatched: Datum Verzonden
+          date-started: Datum Gestart
+          order-details-title: Besteldetails
+          additional-details-title: Extra Details
+          route: Route
+          pickup: Ophalen
+          dropoff: Afleveren
+          return: Terugkeer
+          order-summary: Besteloverzicht
+          subtotal: Subtotaal
+          delivery-fee: Bezorgkosten
+          tip: Fooi
+          delivery-tip: Bezorg Fooi
+          total: Totaal
+          payload: Lading
+          items-drop: Items afleveren bij
+          tracking: Volgen
+          waypoint-actions: Waypoint Acties
+          get-label: Haal Label op
+          view-activity: Bekijk Activiteit
+          add-item-button: Voeg Item toe
+          edit-item-button: Bewerk Item
+          edit-order-title: Bewerk Besteldetails
+          update-success: '{orderId} details zijn bijgewerkt.'
+          order-metadata: Bestel Metadata
+          unassign-title: Weet u zeker dat u de chauffeur ({driverName}) van deze bestelling wilt ontkoppelen?
+          unassign-body: Zodra de chauffeur is ontkoppeld, heeft de chauffeur geen toegang meer tot de details van deze bestelling.
+          unassign-success: Chauffeur is ontkoppeld van deze bestelling.
+          edit-route-title: Bewerk Bestelroute
+          route-error: Route-optimalisatie mislukt, controleer route-invoer en probeer opnieuw.
+          route-update-success: '{orderId} route details bijgewerkt.'
+          add-activity-title: Voeg nieuwe activiteit toe aan bestelling
+          invalid-warning: Ongeldige aangepaste statusinvoer.
+          change-order: Verander bestelchauffeur
+          assign-order: Wijs chauffeur toe aan bestelling
+          assign-success: '{orderId} toegewezen chauffeur bijgewerkt.'
+          order-title: Bestellabel
+          waypoint-title: Waypoint Label
+          proof-of-delivery: Bewijs van Levering
+        config:
+          title: Bestelconfiguratie
+          message: Bestelconfiguraties stellen u in staat om dynamische configuraties te definiëren die Fastlane vertellen hoe verschillende soorten bestellingen moeten worden uitgevoerd.
+          configuration: Configuratie
+          types:
+            no-order-installed: Geen bestelconfiguraties geïnstalleerd!
+            you-have-no-configs: U heeft momenteel geen bestelconfiguraties geïnstalleerd, controleer de extensies om een bestelconfiguratie te installeren om te beginnen.
+            view-extensions: Bekijk extensies
+    scheduler:
+      index:
+        success-message: Bestelling {orderId} is gepland op {orderAt}.
+        info-message: Bestelling {orderId} is ongepland.
+        title: Planner
+        unscheduled-orders: Niet-geplande Bestellingen
+        scheduled-orders: Geplande Bestellingen
+    service-rates:
+      index:
+        edit-service: Bewerk Servicetarief
+        delete-service: Verwijder Servicetarief
+        accept-button: Verwijder Services
+        edit:
+          success-message: Servicetarief {serviceName} bijgewerkt
+        title: Servicetarieven
+        reload-data: Gegevens herladen
+        delete-service-rates: Verwijder Servicetarieven
+        new:
+          success-message: Nieuw Servicetarief {serviceName} Gecreëerd
+          new-service-rate-title: Nieuw servicetarief
+          save-service-button: Sla Servicetarief op
+          create-service-button: Maak Servicetarief
+          service-name: Servicenaam
+          service-name-help-text: Weergavenaam voor deze service.
+          service-order-label: Servicetype Bestelling
+          service-order-help-text: Beperk dit servicetarief tot een expliciet `besteltype`.
+          service-order-placeholder: Selecteer besteltype om service aan te beperken
+          base-fee-label: Basisvergoeding
+          base-fee-help-text: Stel een basisvergoeding in die de minimale kosten voor deze service vertegenwoordigt.
+          rate-calculation-label: Methode voor Tariefberekening
+          rate-calculation-help-text: De methode die deze service zal gebruiken om tarieven te berekenen bij navraag.
+          rate-calculation-placeholder: Selecteer methode voor tariefberekening
+          estimated-days: Geschatte Leveringsdagen
+          estimated-days-help-text: Het geschatte aantal dagen dat deze service zal duren. Gebruik `0` voor een dezelfde-dag-service.
+          duration-terms-label: Duurvoorwaarden
+          duration-terms-help-text: Voeg extra voorwaarden toe met betrekking tot de duur voor dit servicetarief.
+          duration-terms-placeholder: Duurvoorwaarden indien van toepassing
+          fixed-meter: Vaste Meter Opties
+          fixed-meter-text: Deze optie definieert een vaste vergoeding per kilometer.
+          fixed-meter-example-text: >-
+            Bijvoorbeeld: Elke 1 kilometer wordt een vaste vergoeding gedefinieerd. Als de afgelegde afstand door de bestelling 3.300 meter is, wordt de vaste vergoeding voor de 3e kilometer toegevoegd aan de som van de basisvergoeding.
+          maximum-distance: Maximale Afstand
+          maximum-distance-help-text: De maximale afstand die kan worden bediend.
+          distance: Afstand
+          fee: Vergoeding
+          per-drop-off-title: Opties per Aflevering
+          per-drop-off-text: Deze optie definieert een vaste vergoeding per aflevering.
+          per-drop-off-example-text: >-
+            Bijvoorbeeld: 1-5 afleveringen in de bestelling kosten $x bedrag, 5-10 afleveringen per bestelling kosten $x bedrag. Dit wordt toegevoegd aan de som van de basisvergoeding.
+          add-drop-off-button: Voeg afleveringsbereik toe
+          min-drop: Min Aflevering
+          max-drop: Max Aflevering
+          min: Min
+          max: Max
+          per-meter: Per Meter
+          per-meter-text: Deze optie maakt het mogelijk dat de service per kilometer of meter wordt berekend, wat betekent dat u een vast tarief definieert dat vervolgens wordt vermenigvuldigd met de afstand, die zowel meter als kilometer kan zijn.
+          per-meter-example-text: >-
+            Bijvoorbeeld: '{fee}' * '{distance}' + '{baseFee}'
+          per-meter-rate-fee: Per Meter Vast Tarief
+          per-meter-rate-fee-help-text: Het enkele vaste tarief dat zal worden vermenigvuldigd met de afstand.
+          distance-unit: Afstandseenheid
+          distance-unit-help-text: De eenheid van afstand kan per kilometer of meter zijn.
+          distance-unit-placeholder: Selecteer afstandseenheid.
+          custom-algorithm-title: Aangepast Algoritme
+          custom-algorithm-info-message: Deze optie is om een aangepaste berekening te definiëren voor de servicetariefvergoeding met variabelen.
+          custom-algorithm-info-second-message: Merk op dat variabelen moeten worden omgeven door een enkele krulhaak.
+          distance-message: afstand
+          distance-continue-message: >- 
+            - de afstand in meters van de bestelroute.
+          time-message: tijd
+          time-continue-message: >-
+            - de route ETA in seconden.
+          example: Voorbeeld
+          example-message: Als het bestelverzoek een afstand van 2.200 meter heeft met een ETA van 30 minuten.
+          example-second-message: Dan zal de volgende formule een servicetarief van $2,50 berekenen, dat zal worden toegevoegd aan de basisvergoeding.
+          algorithm-label: Algoritme
+          algorithm-help-text: Definieer een formule om te evalueren voor deze servicetariefberekening.
+          algorithm-placeholder: >-
+            (( '{distance}' / 50 ) * .05 ) + (( '{time}' / 60 ) * .01)
+          percel-fee-title: Pakket Vergoedingen
+          length-label: Lengte
+          length-placeholder: Lengte in {parcelFeeDimension}
+          width-label: Breedte
+          width-placeholder: Breedte in {parcelFeeDimension}
+          height-label: Hoogte
+          height-placeholder: Hoogte in {parcelFeeDimension}
+          weight-label: Gewicht
+          weight-placeholder: Gewicht in {parcelFeeWeight}
+          deminsions-unit: Afmetingen Eenheid
+          select-unit-placeholder: Selecteer eenheid
+          weight-unit: Gewichtseenheid
+          additional-fee: Extra Vergoeding
+          cash-delivery-title: Contant bij Levering
+          cash-delivery-label: Schakel extra vergoeding in voor `contant bij levering` bestellingen?
+          calculation-method-label: Berekeningsmethode Contant bij Levering Vergoeding
+          calculation-method-help-text: Methode die wordt gebruikt om de COD-vergoeding te berekenen.
+          calculation-method-placeholder: Selecteer COD-vergoedingsberekeningsmethode
+          delivery-flat-fee: Contant bij Levering Vaste Vergoeding
+          delivery-flat-fee-help-text: Definieert een vaste vergoeding die wordt toegevoegd tijdens piekuren.
+          fee-percentage: Contant bij Levering Vergoedingspercentage
+          fee-percentage-help-text: Definieert een percentage gebaseerde vergoeding van het servicetariefsubtotaal die wordt toegevoegd als de COD-vergoeding.
+          percentage-placeholder: Percentage
+          peak-hours-title: Piekuren
+          peak-hours-label: Schakel extra vergoeding in voor bestellingen gemaakt tijdens door de service gedefinieerde `piekuren`?
+          peak-hours-start-label: Begin Piekuren
+          peak-hours-start-help-text: Definieert de tijd waarop de piekuurvergoeding begint.
+          peak-hours-end-label: Einde Piekuren
+          peak-hours-end-help-text: Definieert de tijd waarop de piekuurvergoeding eindigt.
+          peak-hours-fee-label: Piekuren Vergoedingsberekeningsmethode
+          peak-hours-fee-help-text: Methode die wordt gebruikt om de piekuurvergoeding te berekenen.
+          peak-hours-fee-placeholder: Selecteer piekuurvergoedingsberekeningsmethode
+          flat-fee-label: Piekuren Vaste Vergoeding
+          flat-fee-help-text: Definieert een vaste vergoeding die wordt toegevoegd tijdens piekuren.
+          peak-hours-percentage-label: Piekuren Vergoedingspercentage
+          peak-hours-percentage-help-text: Definieert een percentage gebaseerde vergoeding van het servicetariefsubtotaal die wordt toegevoegd tijdens piekuren.
+          restrict-service-title: Beperk Service
+          service-area-label: Servicegebied
+          service-area-help-text: Beperk deze service tot bestelverzoeken afkomstig uit een servicegebied.
+          service-area-placeholder: Beperk tot servicegebied
+          zone-label: Zone
+          zone-help-text: Beperk deze service tot bestelverzoeken afkomstig uit een specifieke zone.
+          zone-placeholder: Beperk tot zone

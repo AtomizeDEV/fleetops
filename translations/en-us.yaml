@@ -345,20 +345,20 @@ fleet-ops:
       order-new-activity:
         select-message: Select an activity status to update order tracking activity, or input a custom activity.
         order-currently-message: This order is currently {options}, additional activity will overwrite this status.
-        not-recommend-message: Fleetbase does not recommend this unless you absolutely know what you're doing.
+        not-recommend-message: Fastlane does not recommend this unless you absolutely know what you're doing.
         activity-options: Activity Options
         activity: activity
         dispatch: This will trigger the order to dispatch.
         status: Custom activity status
         details: Custom activity details
         code: Custom activity code
-        fleetbase-message: Fleetbase does not recommend this unless you absolutely know what you're doing.
+        fleetbase-message: Fastlane does not recommend this unless you absolutely know what you're doing.
       order-route-form:
         toggle: Toggle Multiple Dropoff's
         optimize: Optimize Route
-        optimize-text: Fleetbase will automatically optimize the route.
+        optimize-text: Fastlane will automatically optimize the route.
         add: Add Waypoint
-        add-text: Use the `Add Waypoint` button to add more stops for this order. The Fleetbase routing engine will automatically optimize the route as each stop is added or removed.
+        add-text: Use the `Add Waypoint` button to add more stops for this order. The Fastlane routing engine will automatically optimize the route as each stop is added or removed.
         select-waypoint: Select Waypoint 
         pickup: Pickup
         edit-address: Edit Address
@@ -397,7 +397,7 @@ fleet-ops:
         country: Service Area Country
         country-text: Optionally set the country in which this service area is located or based in.
       set-password:
-        message: Welcome to Fleetbase! Before you get started, set a new password to continue below.
+        message: Welcome to Fastlane! Before you get started, set a new password to continue below.
         new-password: New Password
         confirm-password: Confirm Password
         help-text: Enter a password at-least 8 characters to continue.
@@ -486,7 +486,7 @@ fleet-ops:
         custom-namespace: Custom Namespace
         namespace-text: Optionally provide a custom namespace or api version that should be used for the integration.
         webhook: Webhook URL
-        webhook-text: Integrated vendors will typically require this so that Fleetbase can receive activity updates on the order. Do not change unless you know what you are doing! Changing this may break your order updates!
+        webhook-text: Integrated vendors will typically require this so that Fastlane can receive activity updates on the order. Do not change unless you know what you are doing! Changing this may break your order updates!
         cancel-credentials: Cancel credentials reset
         reset-message: Sensitive credentials can only be reset, to update credentials you must re-enter the credentials.
         optionally: Optionally supply your own 
@@ -568,7 +568,7 @@ fleet-ops:
         title: Recent Transactions
         loading: Loading recent transactions...
         no-transactions: No transactions this week
-        message: When orders are going through with service rates, Fleetbase tracks transactions automatically.
+        message: When orders are going through with service rates, Fastlane tracks transactions automatically.
     contact-form-panel:
       success-message: contact {contactName} saved successfully.
       view-contact-button: View contact details
@@ -902,7 +902,7 @@ fleet-ops:
         namespace: Custom Namespace
         namespace-text: Optionally provide a custom namespace or api version that should be used for the integration.
         webhook: Webhook URL
-        webhook-text: Integrated vendors will typically require this so that Fleetbase can receive activity updates on the order. Do not change unless you know what you are doing! Changing this may break your order updates!
+        webhook-text: Integrated vendors will typically require this so that Fastlane can receive activity updates on the order. Do not change unless you know what you are doing! Changing this may break your order updates!
         select-integrated: Select an integrated vendor provider.
         vendor-details: Vendor Details
         select-vendor-status: Select vendor status
@@ -1077,7 +1077,7 @@ fleet-ops:
           edit-order: Edit order metadata
           add-field: Add custom field
           order-type: Order Type
-          order-type-help-text: Selecting the order type will tell fleetbase what order configurations to use.
+          order-type-help-text: Selecting the order type will tell Fastlane what order configurations to use.
           order-type-placeholder: Select Order Type
           internal-id: Internal ID
           internal-id-help-text: Use this field to optionally set a custom identifier or internal identifier for the order.
@@ -1112,9 +1112,9 @@ fleet-ops:
           route: Route
           route-label: Multiple Dropoff's
           optimize-route: Optimize Route
-          optimize-route-help-text: Fleetbase will automatically optimize the route.
+          optimize-route-help-text: Fastlane will automatically optimize the route.
           add-waypoint: Add Waypoint
-          add-waypoint-help-text: Use the `Add Waypoint` button to add more stops for this order. The Fleetbase routing engine will automatically optimize the route as each stop is added or removed.
+          add-waypoint-help-text: Use the `Add Waypoint` button to add more stops for this order. The Fastlane routing engine will automatically optimize the route as each stop is added or removed.
           select-waypoint-placeholder: Select Waypoint
           infoblock-text: is not able to support this location.
           invalid-coordinates: Invalid coordinates!
@@ -1139,7 +1139,7 @@ fleet-ops:
           select-service-rate: Select Service Rate
           refresh-button: Refresh
           loading-message: Loading service quotes...
-          info-text: Select a real time service quote to apply to this order. Once a quote is applied to the order, it will become a purchased rate. Transactions will be tracked within the Fleetbase ledger.
+          info-text: Select a real time service quote to apply to this order. Once a quote is applied to the order, it will become a purchased rate. Transactions will be tracked within the Fastlane ledger.
           breakdown: Breakdown
           no-service-info-text: No service quotes.
           input-order-info-text: Input order route to view service quotes.
@@ -1218,7 +1218,7 @@ fleet-ops:
           proof-of-delivery: Proof of Delivery
         config:
           title: Orders Configuration
-          message: Order configurations allow you to define dynamic configurations which will tell Fleetbase how different types of orders should be executed.
+          message: Order configurations allow you to define dynamic configurations which will tell Fastlane how different types of orders should be executed.
           configuration: Configuration
           types:
             no-order-installed: No order configurations installed!

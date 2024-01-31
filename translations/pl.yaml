@@ -1,0 +1,1346 @@
+fleet-ops:
+  extension-name: Fleet-Ops
+  common:
+    active-manpower: Aktywny personel
+    address: Adres
+    amount: Kwota
+    assignee: Przydzielony
+    avatar: Avatar
+    building: Budynek
+    bulk-action: Działanie zbiorcze
+    category: Kategoria
+    city: Miasto
+    coordinates: Koordynaty
+    cost: Koszt
+    code: Kod
+    country: Kraj
+    config: Konfiguracja
+    created-at: Utworzono
+    date-created: Data utworzenia
+    delete: Usuń
+    destination: Cel
+    details: Szczegóły
+    description: Opis
+    distance: Dystans
+    driver-license: Prawo jazdy
+    driver: Kierowca
+    edit: Edytuj
+    email: Email
+    export: Eksportuj
+    fleet: Flota
+    height: Wysokość
+    host: Host
+    id: ID
+    internal-id: Wewnętrzne ID
+    item: Przedmiot
+    key: Klucz
+    label: Etykieta
+    length: Długość
+    license: Licencja
+    loading: Ładowanie...
+    loading-resource: Ładowanie {resourceName}...
+    make: Marka
+    manage-message: Zarządzaj dostawcami
+    manpower: Siła robocza
+    model: Model
+    name: Nazwa
+    namespace: Przestrzeń nazw
+    neighborhood: Sąsiedztwo
+    new: Nowy
+    odometer: Licznik kilometrów
+    options: Opcje
+    orders: Zamówienia
+    parent-fleet: Flota nadrzędna
+    phone: Telefon
+    photos: zdjęcia
+    plate-number: Numer rejestracyjny
+    postal-code: Kod pocztowy
+    priority: Priorytet
+    reload: Odśwież
+    reload-data: Odśwież dane
+    remove: Usuń
+    reporter: Reporter
+    sandbox: Piaskownica
+    save-changes: Zapisz zmiany
+    schedule: Harmonogram
+    search: Szukaj
+    security-access-code: Kod dostępu bezpieczeństwa
+    service-area: Obszar usług
+    service: Usługa
+    state: Stan
+    status: Status
+    street-1: Ulica 1
+    street-2: Ulica 2
+    street: Ulica
+    task: Zadanie
+    title: Tytuł
+    type: Typ
+    unit: Jednostka
+    updated-at: Zaktualizowano
+    upload-new: Prześlij nowy
+    uploading: Przesyłanie...
+    value: Wartość
+    vehicle: Pojazd
+    vendor: Dostawca
+    vin-number: Numer VIN
+    volume: Objętość
+    weight: Waga
+    website-url: URL strony
+    website: Strona internetowa
+    width: Szerokość
+    year: Rok
+    zone: Strefa
+    total: Razem
+    back: Powrót
+  component:
+    admin:
+      navigator-app:
+        title: Aplikacja nawigacyjna
+        name: URL łącza instancji
+        message: Użyj tego URL, aby połączyć oficjalną aplikację nawigacyjną z tą instancją {companyName}. Otwarcie tego URL na urządzeniu mobilnym otworzy aplikację nawigacyjną i zaktualizuje jej konfigurację oraz branding.
+      visibility-controls:
+        title: Kontrola widoczności
+        message: Kontrola widoczności pozwala na wyłączenie sekcji w Fleet-Ops. Przełącz checkbox, aby włączyć lub wyłączyć sekcje do ukrycia w Fleet-ops.
+        checkbox-text: Włącz lub wyłącz widoczność tej sekcji w Fleet-Ops.
+    cell:
+      driver-name:
+        not-assigned: Brak przydzielonego kierowcy
+    fleet-panel:
+      details:
+        active-manpower: Aktywny personel
+      driver-listing:
+        search-driver: Szukaj kierowców w flocie
+        add-driver: Dodaj kierowcę do floty
+        loading-driver: Ładowanie kierowców floty...
+      vehicle-listing:
+        search-vehicle: Szukaj pojazdu w flocie
+        add-vehicle: Dodaj pojazd do floty
+        loading-vehicle: Ładowanie pojazdów floty...
+    layout:
+      fleet-ops-sidebar:
+        resources: Zasoby
+        operations: Operacje
+        dashboard: Panel główny
+        service-rates: Stawki usług
+        scheduler: Planista
+        drivers: Kierowcy
+        vehicles: Pojazdy
+        fleets: Floty
+        vendors: Dostawcy
+        contacts: Kontakty
+        places: Miejsca
+        fuel-reports: Raporty paliwowe
+        issues: Problemy
+        title: Utwórz nowe zamówienie
+        settings: Ustawienia
+    live-map-drawer:
+      driver-listing:
+        location: Lokalizacja
+        current-job: Aktualne zadanie
+        last-seen: Ostatnio widziany
+        view-driver: Zobacz szczegóły kierowcy...
+        edit-driver: Edytuj kierowcę...
+        locate-driver: Zlokalizuj kierowcę...
+        delete-driver: Usuń kierowcę...
+        warning-message: Nie można zlokalizować kierowcy.
+        message: Filtruj kierowców według słowa kluczowego...
+      place-listing:
+        location: Lokalizacja
+        place: Miejsce
+        view-place: Zobacz szczegóły miejsca...
+        edit-place: Edytuj miejsce...
+        locate-place: Zlokalizuj miejsce...
+        delete-place: Usuń miejsce...
+        warning-message: Nie można zlokalizować miejsca.
+        message: Filtruj miejsca według słowa kluczowego...
+      vehicle-listing:
+        location: Lokalizacja
+        last-seen: Ostatnio widziany
+        view-vehicle: Zobacz szczegóły pojazdu...
+        edit-vehicle: Edytuj pojazd...
+        locate-vehicle: Zlokalizuj pojazd...
+        delete-vehicle: Usuń pojazd...
+        warning-message: Nie można zlokalizować pojazdu.
+        message: Filtruj pojazdy według słowa kluczowego...
+    map-container:
+      visibility-control-panel:
+        title: Kontrola widoczności
+        hide-places: Ukryj wszystkie miejsca...
+        show-places: Pokaż wszystkie miejsca...
+        vehicles: Pojazdy
+        vehicle-controls: Kontrola widoczności pojazdów...
+        hide-vehicles: Ukryj wszystkie pojazdy...
+        show-vehicles: Pokaż wszystkie pojazdy...
+        online-vehicles: Pokaż tylko pojazdy online...
+        offline-vehicles: Pokaż tylko pojazdy offline...
+      zones-panel:
+        title: Obszary usług
+        create-service: Utwórz nowy obszar usług...
+        show: Pokaż wszystkie obszary usług
+        hide: Ukryj wszystkie obszary usług
+        action: Działania...
+        focus: Skupienie
+        blur: Rozmycie obszaru usług...
+        create-zone: Utwórz strefę wewnątrz...
+      toolbar:
+        create: Utwórz zamówienie
+        view: Zobacz zamówienia
+        service: Obszary usług
+        visibility: Kontrola widoczności
+        scope: Zakres
+    modals:
+      assign-driver:
+        select-driver: Wybierz kierowcę
+        select-assign: Wybierz kierowcę do przydzielenia
+      clone-config-form:
+        name: Nazwa konfiguracji
+        description: Opis konfiguracji
+      driver-assign-order:
+        order: Wybierz zamówienie
+        assign-order: Wybierz zamówienie do przydzielenia
+      driver-assign-vehicle:
+        vehicle: Wybierz pojazd
+        assign-vehicle: Wybierz pojazd do przydzielenia
+      driver-assign-vendor:
+        vendor: Wybierz dostawcę
+      driver-details:
+        job: Aktualne zadanie
+        view: Zobacz na mapie
+      driver-form:
+        select-vendor: Wybierz dostawcę
+        select-vehicle: Wybierz pojazd
+      edit-meta-form:
+        add: Dodaj pole meta
+      entity-form:
+        name-text: Nazwa przedmiotu lub encji.
+        id-text: Użyj tego pola, aby opcjonalnie ustawić niestandardowy identyfikator lub wewnętrzny identyfikator dla encji.
+        sku: SKU
+        sku-text: Numer jednostki utrzymywania zapasów, jeśli dotyczy.
+        description: Opis
+        description-text: Dodatkowy tekst opisu encji.
+        price-title: Cennik & Wartość
+        price: Cena
+        price-text: Cena encji.
+        sale-price: Cena sprzedaży
+        sale-price-text: Cena sprzedaży lub obniżona cena encji.
+        declare: Zadeklarowana wartość
+        declare-text: Zadeklarowana wartość encji, przydatna, jeśli jest ubezpieczalna.
+        measurement-title: Pomiary & Waga
+        length: Długość
+        length-text: Długość encji.
+        width: Szerokość
+        width-text: Szerokość encji.
+        height: Wysokość
+        height-text: Wysokość encji.
+        weight: Waga
+        weight-text: Waga encji.
+      entity-meta-field-prompt:
+        name: Klucz pola meta
+      fleet-form:
+        title: Nazwa floty
+        assign: Przypisz do obszaru usług
+        assign-text: Wybierz obszar usług, do którego przypiszesz flotę
+        zone: Przypisz do strefy
+        zone-text: Wybierz strefę, do której przypiszesz flotę
+        task: Zadanie / Misja
+        task-text: Podaj opis głównego zadania lub misji tej floty, jeśli dotyczy.
+        select-task: Wybierz zadanie
+        status-text: Wybierz status floty.
+        select-status: Wybierz status
+      fuel-report-details:
+        fuel: Paliwo / Objętość
+      fuel-report-form:
+        select-driver: Wybierz kierowcę
+        select-vehicle: Wybierz pojazd
+        volume: Objętość
+        volume-text: Wybierz jednostkę miary i objętość paliwa do zgłoszenia.
+      group-details:
+        name: Nazwa grupy
+        member: Członkowie
+        address: Adres
+      group-form:
+        title: Nazwa grupy
+        users-add: Wybierz użytkowników do dodania do grupy
+        search: Szukaj i wybierz użytkowników do dodania do tej grupy.
+        select-user: Wybierz użytkownika do dodania do grupy
+        no-users: Brak użytkowników dodanych do grupy
+      install-prompt:
+        message: Próbujesz zainstalować rozszerzenie {extensionName}. Czy na pewno chcesz kontynuować instalację?
+        sub-message: Niektóre rozszerzenia wymagają dostępu do twoich zasobów.
+      issue-details:
+        assigned: Przydzielono do
+        type: Typ problemu
+        category: Kategoria problemu
+      issue-form:
+        reported: Zgłoszony przez
+        select-reporter: Wybierz reportera
+        assigned: Przydzielono do
+        select-assignee: Wybierz przydzielonego
+        select-driver: Wybierz kierowcę
+        select-vehicle: Wybierz pojazd
+        select-type: Wybierz typ
+        select-category: Wybierz kategorię
+        type: Typ problemu
+        type-text: Wybierz typ problemu
+        category: Kategoria problemu
+        category-text: Wybierz kategorię problemu
+        report: Raport problemu
+        tags: Tagi problemu
+        add-tags: Dodaj tagi
+        select-status: Wybierz status problemu
+      map-layer-form:
+        layer-type: Typ warstwy
+        layer-type-text: Wybierz typ warstwy, którą chcesz utworzyć.
+        select-layer-type: Wybierz typ warstwy...
+        service-area: Obszar usług
+        service-area-text: Wybierz Obszar Usług, do którego przypiszesz tę Strefę.
+        select-service-area: Wybierz obszar usług do przypisania floty
+        set-name: Ustaw nazwę wyświetlaną dla {opcji}.
+        service-type: Typ obszaru usług
+        service-type-text: Wybierz definicję typu dla tego obszaru usług.
+        select-service-type: Wybierz typ obszaru usług...
+        customize-border: Dostosuj kolor granicy dla tej {opcji}.
+        customize-fill-color: Dostosuj kolor wypełnienia dla tej {opcji}.
+        service-area-country: Kraj obszaru usług
+        service-area-country-text: Opcjonalnie ustaw kraj, w którym znajduje się lub opiera ten Obszar Usług.
+      new-order-config:
+        name: Nazwa konfiguracji
+        description: Opis konfiguracji
+        tags: Tagi konfiguracji
+        add-tags: Dodaj tagi
+      order-assign-driver:
+        select-driver: Wybierz kierowcę
+        select-assign: Wybierz kierowcę do przydzielenia
+      order-config-new-status:
+        new-status: Nowy status
+        status-text: Wprowadź nowy status aktywności do dodania do przepływu
+      order-event:
+        schedule: Zaplanuj
+        unschedule: Usuń z harmonogramu
+      order-form:
+        id-text: Użyj tego pola, aby opcjonalnie ustawić niestandardowy identyfikator lub wewnętrzny identyfikator dla zamówienia.
+        schedule-text: Data i godzina wysyłki zamówienia. Jeśli w momencie wysyłki nie jest przydzielony żaden kierowca, wysyłka nie powiedzie się. Jeśli zamówienie jest Ad-Hoc, zamówienie zostanie przekazane kierowcom w pobliżu miejsca odbioru.
+        customer: Klient
+        customer-text: Opcjonalnie przypisz klienta tego zamówienia. Jeśli to nowy klient, użyj przycisku "Nowy klient" powyżej.
+        select-customer: Wybierz klienta
+        facilitator: Ułatwiacz
+        facilitator-text: Opcjonalnie przypisz ułatwiacza dla tego zamówienia, ułatwiacz może być podwykonawcą trzeciej strony lub usługą, która będzie ułatwiać transport tego zamówienia.
+        select-facilitator: Wybierz ułatwiacza
+        assign-driver: Przydziel kierowcę
+        assign-driver-text: Przydziel kierowcę, do którego zostanie wysłane to zamówienie.
+        select-driver: Wybierz kierowcę
+      order-import:
+        loading-message: Przetwarzanie importu...
+        drop-upload: Upuść, aby przesłać
+        invalid: Nieprawidłowy
+        ready-upload: gotowy do przesłania.
+        upload-spreadsheets: Prześlij arkusze kalkulacyjne
+        drag-drop: Przeciągnij i upuść pliki arkusza kalkulacyjnego na tę strefę upuszczania
+        button-text: lub wybierz arkusze kalkulacyjne do przesłania
+        spreadsheets: arkusze kalkulacyjne
+        upload-queue: Kolejka przesyłania
+      order-label:
+        loading: Ładowanie etykiety...
+      order-new-activity:
+        select-message: Wybierz status aktywności, aby zaktualizować aktywność śledzenia zamówienia, lub wprowadź niestandardową aktywność.
+        order-currently-message: To zamówienie jest obecnie {opcje}, dodatkowa aktywność zastąpi ten status.
+        not-recommend-message: Fastlane nie zaleca tego, chyba że absolutnie wiesz, co robisz.
+        activity-options: Opcje aktywności
+        activity: aktywność
+        dispatch: To spowoduje wysłanie zamówienia.
+        status: Niestandardowy status aktywności
+        details: Niestandardowe szczegóły aktywności
+        code: Niestandardowy kod aktywności
+        fleetbase-message: Fastlane nie zaleca tego, chyba że absolutnie wiesz, co robisz.
+      order-route-form:
+        toggle: Przełącz wielokrotne miejsca dostawy
+        optimize: Optymalizuj trasę
+        optimize-text: Fastlane automatycznie zoptymalizuje trasę.
+        add: Dodaj punkt pośredni
+        add-text: Użyj przycisku `Dodaj punkt pośredni`, aby dodać więcej przystanków dla tego zamówienia. Silnik trasowania Fastlane automatycznie zoptymalizuje trasę, gdy każdy przystanek jest dodawany lub usuwany.
+        select-waypoint: Wybierz punkt pośredni
+        pickup: Odbiór
+        edit-address: Edytuj adres
+        select-pickup: Wybierz odbiór
+        invalid: Nieprawidłowe koordynaty!
+        dropoff: Dostawa
+        select-dropoff: Wybierz dostawę
+        return: Powrót
+        select-return: Wybierz powrót
+      place-assign-vendor:
+        select-vendor: Wybierz dostawcę
+      place-details:
+        view: Zobacz na mapie
+      policy-form:
+        name: Nazwa polityki
+        name-text: Wprowadź nazwę dla swojej polityki
+        description: Opis polityki
+        description-text: Wprowadź opis dla swojej polityki
+        permissions: Wybierz uprawnienia
+      role-form:
+        name: Nazwa roli
+        name-text: Wprowadź nazwę dla tej roli
+        permissions: Wybierz uprawnienia
+      select-payment-method:
+        card-ending: Karta kończąca się na {metoda}
+      service-area-form:
+        name: Nazwa obszaru usług
+        name-text: Ustaw nazwę wyświetlaną dla obszaru usług.
+        type: Typ obszaru usług
+        type-text: Wybierz definicję typu dla tego obszaru usług.
+        select-type: Wybierz typ obszaru usług...
+        border-color: Kolor granicy obszaru usług
+        customize-border-color: Dostosuj kolor granicy dla tego obszaru usług.
+        area-color: Kolor obszaru usług
+        customize-area-color: Dostosuj kolor wypełnienia dla tego obszaru usług.
+        country: Kraj obszaru usług
+        country-text: Opcjonalnie ustaw kraj, w którym znajduje się lub opiera ten obszar usług.
+      set-password:
+        message: Witaj w Fastlane! Zanim zaczniesz, ustaw nowe hasło poniżej, aby kontynuować.
+        new-password: Nowe hasło
+        confirm-password: Potwierdź hasło
+        help-text: Wprowadź hasło o długości co najmniej 8 znaków, aby kontynuować.
+      uninstall-prompt:
+        message: Próbujesz odinstalować rozszerzenie "{opcje}". Czy na pewno chcesz kontynuować odinstalowanie?
+        sub-message: Wszystkie konfiguracje i ustawienia dostosowane zostaną utracone.
+      vehicle-details:
+        make: Marka
+        model: Model
+        year: Rok
+        driver-assigned: Przydzielony kierowca
+        no-driver-assigned: Brak przydzielonego kierowcy
+        avatar: Avatar
+        model-information: Informacje o modelu
+        acceleration: 0 do 100 km/h
+        body: Nadwozie
+        doors: Drzwi
+        length: Długość (mm)
+        seats: Miejsca
+        top-speed: Maksymalna prędkość (km/h)
+        transmission: Typ skrzyni biegów
+        weight: Waga (kg)
+        wheelbase: Rozstaw osi (mm)
+        width: Szerokość (mm)
+        engine-information: Informacje o silniku
+        engine-bore: Średnica cylindra (mm)
+        cc: CC
+        compression: Kompresja
+        cylinder: Cylindry
+        position: Pozycja
+        power-ps: Moc (KM)
+        power-rpm: Moc (obr/min)
+        stroke: Skok (mm)
+        torque-nm: Moment obrotowy (Nm)
+        torque-rpm: Moment obrotowy (obr/min)
+        valves: Zawory na cylinder
+        fuel-information: Informacje o paliwie
+        fuel: Paliwo
+        fuel-cap: Pojemność baku (l)
+        liters-city: Litry na km miasto
+        liters-highway: Litry na km autostrada
+        liters-mixed: Litry na km mieszane
+      vehicle-form:
+        map-avatar: Wybierz awatar mapy
+        map-avatar-text: Wybierz awatar do wykorzystania podczas renderowania na mapach przy użyciu funkcji śledzenia geolokalizacji.
+        select-avatar: Wybierz awatar
+        make: Marka pojazdu
+        model: Model pojazdu
+        year: Rok pojazdu
+        select-driver: Wybierz kierowcę
+        body: Typ nadwozia pojazdu
+        doors: Liczba drzwi
+        type: Typ napędu pojazdu
+        length: Długość pojazdu (mm)
+        seats: Liczba miejsc
+        top-speed: Maksymalna prędkość pojazdu (km/h)
+        transmission: Typ skrzyni biegów pojazdu
+        weight: Waga pojazdu (kg)
+        wheelbase: Rozstaw osi pojazdu (mm)
+        width: Szerokość pojazdu (mm)
+        engine-bore: Średnica cylindra (mm)
+        cc: CC
+        compression: Kompresja silnika
+        cylinder: Cylindry silnika
+        position: Pozycja silnika
+        power-ps: Moc silnika (KM)
+        power-rpm: Moc silnika (obr/min)
+        stroke: Długość skoku (mm)
+        torque-nm: Moment obrotowy silnika (Nm)
+        torque-rpm: Moment obrotowy silnika (obr/min)
+        fuel-type: Typ paliwa
+        fuel-cap: Pojemność baku (L)
+      vendor-details:
+        sandbox: Piaskownica
+        host: Host
+        namespace: Przestrzeń nazw
+      vendor-form:
+        choose-vendor: Wybierz zintegrowanego dostawcę
+        create-vendor: Utwórz niestandardowego dostawcę
+        credentials: Poświadczenia
+        options: Opcje
+        hide-advanced: Ukryj zaawansowane
+        show-advanced: Pokaż zaawansowane
+        custom-host: Niestandardowy host
+        host-text: Opcjonalnie podaj niestandardowy host, który powinien być używany dla tej integracji.
+        custom-namespace: Niestandardowa przestrzeń nazw
+        namespace-text: Opcjonalnie podaj niestandardową przestrzeń nazw lub wersję api, która powinna być używana dla integracji.
+        webhook: URL webhooka
+        webhook-text: Zintegrowani dostawcy zazwyczaj wymagają tego, aby Fastlane mógł otrzymywać aktualizacje aktywności dotyczące zamówienia. Nie zmieniaj, chyba że wiesz, co robisz! Zmiana może przerwać aktualizacje zamówień!
+        cancel-credentials: Anuluj resetowanie poświadczeń
+        reset-message: Wrażliwe poświadczenia można tylko zresetować, aby zaktualizować poświadczenia, musisz ponownie wprowadzić poświadczenia.
+        optionally: Opcjonalnie dostarcz własne
+        configure-vendor: aby skonfigurować tego dostawcę.
+        select: Wybierz
+        sandbox: Piaskownica
+        name-text: Nazwa dostawcy, zazwyczaj nazwa firmy.
+        email-text: Email dostawcy, może być używany do wyzwalania emaili do dostawcy.
+        phone-text: Telefon dostawcy, może być używany do wyzwalania SMS lub wiadomości do dostawcy.
+        website-text: Strona internetowa dostawcy, opcjonalnie dodaj stronę dostawcy dla odniesienia.
+        select-address: Wybierz adres
+      zone-form:
+        name: Nazwa strefy
+        name-text: Ustaw nazwę wyświetlaną dla strefy.
+        border-color: Kolor granicy strefy
+        customize-border: Dostosuj kolor granicy dla tej strefy.
+        zone-color: Kolor strefy
+        customize-fill-color: Dostosuj kolor wypełnienia dla tej strefy.
+        optionally: Opcjonalnie nadaj strefie opis.
+        description-zone: Opis strefy
+    order:
+      header:
+        dispatched-order: Wysłano o {order}
+        dispatched: Wysłano
+        dispatched-at: Wysłano o
+        edit: Edytuj szczegóły
+        update: Zaktualizuj aktywność
+        assign: Przydziel kierowcę
+        get-order: Pobierz etykietę zamówienia
+        split-order: Podziel zamówienie
+        reschedule: Przeplanuj zamówienie
+        cancel-order: Anuluj zamówienie
+      place-card:
+        show-less: Pokaż mniej szczegółów
+        show-more: Pokaż więcej szczegółów
+      schedule-card:
+        unassign-driver: Czy na pewno chcesz cofnąć przydzielenie kierowcy?
+        unassign-text: Masz zamiar cofnąć przydzielenie kierowcy dla zamówienia {orderId}. Kliknij kontynuuj, aby potwierdzić usunięcie kierowcy.
+        unassign-button: Kontynuuj i cofnij przydzielenie kierowcy
+        assign-driver: Przydziel nowego kierowcę?
+        assign-text: Masz zamiar przydzielić nowego kierowcę ({driverName}) do zamówienia {orderId}. Kliknij kontynuuj, aby potwierdzić kierowcę.
+        assign-button: Kontynuuj i przydziel kierowcę
+        date: Data zaplanowania
+        driver-assigned: Przydzielony kierowca
+        no-driver: Brak przydzielonego kierowcy
+        select-driver: Wybierz kierowcę
+        vehicle-assigned: Przydzielony pojazd
+        no-vehicle: Brak przydzielonego pojazdu
+    widget:
+      fleet-ops-quickstart:
+        message: Zobaczmy, co możesz zrobić, aby szybko rozpocząć działalność...
+        start-task: Rozpocznij zadanie
+      key-metrics:
+        earnings: Zarobki
+        fuel-expenses: Wydatki na paliwo
+        traveled: Przebyty dystans
+        total-time: Całkowity czas
+        order-scheduled: Zamówienia zaplanowane
+        order-completed: Zamówienia zakończone
+        order-progress: Zamówienia w trakcie realizacji
+        order-canceled: Zamówienia anulowane
+        driver-online: Kierowcy online
+        customers: Klienci
+        open-issue: Otwarte problemy
+        closed-issues: Zamknięte problemy
+      live-order-map:
+        loading: Ładowanie zamówień w trakcie realizacji...
+        assigned: Przydzielony kierowca
+        no-order: Brak zamówień w trakcie realizacji
+        message: Gdy zamówienia są w trakcie realizacji, będą wyświetlane w tym widżecie i pokazywać aktywność w czasie rzeczywistym.
+      recent-orders:
+        title: Ostatnie zamówienia
+        loading: Ładowanie ostatnich zamówień...
+        no-orders: Brak zamówień na ten tydzień
+        message-part-1: Nie było żadnych zamówień w tym tygodniu, zacznij od
+        message-part-2: utworzenia nowego zamówienia
+        message-part-3: lub pozwól swoim klientom składać zamówienia za pośrednictwem API.
+      transactions:
+        title: Ostatnie transakcje
+        loading: Ładowanie ostatnich transakcji...
+        no-transactions: Brak transakcji w tym tygodniu
+        message: Gdy zamówienia są realizowane ze stawkami usług, Fastlane automatycznie śledzi transakcje.
+    contact-form-panel:
+      success-message: kontakt {contactName} zapisany pomyślnie.
+      view-contact-button: Zobacz szczegóły kontaktu
+      save-contact: Zapisz kontakt
+      create-contact: Utwórz kontakt
+      cancel-edit-button: Anuluj edycję kontaktu
+      cancel-new-button: Anuluj nowy kontakt
+      new-contact: Nowy Kontakt
+    contact-panel:
+      details:
+        web-url: URL Strony Internetowej
+      edit-button: Edytuj kontakt
+      cancel-edit-button: Anuluj edycję kontaktu
+      cancel-new-button: Anuluj nowy kontakt
+    display-panel:
+      no-address: Brak adresu {type}!
+      no-address-message: Brak adresu!
+    driver-card:
+      no-fleets: Brak flot
+    driver-form-panel:
+        success-message: Kierowca ({driverName}) został pomyślnie zapisany.
+        driver-detail: Zobacz szczegóły kierowcy
+        save-driver: Zapisz Kierowcę
+        create-driver: Utwórz Kierowcę
+        cancel-edit-driver: Anuluj edycję kierowcy
+        cancel-new-driver: Anuluj nowego kierowcę
+        upload-new-photo: Prześlij nowe zdjęcie
+        new-driver: Nowy Kierowca
+        vendor: Dostawca
+        select-vehicle: Wybierz Pojazd
+        driver-status: Wybierz status kierowcy
+    driver-panel:
+      locate-button-text: Zlokalizuj kierowcę
+      edit-button-text: Edytuj kierowcę
+      close-button-text: Zamknij szczegóły kierowcy
+      no-vehicle-message: Brak przydzielonego pojazdu
+      assign-vehicle-button: Przypisz pojazd do kierowcy
+    fleet-driver-listing:
+      search-driver: Wyszukaj kierowców w flocie
+      add-driver: Dodaj kierowcę do floty
+      loading-message: Ładowanie kierowców floty...
+    fleet-form-panel:
+      success-message: Flota ({fleetName}) została pomyślnie zapisana.
+      title: Nowa Flota
+      save-fleet: Zapisz Flotę
+      create-fleet: Utwórz Flotę
+      view-details: Zobacz szczegóły floty
+      cancel-edit-fleet: Anuluj edycję floty
+      cancel-new-fleet: Anuluj nową flotę
+      fleet-name: Nazwa Floty
+      parent-fleet: Flota Nadrzędna
+      select-parent-fleet: Wybierz flotę nadrzędną do przypisania floty
+      select-vendor: Wybierz dostawcę do przypisania floty
+      service-title: Przypisz do Obszaru Usług
+      select-service: Wybierz obszar usług do przypisania floty
+      zone-title: Przypisz do Strefy
+      select-zone: Wybierz strefę do przypisania floty
+      select-status-fleet: Wybierz status floty.
+      select-status: Wybierz status
+      task-mission-title: Zadanie / Misja
+      task-text: Podaj opis głównego zadania lub misji tej floty, jeśli dotyczy.
+    fleet-vehicle-listing:
+      search-vehicle: Wyszukaj pojazd w flocie
+      add-vehicle: Dodaj pojazd do floty
+      loading-message: Ładowanie pojazdów floty...
+    fuel-report-form-panel:
+      success-message: Raport paliwowy został pomyślnie zapisany.
+      fuel-report: Nowy Raport Paliwowy
+      save-fuel-report: Zapisz Raport Paliwowy
+      create-fuel-report: Utwórz Raport Paliwowy
+      view-details: Zobacz szczegóły raportu paliwowego
+      cancel-edit-fuel-report: Anuluj edycję raportu paliwowego
+      cancel-new-fuel-report: Anuluj nowy raport paliwowy
+      select-reporter: Wybierz Reportera
+      select-driver: Wybierz Kierowcę
+      select-vehicle: Wybierz Pojazd
+      select-fuel-report: Wybierz status raportu paliwowego
+      odometer: Licznik kilometrów
+      cost: Koszt
+      volume: Objętość
+      select-volume-text: Wybierz jednostkę miary i objętość paliwa do raportu.
+    fuel-report-panel:
+      title: Szczegóły Raportu Paliwowego
+      edit-button: Edytuj raport paliwowy
+      cancel-edit-fuel-report: Anuluj edycję raportu paliwowego
+      cancel-new-fuel-report: Anuluj nowy raport paliwowy
+      details: 
+        fuel: Paliwo / Objętość
+    global-search:
+      search: Wyszukaj według słowa kluczowego...
+    integrated-order-details:
+      order-id: ID Zamówienia
+      quotation-id: ID Wyceny
+      driver-id: ID Kierowcy
+      link: Udostępnialny Link
+      price-breakdown: Rozkład Ceny
+      metadata: Metadane
+    issue-form-panel:
+      success-message: Problem ({publicId}) został pomyślnie zapisany.
+      issue: Nowy Problem
+      save-issue: Zapisz Problem
+      create-issue: Utwórz Problem
+      view-details: Zobacz szczegóły problemu
+      cancel-edit-issue: Anuluj edycję problemu
+      cancel-new-issue: Anuluj nowy problem
+      reported-by: Zgłoszony przez
+      assigned: Przydzielono do
+      select-assign: Wybierz Przydzielonego
+      select-reporter: Wybierz Reportera
+      select-driver: Wybierz Kierowcę
+      select-vehicle: Wybierz Pojazd
+      type: Typ Problemu
+      select-type: Wybierz typ problemu
+      category: Kategoria Problemu
+      select-category: Wybierz kategorię problemu
+      report: Raport Problemu
+      tags: Tagi Problemu
+      add-tags: Dodaj tagi
+      priority: Priorytet Problemu
+      select-priority: Wybierz priorytet problemu
+      select-status: Wybierz status problemu
+    issue-panel:
+      details:
+        assigned: Przydzielono do
+        type: Typ Problemu
+        category: Kategoria Problemu
+        priority: Priorytet Problemu
+        report: Raport
+      title: Szczegóły Problemu
+      edit-issue: Edytuj Problem
+      cancel-edit-issue: Anuluj edycję problemu
+      cancel-new-issue: Anuluj nowy problem
+    live-map:
+      onText: Ukryj narzędzia rysowania...
+      offText: Włącz narzędzia rysowania...
+      show-coordinates: Pokaż współrzędne...
+      center-map: Wyśrodkuj mapę tutaj...
+      zoom-in: Powiększ...
+      zoom-out: Pomniejsz...
+      hide-draw: Ukryj narzędzia rysowania...
+      enable-draw: Włącz narzędzia rysowania...
+      create-new-service: Utwórz nowy Obszar Usług...
+      focus-service: 'Skup na Obszarze Usług: {serviceName}'
+      view-driver: 'Zobacz Kierowcę: {driverName}'
+      edit-driver: 'Edytuj Kierowcę: {driverName}'
+      delete-driver: 'Usuń Kierowcę: {driverName}'
+      view-vehicle-for: 'Zobacz Pojazd dla: {driverName}'
+      view-vehicle: 'Zobacz pojazd: {vehicleName}'
+      edit-vehicle: 'Edytuj pojazd: {vehicleName}'
+      delete-vehicle: 'Usuń pojazd: {vehicleName}'
+      edit-zone: 'Edytuj strefę: {zoneName}'
+      delete-zone: 'Usuń strefę: {zoneName}'
+      assign-zone: 'Przypisz Flotę do Strefy: {zoneName}'
+      blur-service: 'Rozmyj Obszar Usług: {serviceName}'
+      create-zone: 'Utwórz Strefę w: {serviceName}'
+      assign-fleet: 'Przypisz Flotę do Obszaru Usług: {serviceName}'
+      edit-service: 'Edytuj Obszar Usług: {serviceName}'
+      delete-service: 'Usuń Obszar Usług: {serviceName}'
+      service-area: Obszar Usług
+      zone: Strefa
+    order-config:
+      create-new-title: Utwórz nową konfigurację zamówienia
+      warning-message: Konfiguracja zamówienia wymaga nazwy
+      success-message: Nowa konfiguracja zamówienia została pomyślnie utworzona.
+      no-order-warning: Nie wybrano konfiguracji zamówienia.
+      saved-success: Konfiguracja zamówienia '{orderName}' została zapisana.
+      enter-name-title: Wprowadź nazwę sklonowanej konfiguracji
+      no-config-warning: Nie wprowadzono nazwy konfiguracji.
+      cloned-success: Konfiguracja zamówienia została pomyślnie sklonowana.
+      body: Po usunięciu tej konfiguracji zamówienia nie będziesz już mógł tworzyć zamówień przy jej użyciu. Czy jesteś pewien?
+      uninstall-title: Odinstaluj Konfigurację
+      uninstall-success: Rozszerzenie {extensionName} zostało odinstalowane.
+      activity-flow-editor:
+        add-status: Dodaj nowy status do przepływu
+        no-status: Nie wprowadzono statusu.
+        overwrite: To nadpisze istniejący status!
+        overwrite-text: W tym przepływie już istnieje inny status {statusName}, jeśli kontynuujesz, ten status zostanie nadpisany. Czy chcesz nadpisać poprzedni status {statusName}?
+        overwrite-button: Tak, nadpisz!
+        remove: Usuń status
+        remove-text: Czy jesteś pewien, że chcesz usunąć ten status? Wszystkie powiązane aktywności i logika zostaną usunięte wraz ze statusem.
+        delete-button: Tak, usuń
+        unable-warning: Status {status} musi być w tej kolejności sekwencji, nie można zmienić.
+        order-warning: Utworzony status musi zawsze być pierwszą sekwencją przepływu zamówienia.
+        title: Przepływ Aktywności
+        message: Konfiguracja przepływu aktywności pozwoli Ci zdefiniować różne rodzaje aktywności śledzenia statusu, które mają zastosowanie dla tego typu zamówienia. Logika przepływu aktywności może być również skonfigurowana.
+        order-flow: Przepływ Zamówień
+        waypoint-flow: Przepływ Punktów Pośrednich
+        new-activity: Nowa Aktywność
+        activity-details: Szczegóły Aktywności
+        logic-stack: Stos Logiki
+        add-logic: Dodaj warunek logiczny
+        select-field: Wybierz pole
+        select-operator: Wybierz operatora
+        enter-value: Wprowadź wartość do porównania
+        no-logic: Brak zastosowanych warunków logicznych
+      details-editor:
+        success: Zainstalowano
+        key-text: Przekaż ten klucz do swojego typu zamówienia, aby skonfigurować zamówienie przy użyciu tej konfiguracji.
+        namespace-text: Unikalna przestrzeń nazw dla tego rozszerzenia.
+        id: ID Rozszerzenia
+        id-text: Unikalne ID dla tego rozszerzenia.
+        version: Wersja Rozszerzenia
+        version-text: Wersja tego rozszerzenia.
+        clone: Sklonuj Konfigurację
+        uninstall: Odinstaluj Konfigurację
+        delete: Usuń Konfigurację
+      entities-editor:
+        warning-message: Nie wprowadzono nazwy klucza pola meta.
+        title: Encje
+        message: Konfiguracja encji pozwoli Ci zdefiniować różne rodzaje encji, które powinny być wybieralne dla tego typu zamówienia. Powinny być używane jak szablony, aby przyspieszyć ręczne tworzenie zamówień.
+        type: Typ Encji
+        add-meta: Dodaj pole meta
+      fields-editor:
+        text-field: Pole Tekstowe
+        boolean: Boolean
+        boolean-text: Pozwala użytkownikowi przełączać właściwość prawda/fałsz za pomocą pola wyboru
+        dropdown: Lista rozwijana
+        dropdown-text: Pozwala użytkownikowi wybrać opcję z listy rozwijanej
+        datetime: Selektor Daty i Czasu
+        datetime-text: Pozwala użytkownikowi wybrać datę i czas
+        port: Selektor Portu
+        port-text: Pozwala użytkownikowi wybrać port
+        vessel: Selektor Statku
+        vessel-text: Pozwala użytkownikowi wybrać statek
+        warning-message: Nie wprowadzono nazwy grupy.
+        field-title: Pola Meta
+        new-field: Nowe Pole Niestandardowe
+        new-custom-field: Nowa Grupa Pól Niestandardowych
+        field-text: Konfiguracja pól meta pozwoli Ci zdefiniować niestandardowe pola wejściowe, które będą stosowane do zamówień.
+        custom-field-group: Grupa Pól Niestandardowych
+        default-field: Domyślne Pola
+        custom-field: Pole Niestandardowe
+        type: Typ Pola
+        select-type: Wybierz typ pola
+        add-option: Dodaj Opcję
+      select-message: Wybierz konfigurację zamówienia do modyfikacji lub kliknij "Nowa Konfiguracja", aby utworzyć nową konfigurację zamówienia.
+      new-config: Nowa Konfiguracja
+      loading-configuration: Ładowanie konfiguracji zamówień...
+      select-order: Wybierz konfigurację zamówienia
+      save-changes: Zapisz Zmiany
+      details: Szczegóły
+      fields: Niestandardowe Pola
+      flow: Przepływ Aktywności
+      entities: Encje
+    order-list-overlay:
+      search: Wyszukaj zamówienia...
+      selected: Wybrane
+      assign: Przydziel do kierowcy...
+      cancel: Anuluj zamówienia...
+      delete: Usuń zamówienia...
+      actions: Działania
+      create-order: Utwórz nowe zamówienie...
+      create-fleet: Utwórz nową flotę...
+      active-order: Aktywne zamówienia
+      unassigned-order: Nieprzydzielone zamówienia
+    place-form-panel:
+      success-message: miejsce ({placeAddress}) zostało pomyślnie zapisane.
+      place: Nowe Miejsce
+      save-place: Zapisz Miejsce
+      create-place: Utwórz Miejsce
+      view-details: Zobacz szczegóły miejsca
+      cancel-edit-place: Anuluj edycję miejsca
+      cancel-new-place: Anuluj nowe miejsce
+      street-1: Ulica 1
+      street-2: Ulica 2
+      neighborhood: Sąsiedztwo
+      building: Budynek
+      security-code: Kod dostępu bezpieczeństwa
+      postal-code: Kod pocztowy
+      state: Stan
+    place-panel:
+      edit-place: Edytuj miejsce
+      cancel-edit-place: Anuluj edycję miejsca
+      cancel-new-place: Anuluj nowe miejsce
+    route-list:
+      expand: Kliknij, aby rozwinąć
+      collapse: Kliknij, aby zwinąć
+      more-waypoints: więcej punktów pośrednich
+    settings-window:
+      success-message: Ustawienia zostały pomyślnie zapisane.
+      title: Ustawienia FleetOps
+      save: Zapisz Zmiany
+      name: Domyślna odległość pingowania Adhoc
+      name-text: To ustawienie określa domyślną odległość w metrach, w jakiej zamówienia Adhoc powinny pingować kierowców w pobliżu punktu odbioru zamówienia.
+      message: Odległość musi być podana w metrach
+    vehicle-form-panel:
+      success-message: Pojazd ({vehicleName}) został pomyślnie zapisany.
+      view-details: Zobacz szczegóły pojazdu
+      save-vehicle: Zapisz Pojazd
+      create-vehicle: Utwórz Pojazd
+      cancel-edit-vehicle: Anuluj edycję pojazdu
+      cancel-new-vehicle: Anuluj nowy pojazd
+      upload-photo: Prześlij nowe zdjęcie
+      new-vehicle: Nowy Pojazd
+      not-assigned: Brak przydzielonego kierowcy
+      plate-number: Numer rejestracyjny
+      vin-number: Numer VIN
+      make: Marka
+      vehicle-make: Marka pojazdu
+      model: Model
+      vehicle-model: Model pojazdu
+      year: Rok
+      vehicle-year: Rok pojazdu
+      driver-assigned: Przydzielony Kierowca
+      select-driver: Wybierz Kierowcę
+      select-vehicle: Wybierz status pojazdu
+      avatar: Avatar
+      select-map-avatar: Wybierz awatar mapy
+      select-avatar-rendering: Wybierz awatar do renderowania na mapach przy użyciu funkcji geolokalizacji.
+      select-avatar: Wybierz awatar
+    vehicle-panel:
+      edit: Edytuj pojazd
+      close: Zamknij szczegóły pojazdu
+      not-assigned: Brak przydzielonego kierowcy
+      assign-driver: Przypisz kierowcę do pojazdu
+    vendor-form-panel:
+      success-message: Dostawca ({vendorName}) został pomyślnie zapisany.
+      create-form:
+        integrated-vendor: Wybierz zintegrowanego dostawcę
+        custom-vendor: Utwórz niestandardowego dostawcę
+        title: Konfiguracja
+        select-vendor-type: Wybierz typ dostawcy
+        choose-vendor: Wybierz zintegrowanego dostawcę
+        provider: Dostawca
+        credentials: Poświadczenia
+        advanced-options: Opcje Zaawansowane
+        hide-advanced-options: Ukryj Opcje Zaawansowane
+        show-advanced-options: Pokaż Opcje Zaawansowane
+        host: Niestandardowy Host
+        host-text: Opcjonalnie podaj niestandardowy host, który powinien być używany dla tej integracji.
+        namespace: Niestandardowa Przestrzeń Nazw
+        namespace-text: Opcjonalnie podaj niestandardową przestrzeń nazw lub wersję API, która powinna być używana dla integracji.
+        webhook: URL Webhooka
+        webhook-text: Zintegrowani dostawcy zazwyczaj wymagają tego, aby Fastlane mógł otrzymywać aktualizacje aktywności dotyczące zamówienia. Nie zmieniaj, chyba że wiesz, co robisz! Zmiana może przerwać aktualizacje zamówień!
+        select-integrated: Wybierz zintegrowanego dostawcę.
+        vendor-details: Szczegóły Dostawcy
+        select-vendor-status: Wybierz status dostawcy
+        select-address: Wybierz Adres
+        edit: Edytuj
+        new-address: Nowy Adres
+        optionally: Opcjonalnie dostarcz własne
+        configure-vendor: aby skonfigurować tego dostawcę.
+        select: Wybierz
+        name-text: Nazwa dostawcy, zazwyczaj nazwa firmy.
+        email-text: Email dostawcy, może być używany do wyzwalania emaili do dostawcy.
+        phone-text: Numer telefonu dostawcy, może być używany do wyzwalania SMS lub wiadomości do dostawcy.
+        website-text: Strona internetowa dostawcy, opcjonalnie dodaj stronę dostawcy dla odniesienia.
+      edit-form:
+        cancel-credentials: Anuluj resetowanie poświadczeń
+        sensitive-credentials: Wrażliwe poświadczenia można tylko zresetować, aby zaktualizować poświadczenia, musisz ponownie wprowadzić poświadczenia.
+        reset-credentials: Kliknij tutaj, aby zresetować poświadczenia
+        select-address: Wybierz Adres
+      view-details: Zobacz szczegóły dostawcy
+      save-vendor: Zapisz Dostawcę
+      create-vendor: Utwórz Dostawcę
+      cancel-edit-vendor: Anuluj edycję dostawcy
+      cancel-new-vendor: Anuluj nowego dostawcę
+      upload-photo: Prześlij nowe zdjęcie
+      new-vendor: Nowy Dostawca
+    vendor-panel:
+      edit: Edytuj dostawcę
+      close: Zamknij szczegóły dostawcy
+      new-vendor: Nowy Dostawca
+  management:
+    contacts:
+      index:
+        delete-button: Usuń Kontakty
+        updated: Zaktualizowano
+        created: Utworzono
+        view-contact: Zobacz Szczegóły Kontaktu
+        edit-contact: Edytuj Kontakt
+        delete-contact: Usuń Kontakt
+        edit:
+          title: Kontynuować Bez Zapisywania?
+          body: Niezapisane zmiany w tym kontakcie zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+          button: Kontynuuj bez zapisywania
+        title: Kontakty
+        delete-contacts: Usuń Kontakty
+    drivers:
+      index:
+        assign-driver: Przydziel Kierowcę
+        view-details: Zobacz szczegóły kierowcy...
+        edit-details: Edytuj szczegóły kierowcy...
+        assign-order-driver: Przydziel zamówienie do kierowcy...
+        assign-vehicle-driver: Przydziel pojazd do kierowcy...
+        locate-driver-map: Zlokalizuj kierowcę na mapie...
+        delete-driver: Usuń kierowcę...
+        delete-button: Usuń Kierowców
+        order-driver: Przydziel Zamówienie do tego Kierowcy
+        assign-order: Przydziel Zamówienie
+        no-order-warning: Nie wybrano zamówienia!
+        assign-success: '{driverName} przydzielony do zamówienia.'
+        title-vehicle: Przydziel Pojazd do tego Kierowcy
+        confirm-button: Potwierdź i Utwórz
+        assign-vehicle: '{driverName} przydzielony do pojazdu.'
+        locate-driver: Obecna Lokalizacja {driverName}
+        edit:
+          title: Kontynuować Bez Zapisywania?
+          body: Niezapisane zmiany w tym kierowcy zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+          button: Kontynuuj bez zapisywania
+        title: Kierowcy
+        delete-drivers: Usuń Kierowców  
+        search-placeholder: Wyszukaj Kierowców 
+    fleets:
+      index:
+        view-fleet: Zobacz szczegóły floty...
+        edit-fleet: Edytuj szczegóły floty...
+        assign-driver: Przydziel kierowcę do floty...
+        delete-fleet: Usuń flotę...
+        delete-button: Usuń Floty
+        edit:
+          body: Niezapisane zmiany w tej flocie zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+        title: Floty
+        delete-fleets: Usuń Floty
+    fuel-reports:
+      index:
+        view: Zobacz Szczegóły
+        edit-fuel: Edytuj Raport Paliwowy
+        delete: Usuń Raport Paliwowy
+        delete-button: Usuń Raporty Paliwowe
+        edit:
+          body: Niezapisane zmiany w tym raporcie paliwowym zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+        title: Raporty Paliwowe
+        delete-fuel-reports: Usuń Raporty Paliwowe
+    issues:
+      index:
+        view: Zobacz Szczegóły
+        edit-issues: Edytuj Problemy
+        delete: Usuń Problemy
+        delete-button: Usuń Problemy
+        edit:
+          body: Niezapisane zmiany w tym problemie zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+        title: Problemy
+        delete-issues: Usuń Problemy
+    places:
+      index:
+        view-details: Zobacz Szczegóły Miejsca
+        edit-place: Edytuj Miejsce
+        view-place: Zobacz Miejsce na Mapie
+        delete: Usuń Miejsce
+        title: Przypisz to Miejsce do Dostawcy
+        confirm-button: Potwierdź i Utwórz
+        delete-button: Usuń Miejsca
+        success-message: '{placeName} szczegóły zostały zaktualizowane.'
+        locate-title: Lokalizacja {placeName}
+        edit:
+          body: Niezapisane zmiany w tym miejscu zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+        places-title: Miejsca
+        delete-places: Usuń Miejsca
+    vehicles:
+      index:
+        view-vehicle: Zobacz szczegóły pojazdu...
+        edit-vehicle: Edytuj szczegóły pojazdu...        
+        delete-vehicle: Usuń pojazd...
+        delete-button: Usuń Pojazdy
+        locate-action-title: Zlokalizuj Pojazdy
+        locate-title: Obecna Lokalizacja {vehicleName}
+        edit:
+          body: Niezapisane zmiany w tym pojeździe zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+        title: Pojazdy
+        delete-vehicles: Usuń Pojazdy
+    vendors:
+      index:
+        delete-button: Usuń Dostawców
+        view-vendor: Zobacz Szczegóły Dostawcy
+        edit-vendor: Edytuj Dostawcę
+        delete-vendor: Usuń Dostawcę
+        edit:
+          body: Niezapisane zmiany w tym dostawcy zostaną utracone. Kliknij kontynuuj, aby przejść dalej.
+        title: Dostawcy
+        delete-vendors: Usuń Dostawców
+  operations:
+    orders:
+      index:
+        payload: Ładunek
+        customer: Klient
+        facilitator: Ułatwiacz
+        pickup: Odbiór
+        dropoff: Dostawa
+        scheduled-at: Zaplanowano na
+        items: Przedmioty
+        transaction: Całkowity Koszt Transakcji
+        tracking: Numer Śledzenia
+        driver-assigned: Przydzielony Kierowca
+        created-by: Utworzone przez
+        updated-by: Zaktualizowane przez
+        view-order: Zobacz Zamówienie
+        cancel-order: Anuluj Zamówienie
+        delete-order: Usuń Zamówienie
+        cancel-title: Czy jesteś pewien, że chcesz anulować to zamówienie?
+        cancel-body: Po anulowaniu tego zamówienia, zapis zamówienia nadal będzie widoczny, ale nie można dodać do niego aktywności.
+        cancel-success: Zamówienie {orderId} zostało anulowane.
+        dispatch-title: Czy jesteś pewien, że chcesz wysłać to zamówienie?
+        dispatch-body: Po wysłaniu tego zamówienia przydzielony kierowca zostanie powiadomiony.
+        dispatch-success: Zamówienie {orderId} zostało wysłane.          
+        map: Mapa
+        table: Tabela
+        cancel-orders: Anuluj Zamówienia
+        delete-orders: Usuń Zamówienia
+        new:
+          create-new-customer: Utwórz nowego klienta
+          create-new-facilitator: Utwórz nowego ułatwiacza
+          create-new-place: Utwórz nowe miejsce
+          add-order: Dodaj encję do zamówienia
+          edit-order: Edytuj metadane zamówienia
+          add-field: Dodaj niestandardowe pole
+          order-type: Typ Zamówienia
+          order-type-help-text: Wybierając typ zamówienia, poinformujesz Fastlane, jakie konfiguracje zamówień należy użyć.
+          order-type-placeholder: Wybierz Typ Zamówienia
+          internal-id: Wewnętrzny ID
+          internal-id-help-text: Użyj tego pola, aby opcjonalnie ustawić niestandardowy identyfikator lub wewnętrzny identyfikator dla zamówienia.
+          schedule: Harmonogram
+          schedule-help-text: Data i godzina wysyłki zamówienia. Jeśli w momencie wysyłki nie jest przydzielony żaden kierowca, wysyłka nie powiedzie się. Jeśli zamówienie jest Ad-Hoc, zamówienie będzie pingowane do kierowców w pobliżu miejsca odbioru.
+          customer: Klient
+          customer-help-text: Opcjonalnie przypisz klienta tego zamówienia. Jeśli to nowy klient, użyj przycisku 'Nowy Klient' powyżej.
+          customer-placeholder: Wybierz Klienta
+          facilitator: Ułatwiacz
+          facilitator-help-text: Opcjonalnie przypisz ułatwiacza dla tego zamówienia, ułatwiacz może być podwykonawcą trzeciej strony lub usługą, która ułatwi transport tego zamówienia.
+          facilitator-placeholder: Wybierz Ułatwiacza
+          service-type: Typ Usługi
+          service-type-placeholder: Wybierz Typ Usługi
+          service-type-help-text: Wybierz typ usługi, którą chcesz użyć
+          assign-driver: Przydziel Kierowcę
+          assign-driver-help-text: Przydziel kierowcę, do którego zostanie wysłane to zamówienie.
+          assign-driver-placeholder: Wybierz Kierowcę
+          proof-delivery: Dowód Dostawy
+          proof-delivery-help-text: Wybierz rodzaj wymaganego dowodu dostawy. Może to być skan kodu QR lub metoda podpisu.
+          proof-delivery-placeholder: Wybierz Metodę Dowodu Dostawy
+          adhoc-ping: Odległość Pingowania Ad-Hoc
+          adhoc-ping-help-text: To ustawienie określa odległość ad-hoc pingowania dla tego zamówienia, jeśli nie jest ustawione, zostanie użyte domyślne ustawienie.
+          adhoc-ping-message: Odległość musi być podana w metrach
+          ad-hoc: Ad-Hoc
+          ad-hoc-help-text: Przełączenie Ad-Hoc umożliwi inteligentne pingowanie kierowców w pobliżu miejsca odbioru zamówienia o zamówieniu, co pozwoli pierwszemu dostępnemu kierowcy zaakceptować zamówienie. Jest to alternatywa dla ręcznego przydzielania kierowcy do zamówień w czasie rzeczywistym.
+          dispatch: Wysyłka Natychmiast
+          dispatch-help-text: Przełączenie wysyłki spowoduje natychmiastową wysyłkę tego zamówienia po utworzeniu.
+          require-proof: Wymagaj Dowodu Dostawy
+          require-proof-help-text: Przełączenie tego wymaga od kierowcy ukończenia dowodu dostawy.
+          additional-details: Dodatkowe Szczegóły
+          metadata: Metadane
+          route: Trasa
+          route-label: Wielokrotne Dostawy
+          optimize-route: Optymalizuj Trasę
+          optimize-route-help-text: Fastlane automatycznie zoptymalizuje trasę.
+          add-waypoint: Dodaj Punkt Pośredni
+          add-waypoint-help-text: Użyj przycisku `Dodaj Punkt Pośredni`, aby dodać więcej przystanków dla tego zamówienia. Silnik trasowania Fastlane automatycznie zoptymalizuje trasę, gdy każdy przystanek jest dodawany lub usuwany.
+          select-waypoint-placeholder: Wybierz Punkt Pośredni
+          infoblock-text: nie jest w stanie obsłużyć tej lokalizacji.
+          invalid-coordinates: Nieprawidłowe współrzędne!
+          pickup: Odbiór
+          select-pickup: Wybierz Odbiór
+          dropoff: Dostawa
+          select-dropoff: Wybierz Dostawę
+          return: Powrót
+          edit-address: Edytuj Adres
+          select-return: Wybierz Powrót
+          payload-entities: Ładunek / Encje
+          add-item-order: Dodaj Przedmiot do Zamówienia
+          items-drop: Miejsce dostawy przedmiotów
+          add-item-button: Dodaj Przedmiot
+          sku: SKU
+          select-destination: Wybierz Cel
+          edit-item: Edytuj Przedmiot
+          apply-service-rate: Zastosuj stawkę usługi
+          service-help-text: Wybierz zdefiniowaną stawkę usługi, aby wygenerować rzeczywiste wyceny usług do zastosowania w tym zamówieniu.
+          service-quotes: Wyceny Usług
+          service-quotes-help-text: Wybierz, która stawka usługi ma zostać wybrana do wycen.
+          select-service-rate: Wybierz Stawkę Usługi
+          refresh-button: Odśwież
+          loading-message: Ładowanie wycen usług...
+          info-text: Wybierz rzeczywistą wycenę usługi, aby zastosować ją do tego zamówienia. Po zastosowaniu wyceny do zamówienia, stanie się ona zakupioną stawką. Transakcje będą śledzone w księdze Fastlane.
+          breakdown: Rozkład
+          no-service-info-text: Brak wycen usług.
+          input-order-info-text: Wprowadź trasę zamówienia, aby zobaczyć wyceny usług.
+          notes-title: Notatki
+          notes-placeholder: Wprowadź tutaj notatki do zamówienia....
+          success-message: Nowe Zamówienie {orderId} Utworzone
+          warning-message: Brak plików w kolejce do przesłania!
+          import-success: Import zakończony.
+          service-warning: Nie udało się pobrać wycen usług dla tego zamówienia.
+          no-route-warning: Brak trasy do podglądu.
+          route-error: Optymalizacja trasy nie powiodła się, sprawdź wpis trasy i spróbuj ponownie.
+          custom-field-title: Dodaj niestandardowe pole do zamówienia
+          label-warning: Niestandardowe pole musi mieć etykietę
+          value-warning: Niestandardowe pole musi mieć wartość
+          edit-field-title: Edytuj niestandardowe pole
+          edit-metadata: Edytuj Metadane
+        view:
+          dispatch: Wysyłka
+          order-actions: Działania Zamówienia
+          edit-details: Edytuj Szczegóły
+          update-activity: Aktualizuj Aktywność
+          unassign-driver: Cofnij Przydzielenie Kierowcy
+          assign-driver: Przydziel Kierowcę
+          get-order-label: Uzyskaj Etykietę Zamówienia
+          listen-socket-channel: Słuchaj kanału gniazda
+          view-metadata: Zobacz Metadane
+          cancel-order: Anuluj Zamówienie
+          delete-order: Usuń Zamówienie
+          activity: Aktywność
+          unable-load-order-activity: Nie można załadować aktywności zamówienia
+          ad-hoc: Ad-Hoc
+          customer: Klient
+          facilitator: Ułatwiacz
+          driver-assigned: Przydzielony Kierowca
+          change-driver: Zmień Kierowcę
+          tracking-number: Numer Śledzenia
+          date-scheduled: Data Zaplanowania
+          date-dispatched: Data Wysyłki
+          date-started: Data Rozpoczęcia
+          order-details-title: Szczegóły Zamówienia
+          additional-details-title: Dodatkowe Szczegóły
+          route: Trasa
+          pickup: Odbiór
+          dropoff: Dostawa
+          return: Powrót
+          order-summary: Podsumowanie Zamówienia
+          subtotal: Suma Częściowa
+          delivery-fee: Opłata za Dostawę
+          tip: Napiwek
+          delivery-tip: Napiwek za Dostawę
+          total: Razem
+          payload: Ładunek
+          items-drop: Miejsce dostawy przedmiotów
+          tracking: Śledzenie
+          waypoint-actions: Działania Punktów Pośrednich
+          get-label: Uzyskaj Etykietę
+          view-activity: Zobacz Aktywność
+          add-item-button: Dodaj Przedmiot
+          edit-item-button: Edytuj Przedmiot
+          edit-order-title: Edytuj Szczegóły Zamówienia
+          update-success: Szczegóły '{orderId}' zostały zaktualizowane.
+          order-metadata: Metadane Zamówienia
+          unassign-title: Czy jesteś pewien, że chcesz cofnąć przydzielenie kierowcy ({driverName}) od tego zamówienia?
+          unassign-body: Po cofnięciu przydzielenia, kierowca nie będzie miał już dostępu do szczegółów tego zamówienia.
+          unassign-success: Kierowca został cofnięty z tego zamówienia.
+          edit-route-title: Edytuj Trasę Zamówienia
+          route-error: Optymalizacja trasy nie powiodła się, sprawdź wpis trasy i spróbuj ponownie.
+          route-update-success: Szczegóły trasy '{orderId}' zostały zaktualizowane.
+          add-activity-title: Dodaj nową aktywność do zamówienia
+          invalid-warning: Nieprawidłowe wprowadzenie niestandardowego statusu.
+          change-order: Zmień kierowcę zamówienia
+          assign-order: Przydziel kierowcę do zamówienia
+          assign-success: Zaktualizowano przydzielonego kierowcę '{orderId}.'
+          order-title: Etykieta Zamówienia
+          waypoint-title: Etykieta Punktu Pośredniego
+          proof-of-delivery: Dowód Dostawy
+        config:
+          title: Konfiguracja Zamówień
+          message: Konfiguracje zamówień pozwalają zdefiniować dynamiczne konfiguracje, które wskażą Fastlane, jak różne typy zamówień powinny być realizowane.
+          configuration: Konfiguracja
+          types:
+            no-order-installed: Brak zainstalowanych konfiguracji zamówień!
+            you-have-no-configs: Obecnie nie masz zainstalowanych żadnych konfiguracji zamówień, sprawdź w rozszerzeniach, aby zainstalować konfigurację zamówienia i rozpocząć pracę.
+            view-extensions: Zobacz rozszerzenia
+    scheduler:
+      index:
+        success-message: Zamówienie {orderId} zostało zaplanowane na {orderAt}.
+        info-message: Zamówienie {orderId} zostało odplanowane.
+        title: Planista
+        unscheduled-orders: Niezaplanowane Zamówienia
+        scheduled-orders: Zaplanowane Zamówienia
+    service-rates:
+      index:
+        edit-service: Edytuj Stawkę Usługi
+        delete-service: Usuń Stawkę Usługi
+        accept-button: Usuń Stawki Usług
+        edit:
+          success-message: Stawka usługi {serviceName} została zaktualizowana
+        title: Stawki Usług
+        reload-data: Odśwież dane
+        delete-service-rates: Usuń Stawki Usług
+        new:
+          success-message: Nowa Stawka Usługi {serviceName} Utworzona
+          new-service-rate-title: Nowa stawka usługi
+          save-service-button: Zapisz Stawkę Usługi
+          create-service-button: Utwórz Stawkę Usługi
+          service-name: Nazwa Usługi
+          service-name-help-text: Nazwa wyświetlana dla tej usługi.
+          service-order-label: Typ Zamówienia Usługi
+          service-order-help-text: Ogranicz tę stawkę usługi do wyraźnego `typu zamówienia`.
+          service-order-placeholder: Wybierz typ zamówienia, do którego ma być ograniczona usługa
+          base-fee-label: Opłata Podstawowa
+          base-fee-help-text: Ustaw opłatę podstawową, która reprezentuje minimalny koszt tej usługi.
+          rate-calculation-label: Metoda Obliczania Stawki
+          rate-calculation-help-text: Metoda, którą ta usługa będzie używać do obliczania stawek, gdy jest zapytana.
+          rate-calculation-placeholder: Wybierz metodę obliczania stawki
+          estimated-days: Szacowane Dni Dostawy
+          estimated-days-help-text: Szacowana liczba dni, jakie zajmie ta usługa. Dla usługi tego samego dnia użyj `0`.
+          duration-terms-label: Warunki Czasu Trwania
+          duration-terms-help-text: Dodaj dodatkowe warunki usługi dotyczące czasu trwania tej stawki usługi.
+          duration-terms-placeholder: Warunki czasu trwania, jeśli dotyczy
+          fixed-meter: Opcje Stałego Licznika
+          fixed-meter-text: Ta opcja definiuje stałą opłatę za kilometr.
+          fixed-meter-example-text: >-
+            Na przykład: Za każdy 1 kilometr jest zdefiniowana stała opłata. Jeśli odległość przebyta przez zamówienie wynosi 3,300 metrów, stała opłata za 3-ci kilometr zostanie dodana do sumy opłaty podstawowej.
+          maximum-distance: Maksymalna Odległość
+          maximum-distance-help-text: Maksymalna odległość obsługiwana.
+          distance: Odległość
+          fee: Opłata
+          per-drop-off-title: Opcje za Każdą Dostawę
+          per-drop-off-text: Ta opcja definiuje stałą opłatę za dostawy.
+          per-drop-off-example-text: >-
+            Na przykład: 1-5 dostaw w zamówieniu będzie kosztować kwotę $x, 5-10 dostaw na zamówienie będzie kosztować kwotę $x. To zostanie dodane do sumy opłaty podstawowej.
+          add-drop-off-button: Dodaj zakres dostaw
+          min-drop: Min Dostawa
+          max-drop: Maks Dostawa
+          min: Min
+          max: Maks
+          per-meter: Za Metr
+          per-meter-text: Ta opcja pozwala na obliczenie usługi za kilometr lub metr, co oznacza, że definiujesz stałą opłatę, która następnie jest mnożona przez odległość, która może być albo metrem, albo kilometrem.
+          per-meter-example-text: >-
+            Na przykład: '{fee}' * '{distance}' + '{baseFee}'
+          per-meter-rate-fee: Stała Opłata za Metr
+          per-meter-rate-fee-help-text: Pojedyncza stała opłata, która będzie mnożona przez odległość.
+          distance-unit: Jednostka Odległości
+          distance-unit-help-text: Jednostka odległości może być albo za kilometr, albo za metr.
+          distance-unit-placeholder: Wybierz jednostkę odległości.
+          custom-algorithm-title: Niestandardowy Algorytm
+          custom-algorithm-info-message: Ta opcja służy do zdefiniowania niestandardowego obliczenia opłaty za tę usługę z użyciem zmiennych.
+          custom-algorithm-info-second-message: Należy zauważyć, że zmienne muszą być zawarte w pojedynczym nawiasie klamrowym.
+          distance-message: odległość
+          distance-continue-message: >- 
+            - odległość w metrach z trasy zamówienia.
+          time-message: czas
+          time-continue-message: >-
+            - ETA trasy w sekundach.
+          example: Przykład
+          example-message: Jeśli zamówienie ma odległość 2,200 metrów z ETA 30 minut.
+          example-second-message: Wtedy poniższy wzór obliczy opłatę za usługę w wysokości $2.50, która zostanie dodana do opłaty podstawowej.
+          algorithm-label: Algorytm
+          algorithm-help-text: Zdefiniuj wzór do oceny dla tego obliczenia stawki usługi.
+          algorithm-placeholder: >-
+            (( '{distance}' / 50 ) * .05 ) + (( '{time}' / 60 ) * .01)
+          percel-fee-title: Opłaty za Paczki
+          length-label: Długość
+          length-placeholder: Długość w {parcelFeeDimension}
+          width-label: Szerokość
+          width-placeholder: Szerokość w {parcelFeeDimension}
+          height-label: Wysokość
+          height-placeholder: Wysokość w {parcelFeeDimension}
+          weight-label: Waga
+          weight-placeholder: Waga w {parcelFeeWeight}
+          deminsions-unit: Jednostka Wymiary
+          select-unit-placeholder: Wybierz jednostkę
+          weight-unit: Jednostka Wagi
+          additional-fee: Dodatkowa Opłata
+          cash-delivery-title: Płatność przy Dostawie
+          cash-delivery-label: Włącz dodatkową opłatę za zamówienia `płatność przy dostawie`?
+          calculation-method-label: Metoda Obliczania Opłaty za Płatność przy Dostawie
+          calculation-method-help-text: Metoda używana do obliczania opłaty za płatność przy dostawie.
+          calculation-method-placeholder: Wybierz metodę obliczania opłaty za płatność przy dostawie
+          delivery-flat-fee: Stała Opłata za Płatność przy Dostawie
+          delivery-flat-fee-help-text: Określa stałą opłatę, która będzie dodawana podczas godzin szczytu.
+          fee-percentage: Procent Opłaty za Płatność przy Dostawie
+          fee-percentage-help-text: Określa opłatę procentową od sumy częściowej stawki usługi, która zostanie dodana jako opłata za płatność przy dostawie.
+          percentage-placeholder: Procent
+          peak-hours-title: Godziny Szczytu
+          peak-hours-label: Włącz dodatkową opłatę za zamówienia składane podczas `godzin szczytu` określonych przez usługę?
+          peak-hours-start-label: Początek Godzin Szczytu
+          peak-hours-start-help-text: Określa, od której godziny zaczyna się opłata za godziny szczytu.
+          peak-hours-end-label: Koniec Godzin Szczytu
+          peak-hours-end-help-text: Określa, do której godziny kończy się opłata za godziny szczytu.
+          peak-hours-fee-label: Metoda Obliczania Opłaty za Godziny Szczytu
+          peak-hours-fee-help-text: Metoda używana do obliczania opłaty za godziny szczytu.
+          peak-hours-fee-placeholder: Wybierz metodę obliczania opłaty za godziny szczytu
+          flat-fee-label: Stała Opłata za Godziny Szczytu
+          flat-fee-help-text: Określa stałą opłatę, która będzie dodawana podczas godzin szczytu.
+          peak-hours-percentage-label: Procent Opłaty za Godziny Szczytu
+          peak-hours-percentage-help-text: Określa opłatę procentową od sumy częściowej stawki usługi, która zostanie dodana podczas godzin szczytu.
+          restrict-service-title: Ogranicz Usługę
+          service-area-label: Obszar Usługi
+          service-area-help-text: Ogranicz tę usługę do zamówień pochodzących z obszaru usługi.
+          service-area-placeholder: Ogranicz do obszaru usługi
+          zone-label: Strefa
+          zone-help-text: Ogranicz tę usługę do zamówień pochodzących z określonej strefy.
+          zone-placeholder: Ogranicz do strefy
