@@ -8,6 +8,7 @@ fleet-ops:
     avatar: Avatar
     building: Gebouw
     bulk-action: Massa-actie
+    cancel: Annuleer
     category: Categorie
     city: Stad
     coordinates: Coördinaten
@@ -184,8 +185,8 @@ fleet-ops:
         create-zone: Maak zone binnen...
       toolbar:
         create: Maak Bestelling
-        view: Bekijk Bestellingen
-        service: Servicegebieden
+        view-order: Bekijk Bestellingen
+        view-service-area: Servicegebieden
         visibility: Zichtbaarheidscontroles
         scope: Bereik
     modals:
@@ -1156,6 +1157,12 @@ fleet-ops:
           edit-field-title: Bewerk aangepast veld
           edit-metadata: Bewerk Metadata
         view:
+          purchase-rate-panel-title: Aankooptarief
+          documents-panel-title: Documenten & Bestanden
+          route-panel-title: Route
+          currency: Valuta
+          comments-title: Opmerkingen
+          notes-title: Notities
           dispatch: Verzenden
           order-actions: Bestel Acties
           edit-details: Bewerk Details

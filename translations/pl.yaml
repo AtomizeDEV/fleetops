@@ -8,6 +8,7 @@ fleet-ops:
     avatar: Avatar
     building: Budynek
     bulk-action: Działanie zbiorcze
+    cancel: Anulować
     category: Kategoria
     city: Miasto
     coordinates: Koordynaty
@@ -184,8 +185,8 @@ fleet-ops:
         create-zone: Utwórz strefę wewnątrz...
       toolbar:
         create: Utwórz zamówienie
-        view: Zobacz zamówienia
-        service: Obszary usług
+        view-order: Zobacz zamówienia
+        view-service-area: Obszary usług
         visibility: Kontrola widoczności
         scope: Zakres
     modals:
@@ -1155,6 +1156,12 @@ fleet-ops:
           edit-field-title: Edytuj niestandardowe pole
           edit-metadata: Edytuj Metadane
         view:
+          purchase-rate-panel-title: Stawka zakupu
+          documents-panel-title: Dokumenty & Pliki
+          route-panel-title: Trasa
+          currency: Waluta
+          comments-title: Komentarze
+          notes-title: Notatki
           dispatch: Wysyłka
           order-actions: Działania Zamówienia
           edit-details: Edytuj Szczegóły
