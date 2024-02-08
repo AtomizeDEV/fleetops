@@ -1815,7 +1815,7 @@ export default class LiveMapComponent extends Component {
                     // Update the object's heading degree
                     objectMarker.setRotationAngle(data.heading);
                     // Move the object's marker to new coordinates
-                    objectMarker.slideTo(data.location.coordinates.reverse(), { duration: 2000 });
+                    objectMarker.slideTo(data.location.coordinates, { duration: 2000 });
                 }
             }
 
