@@ -91,7 +91,7 @@ export default class LocationService extends Service {
                 });
             }
 
-            if (isArray(coordinates)) {
+            if (coordinates && isArray(coordinates)) {
                 const validCoordinates = coordinates.filter((point) => point.coordinates[0] !== 0);
                 const [longitude, latitude] = getWithDefault(validCoordinates, '0.coordinates', [0, 0]);
                 const coordinates = {
