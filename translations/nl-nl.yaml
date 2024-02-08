@@ -540,6 +540,7 @@ fleet-ops:
         message: Laten we kijken wat u kunt doen om de operaties snel op gang te brengen...
         start-task: Start Taak
       key-metrics:
+        title: Fleet-Ops Metrics
         earnings: Inkomsten
         fuel-expenses: Brandstofuitgaven
         traveled: Afstand Gereisd
@@ -820,13 +821,13 @@ fleet-ops:
       cancel: Annuleer bestellingen...
       delete: Verwijder bestellingen...
       actions: Acties
-      create-order: Maak nieuwe bestelling...
-      create-fleet: Maak nieuwe vloot...
+      create-order: Bestelling aanmaken...
+      create-fleet: Vloot aanmaken...
       active-order: Actieve bestellingen
       unassigned-order: Niet-toegewezen bestellingen  
     place-form-panel:
       success-message: plaats ({placeAddress}) succesvol opgeslagen.
-      place: Nieuwe Plaats
+      place: Plaats aanmaken
       save-place: Sla Plaats op
       create-place: Maak Plaats
       view-details: Bekijk plaats details
