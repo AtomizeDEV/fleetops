@@ -91,16 +91,15 @@ export default class LocationService extends Service {
                 });
             }
 
-            if (isArray(inputCoordinates)) {
-                const validCoordinates = inputCoordinates.filter((point) => point.coordinates[0] !== 0);
+            if (validCoordinates) {
                 const [longitude, latitude] = getWithDefault(validCoordinates, '0.coordinates', [0, 0]);
-                const resultCoordinates = {
+                const userCoordinates = {
                     latitude,
                     longitude,
                 };
-            
-                this.updateLocation(resultCoordinates);
-                return resultCoordinates;
+
+                this.updateLocation(userCoordinates);
+                return userCoordinates;
             }
 
             return this.getUserLocationFromWhois();
