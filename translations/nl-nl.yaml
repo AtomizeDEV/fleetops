@@ -93,7 +93,13 @@ fleet-ops:
     zone: Zone
     total: Totaal
     back: Terug
+
   component:
+    avatar-picker:
+      avatar: Avatar
+      select-map-avatar: Selecteer kaartavatar
+      select-avatar-rendering: Selecteer een avatar die gebruikt wordt voor het renderen op kaarten bij het gebruik van geolocatie tracking functies.
+      select-avatar: Selecteer avatar
     admin:
       navigator-app:
         title: Navigator App
@@ -103,6 +109,12 @@ fleet-ops:
         title: Zichtbaarheidscontroles
         message: Zichtbaarheidscontroles stellen u in staat om secties van Vloot-Ops uit te schakelen. Schakel het selectievakje in om secties te activeren of te deactiveren om te verbergen in Vloot-Ops.
         checkbox-text: Activeer of deactiveer zichtbaarheid voor deze sectie in Vloot-Ops.
+      avatar-management:
+        upload-avatar: Upload Avatar
+        view-avatar: Bekijk Avatar
+        vehicles: Voertuigen
+        drivers: Bestuurders
+        places: Plaatsen
     cell:
       driver-name:
         not-assigned: Geen chauffeur toegewezen
@@ -523,6 +535,7 @@ fleet-ops:
         show-less: Toon minder details
         show-more: Toon meer details
       schedule-card:
+        destination: Bestemming
         unassign-driver: Chauffeur ontkoppelen?
         unassign-text: U staat op het punt de chauffeur voor Bestelling {orderId} te ontkoppelen. Klik op doorgaan om de verwijdering van de chauffeur te bevestigen.
         unassign-button: Doorgaan en chauffeur ontkoppelen

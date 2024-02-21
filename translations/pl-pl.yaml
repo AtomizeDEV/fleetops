@@ -94,6 +94,11 @@ fleet-ops:
     total: Razem
     back: Powrót
   component:
+    avatar-picker:
+      avatar: Avatar
+      select-map-avatar: Wybierz awatar na mapie
+      select-avatar-rendering: Wybierz awatara do renderowania na mapach podczas używania funkcji śledzenia geolokalizacji.
+      select-avatar: Wybierz awatara
     admin:
       navigator-app:
         title: Aplikacja nawigacyjna
@@ -103,6 +108,12 @@ fleet-ops:
         title: Kontrola widoczności
         message: Kontrola widoczności pozwala na wyłączenie sekcji w Fleet-Ops. Przełącz checkbox, aby włączyć lub wyłączyć sekcje do ukrycia w Fleet-ops.
         checkbox-text: Włącz lub wyłącz widoczność tej sekcji w Fleet-Ops.
+      avatar-management:
+        upload-avatar: Prześlij awatar
+        view-avatar: Zobacz awatar
+        vehicles: Pojazdy
+        drivers: Kierowcy
+        places: Miejsca
     cell:
       driver-name:
         not-assigned: Brak przydzielonego kierowcy
@@ -523,6 +534,7 @@ fleet-ops:
         show-less: Pokaż mniej szczegółów
         show-more: Pokaż więcej szczegółów
       schedule-card:
+        destination: Miejsce docelowe
         unassign-driver: Czy na pewno chcesz cofnąć przydzielenie kierowcy?
         unassign-text: Masz zamiar cofnąć przydzielenie kierowcy dla zamówienia {orderId}. Kliknij kontynuuj, aby potwierdzić usunięcie kierowcy.
         unassign-button: Kontynuuj i cofnij przydzielenie kierowcy
