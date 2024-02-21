@@ -10,6 +10,12 @@
         "delivery management"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/atomizedev/core-api"
+        }
+    ],
     "authors": [
         {
             "name": "Fleetbase Pte Ltd.",
