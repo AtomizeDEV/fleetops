@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddMetaColumnOnDriverTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,10 @@ class AddMetaColumnOnDriverTable extends Migration
     public function up()
     {
         Schema::table('drivers', function (Blueprint $table) {
-            $table->json('meta')->nullable()->after('slug');
+            // Check if the column does not exist before adding it
+            if (!Schema::hasColumn('drivers', 'meta')) {
+                $table->json('meta')->nullable()->after('slug');
+            }
         });
     }
 
@@ -26,7 +29,9 @@ class AddMetaColumnOnDriverTable extends Migration
     public function down()
     {
         Schema::table('drivers', function (Blueprint $table) {
-            $table->dropColumn('meta');
+            if (Schema::hasColumn('drivers', 'meta')) {
+                $table->dropColumn('meta');
+            }
         });
     }
 };
