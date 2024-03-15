@@ -50,7 +50,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Fleetbase\\FleetOps\\": "server/src/"
+            "Fleetbase\\FleetOps\\": "server/src/",
+            "Fleetbase\\FleetOps\\Seeders\\": "server/seeders/"
         }
     },
     "autoload-dev": {
