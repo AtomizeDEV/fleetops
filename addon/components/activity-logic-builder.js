@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import { isNone } from '@ember/utils';
-import contextComponentCallback from '../utils/context-component-callback';
+import contextComponentCallback from '@atomizedev/ember-core/utils/context-component-callback';
 import getWithDefault from '@atomizedev/ember-core/utils/get-with-default';
 
 export default class ActivityLogicBuilderComponent extends Component {

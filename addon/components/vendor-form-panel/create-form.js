@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import apiUrl from '@atomizedev/ember-core/utils/api-url';
-import contextComponentCallback from '../../utils/context-component-callback';
+import contextComponentCallback from '@atomizedev/ember-core/utils/context-component-callback';
 
 export default class VendorFormPanelCreateFormComponent extends Component {
     /**
