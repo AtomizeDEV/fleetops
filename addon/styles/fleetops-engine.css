@@ -181,8 +181,8 @@ body.fleetbase-console .next-content-overlay > .next-content-overlay-panel-conta
 }
 
 .fleetops-pill-tabs > nav > a.ui-tab.active {
-    background-color: #3b82f6;
-    border: 1px solid #2563eb;
+    background-color: #bd4dff;
+    border: 1px solid #9525fd;
 }
 
 .fleetops-pill-tabs > nav > a.ui-tab:hover {
@@ -195,8 +195,8 @@ body[data-theme='light'] .fleetops-pill-tabs > nav > a.ui-tab {
 }
 
 body[data-theme='light'] .fleetops-pill-tabs > nav > a.ui-tab.active {
-    background-color: #3b82f6;
-    border: 1px solid #2563eb;
+    background-color: #bd4dff;
+    border: 1px solid #9525fd;
     color: #fff;
 }
 
@@ -217,7 +217,7 @@ body[data-theme='light'] .flow-activity {
 
 body[data-theme='light'] .flow-activity:hover,
 body[data-theme='light'] .joint-type-fleetbase-activity:hover .flow-activity {
-    stroke: #2563eb;
+    stroke: #9525fd;
 }
 
 body[data-theme='light'] .joint-type-fleetbase-activity text {
@@ -236,11 +236,11 @@ body[data-theme='light'] .flow-activity-status-pill text {
 .flow-activity:hover,
 .flow-activity-add-button:hover,
 .joint-type-fleetbase-activity:hover .flow-activity {
-    stroke: #2563eb;
+    stroke: #9525fd;
 }
 
 .flow-activity-add-button:hover {
-    fill: #3b82f6;
+    fill: #bd4dff;
 }
 
 .joint-js-paper {

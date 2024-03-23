@@ -33,7 +33,7 @@
                     {{#each this.customField.options as |radioOption index|}}
                         <div class="radio-group-item shadow-sm {{if (eq this.value radioOption) 'is-checked'}}">
                             <div class="flex items-center">
-                                <RadioButton @radioClass="focus:ring-blue-500" @radioId={{concat this.customField.name "-radio-option-" index}} @value={{radioOption}} @groupValue={{this.value}} @name={{radioOption}} @changed={{this.onChangeHandler}} />
+                                <RadioButton @radioClass="focus:ring-magicpurple-500" @radioId={{concat this.customField.name "-radio-option-" index}} @value={{radioOption}} @groupValue={{this.value}} @name={{radioOption}} @changed={{this.onChangeHandler}} />
                                 <div class="ml-2 text-sm dark:text-gray-100 text-gray-900 truncate">{{radioOption}}</div>
                             </div>
                         </div>
@@ -50,8 +50,8 @@
                     </FileUpload>
                     {{#if this.file}}
                         <div class="ml-2 flex items-center text-sm">
-                            <Spinner class="dark:text-blue-400 text-blue-900" />
-                            <span class="ml-2 text-xs dark:text-blue-400 text-blue-900">{{round this.file.progress}}%</span>
+                            <Spinner class="dark:text-magicpurple-400 text-magicpurple-900" />
+                            <span class="ml-2 text-xs dark:text-magicpurple-400 text-magicpurple-900">{{round this.file.progress}}%</span>
                         </div>
                     {{/if}}
                 </div>

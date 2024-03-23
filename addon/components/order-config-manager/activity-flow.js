@@ -725,8 +725,8 @@ export default class OrderConfigManagerActivityFlowComponent extends Component {
                     className: 'flow-activity-add-button',
                     attributes: {
                         r: 12,
-                        fill: '#2563eb',
-                        stroke: '#2563eb',
+                        fill: '#9525fd',
+                        stroke: '#9525fd',
                         cursor: 'default',
                     },
                 },

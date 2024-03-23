@@ -3,17 +3,17 @@
         {{#if @options.action}}
             <InputGroup>
                 <div class="space-x-4 flex">
-                    <button type="button" class="outline-none flex-1 rounded-lg bg-white dark:bg-gray-900 border-2 border-transparent px-4 py-2 flex items-center justify-center {{if (eq @options.action "select") 'border-blue-500'}}" {{on "click" (fn (mut @options.action) "select")}}>
+                    <button type="button" class="outline-none flex-1 rounded-lg bg-white dark:bg-gray-900 border-2 border-transparent px-4 py-2 flex items-center justify-center {{if (eq @options.action "select") 'border-magicpurple-500'}}" {{on "click" (fn (mut @options.action) "select")}}>
                         <div class="mr-2.5">
-                            <FaIcon @icon="handshake" @size="xl" class="text-blue-500" />
+                            <FaIcon @icon="handshake" @size="xl" class="text-magicpurple-500" />
                         </div>
                         <div>
                             <span class="text-gray-900 dark:text-gray-100 text-lg">{{t "fleet-ops.component.modals.vendor-form.choose-vendor"}}</span>
                         </div>
                     </button>
-                    <button type="button" class="outline-none flex-1 rounded-lg bg-white dark:bg-gray-900 border-2 border-transparent px-4 py-2 flex items-center justify-center {{if (eq @options.action "create") 'border-blue-500'}}" {{on "click" (fn (mut @options.action) "create")}}>
+                    <button type="button" class="outline-none flex-1 rounded-lg bg-white dark:bg-gray-900 border-2 border-transparent px-4 py-2 flex items-center justify-center {{if (eq @options.action "create") 'border-magicpurple-500'}}" {{on "click" (fn (mut @options.action) "create")}}>
                         <div class="mr-2.5">
-                            <FaIcon @icon="building" @size="xl" class="text-blue-500" />
+                            <FaIcon @icon="building" @size="xl" class="text-magicpurple-500" />
                         </div>
                         <div>
                             <span class="text-gray-900 dark:text-gray-100 text-lg">{{t "fleet-ops.component.modals.vendor-form.create-vendor"}}</span>
@@ -60,7 +60,7 @@
                     <Checkbox @value={{@options.integratedVendor.sandbox}} @label={{t "fleet-ops.component.modals.vendor-form.sandbox"}} @onToggle={{fn (mut @options.integratedVendor.sandbox)}} @alignItems="center" @labelClass="mb-0i" />
                 </InputGroup>
                 <div>
-                    <button type="button" class="btn-link text-xs outline-none text-blue-600 hover:text-blue-600 mb-3" {{on "click" @options.toggleAdvancedOptions}}>
+                    <button type="button" class="btn-link text-xs outline-none text-magicpurple-600 hover:text-magicpurple-600 mb-3" {{on "click" @options.toggleAdvancedOptions}}>
                         {{#if @options.showAdvancedOptions}}
                             <span>{{t "fleet-ops.component.modals.vendor-form.hide-advanced"}}</span>
                         {{else}}
@@ -95,7 +95,7 @@
                         </div>
                     {{else}}
                         <div>
-                            <div class="rounded-md border border-blue-300 dark:border-blue-600 bg-blue-100 dark:bg-blue-500 text-blue-900 dark:text-white text-sm px-4 py-2 mb-4">
+                            <div class="rounded-md border border-magicpurple-300 dark:border-magicpurple-600 bg-magicpurple-100 dark:bg-magicpurple-500 text-magicpurple-900 dark:text-white text-sm px-4 py-2 mb-4">
                                 <p class="mb-2">{{t "fleet-ops.component.modals.vendor-form.reset-message"}}</p>
                                 <Button @type="default" @size="xs" @icon="repeat" @text="Click here to reset" @onClick={{@options.toggleCredentialsReset}} />
                             </div>
@@ -121,7 +121,7 @@
                     <Checkbox @value={{@options.vendor.sandbox}} @label="Sandbox" @onToggle={{fn (mut @options.vendor.sandbox)}} @alignItems="center" @labelClass="mb-0i" />
                 </InputGroup>
                 <div>
-                    <button type="button" class="btn-link text-xs outline-none text-blue-600 hover:text-blue-600 mb-3" {{on "click" @options.toggleAdvancedOptions}}>
+                    <button type="button" class="btn-link text-xs outline-none text-magicpurple-600 hover:text-magicpurple-600 mb-3" {{on "click" @options.toggleAdvancedOptions}}>
                         {{#if @options.showAdvancedOptions}}
                             <span>{{t "fleet-ops.component.modals.vendor-form.hide-advanced"}}</span>
                         {{else}}
